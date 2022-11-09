@@ -1,4 +1,7 @@
 class Circle < ApplicationRecord
-  has_many :users
-  # has_many :events, dependent: :destroy
+  has_many :circle_events
+  has_many :events, through: :circle_events
+  has_many :user_circles
+  has_many :users, through: :user_circles
+  has_many :circle_messages, dependent: :destroy
 end

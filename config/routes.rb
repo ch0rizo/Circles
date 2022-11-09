@@ -5,4 +5,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :circles, only: %i[new create destroy edit update show] do
+    resources :user_circles, only: %i[create update]
+    resources :circle_events, only: %i[create destroy]
+    resources :circle_messages, only: %i[create destroy]
+  end
+
+  resources :events, only: %i[new create destroy edit update show] do
+    resources :user_events, only: %i[create update destroy]
+    resources :event_messages, only: %i[create destroy]
+  end
 end
