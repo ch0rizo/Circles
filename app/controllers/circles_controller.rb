@@ -5,9 +5,11 @@ class CirclesController < ApplicationController
 
   def create
     @circle = Circle.new(circle_params)
-    @user = current_user
-    @circle.user = @user
+    @user_circle = UserCircle.new
     if @circle.save
+      @user_circle.user = current_user
+      @user_circle.circle = @circle
+      @user_circle.save
       redirect_to circles_path, notice: 'Nice, your Circle was created!'
     else
       render :new, status: :unprocessable_entity
