@@ -1,4 +1,4 @@
-puts "> Deleting the DB.."
+puts "> Clearing the DB.."
 CircleEvent.destroy_all
 
 UserEvent.destroy_all
