@@ -1,0 +1,10 @@
+<div container>
+  <h1>Create a new Circle</h1>
+  <%= simple_form_for [@user, @circle] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :private, as: :select, collection: [['Yes',true], ['No',false]], required: true %>
+    <%= f.submit %>
+  <% end %>
+</div>
