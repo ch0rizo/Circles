@@ -1,6 +1,12 @@
 puts "> Deleting the DB.."
 CircleEvent.destroy_all
+
+UserEvent.destroy_all
+EventMessage.destroy_all
+
 UserCircle.destroy_all
+CircleMessage.destroy_all
+
 Event.destroy_all
 Circle.destroy_all
 User.destroy_all
