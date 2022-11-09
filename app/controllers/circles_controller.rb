@@ -1,0 +1,3 @@
+class CirclesController < ApplicationController
+  
+end
