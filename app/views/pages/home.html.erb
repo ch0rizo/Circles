@@ -4,27 +4,39 @@
       <%= image_tag "Logo/Circles_Logo.svg", width:150, class:"white-color" %>
     </div>
     <div class="orbit-container">
-      <p>The user avatar will go here</p>
-      <div>
+      <div class="profile-container">
+        <%= link_to profile_path(@user) do %>
+          <% if @user.photo.key? %>
+            <%= cl_image_tag @user.photo.key, class: "circle-avatar"%>
+          <% else %>
+            <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="links-container">
         <%= link_to "Login", new_user_session_path, class: "hover-underline-animation" %>
+        <%= link_to "New Circle", new_circle_path, class: "hover-underline-animation" %>
+        <%= link_to "New Event", new_event_path, class: "hover-underline-animation" %>
+        <%= link_to "Profile", profile_path, class: "hover-underline-animation" %>
+        <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "hover-underline-animation" %>
       </div>
     </div>
     <div class="circles-container">
-      <p>All the circles will go here</p>
+      <p>YOUR CIRCLES</p>
       <div class="circle-grid">
         <% @circles.each do |circle|%>
           <%= link_to circle_path(circle) do %>
             <% if circle.photo.key? %>
-              <%= cl_image_tag circle.photo.key, class: "circle-avatar", alt: "circle-avatar" %>
+              <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: rgb(#{rand(0..255)}, #{rand(0..255)}, #{rand(0..255)})", alt: "Circle Avatar" %>
             <% else %>
               <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
             <% end %>
-          <% end %>        
-        <% end %>
+          <% end %>
+         <% end %>
       </div>
     </div>
   </div>
-  <div class="feed-container">
+    <div class="feed-container">
         <%= render "shared/home-card" %>
   </div>
 </div>

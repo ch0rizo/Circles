@@ -1,0 +1,47 @@
+.cards-event {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 8px;
+  width: 100%;
+  margin: 8px;
+}
+
+.cards-event img {
+height: 20vh;
+width: 10vw;
+border-radius: 3%;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  left:0;
+  color: red;
+}
+
+.image-icon-container{
+  position: relative;
+  height: 25vh;
+  padding: 3%;
+  background-size: cover;
+
+  // .fa-user-group{
+  //   position: absolute;
+  //   top: 8px;
+  //   left: 8px;
+  // }
+
+  img{
+    width: 100%;
+  }
+//   p {
+//     position: absolute;
+//     top: 0;
+//     right: 8px;
+//   }
+
+//   .fa-circle::before {
+//     position: absolute;
+//     top: 0;
+//     right: 13px;  }
+}

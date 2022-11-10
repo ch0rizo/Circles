@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-
+    @event.private = params[:event][:private][1]
     if @event.save
       redirect_to root_path, notice: "Made event successful"
     else
