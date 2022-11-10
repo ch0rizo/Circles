@@ -12,11 +12,15 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path, notice: "Made event successful"
     else
-      redirect_to root_path, notice: "Unsuccessful"
+      redirect_to root_path, notice: "Unsuccessful, can't make your circle"
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def event_params
-    params.require(:event).permit(:title, circle_ids: [])
+    params.require(:event).permit(:title, :start_date, :end_date, :location, :private, :user_id, circle_ids: [])
   end
 end

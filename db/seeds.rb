@@ -77,5 +77,17 @@ UserCircle.create(
   )
 end
 
+circle4 = Circle.create(
+  name: 'Rogue',
+  private: false
+)
+4.times do
+  UserCircle.create(
+    user_id: User.all.sample.id,
+    circle_id: circle1.id
+  )
+end
+
 puts '> Finished!'
 puts "> Made #{User.count} users, #{Circle.count} circles"
+

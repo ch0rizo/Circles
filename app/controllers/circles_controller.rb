@@ -1,21 +1,25 @@
 class CirclesController < ApplicationController
   def new
     @circle = Circle.new
+    @users = current_user.friends
+    @user_names = @users.pluck(:first_name)
   end
 
   def create
     @circle = Circle.new(circle_params)
-    @user_circle = UserCircle.new
     if @circle.save
-      @user_circle.user = current_user
-      @user_circle.circle = @circle
-      @user_circle.save
-      redirect_to root_path, notice: 'Nice, your Circle was created!'
+      @circle.users << current_user
+      redirect_to @circle, notice: 'Successfully made your circle!'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def show
+    @circle = Circle.find(params[:id])
+    @circle_events = CircleEvent.where(@circle_id)
+  end
+  
   def destroy
     @circle = Circle.find(params[:id])
     if current_user == @circle.user
@@ -26,8 +30,8 @@ class CirclesController < ApplicationController
   end
 
   private
-
+  
   def circle_params
-    params.require(:circle).permit(:name, :description, :photo, :private)
+    params.require(:circle).permit(:name, :description, :photo, :private, user_ids: [])
   end
 end
