@@ -1,5 +1,5 @@
 <div class="circle-show-title">
-  <%= cl_image_tag @circle.photo.key, class: "circle-avatar", alt: "circle-avatar" %>
+  <%= cl_image_tag @circle.photo.key, class: "circle-avatar-circle", alt: "circle-avatar" %>
   <div class="circle-show-details">
     <h2><%= @circle.name.upcase %></h2>
     <p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
@@ -49,4 +49,20 @@
 
 <div class="btn btn-primary">
   <%= link_to "Create new Event", new_event_path  %>
+</div>
+
+<div class="circles-chatroom">
+  <h1>#<%= @circle.name %></h1>
+
+  <div class="messages">
+    <% @circle.circle_messages.each do |circle_message| %>
+      <div id="message-<%= circle_message.id %>">
+        <small>
+          <strong><%= circle_message.user_id.first_name %></strong>
+          <i><%= circle_message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= circle_message.content %></p>
+      </div>
+    <% end %>
+  </div>
 </div>

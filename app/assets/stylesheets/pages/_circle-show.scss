@@ -1,14 +1,1 @@
-.circle-show-title {
-  display: flex;
-}
-
-.circle-show-details-private {
-  display: flex;
-  p {
-    padding-right: 30px;
-  }
-
-  i {
-    padding-right: 5px;
-  }
-}
+@import '../components/circle-show-card';
