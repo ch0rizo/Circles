@@ -46,8 +46,11 @@ a {
   border: solid 2px pink;
   height: 60%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  text-align: center;
+  padding-block: 2px;
 }
 
 .feed-container {
