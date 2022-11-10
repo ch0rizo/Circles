@@ -8,6 +8,9 @@
     </div>
     <div class="circles-container">
       <p>All the circles will go here</p>
+      <% @circles.each do |circle|%>
+  <%= cl_image_tag circle.photo.key, class: "circle-avatar", alt: "circle-avatar" %>
+<% end %>
     </div>
   </div>
   <div class="feed-container">
