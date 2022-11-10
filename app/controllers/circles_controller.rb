@@ -17,9 +17,7 @@ class CirclesController < ApplicationController
 
   def show
     @circle = Circle.find(params[:id])
-    # @circle = @user_circle.circle
-    # @circle_event = CircleEvent.find(circle.id)
-
+    @circle_events = CircleEvent.where(@circle_id)
   end
 
 
