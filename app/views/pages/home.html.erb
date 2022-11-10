@@ -11,13 +11,17 @@
     </div>
     <div class="circles-container">
       <p>All the circles will go here</p>
-      <% @circles.each do |circle|%>
-        <% if circle.photo.key? %>
-          <%= cl_image_tag circle.photo.key, class: "circle-avatar", alt: "circle-avatar" %>
-        <% else %>
-          <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
+      <div class="circle-grid">
+        <% @circles.each do |circle|%>
+          <%= link_to circle_path(circle) do %>
+            <% if circle.photo.key? %>
+              <%= cl_image_tag circle.photo.key, class: "circle-avatar", alt: "circle-avatar" %>
+            <% else %>
+              <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
+            <% end %>
+          <% end %>        
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
   <div class="feed-container">
