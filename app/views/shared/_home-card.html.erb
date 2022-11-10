@@ -1,20 +1,29 @@
-<div class="card">
+<div class="cards-event">
   <% @events.each do |event| %>
-      <% if event.photo.attached? %>
-        <%= cl_image_tag event.photo.key, width: 200, height: 100, crop: :fill %>
-      <%# <% else %>
-        <%# <%=  %>
-      <% end %>
+    <% if event.photo.key? %>
+  <div class="image-icon-container" style="background-image: url(<%=cl_image_path event.photo.key %>)">
+     <div class="icons">
+          <i class="fa-solid fa-user-group"></i>
+          <% if event.private  %>
+            <i class="fa-solid fa-circle"> </i>
+          <% else %>
+            <i class="fa-regular fa-circle"></i>
+          <% end %>
+          <p><%= event.start_date.strftime("%m/%d") %></p>
+          </div>
+          </div>
+      <% else %>
+      <div class="image-icon-container" style="background-image: url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
+        <div class="icons">
+            <i class="fa-solid fa-user-group"></i>
+          <% if event.private  %>
+            <i class="fa-solid fa-circle"> </i>
+          <% else %>
+            <i class="fa-regular fa-circle"></i>
+          <% end %>
+         <p><%= event.start_date.strftime("%m/%d") %></p>
+        </div>
+      </div>
     <% end %>
-  <div class="icons">
-    <i class="fa-duotone fa-user-group"></i>
-    <i class="fa-solid fa-circle"></i>
-    <i class="fa-light fa-circle"></i>
-    <% @events.each do |event| %>
-      <%= cl_image_tag event.start_date%>
-    <% end %>
-  </div>
-  <div class="circle">
-
-  </div>
+  <% end %>
 </div>
