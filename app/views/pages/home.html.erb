@@ -10,6 +10,7 @@
       </div>
     </div>
     <div class="circles-container">
+      <div>
       <p>All the circles will go here</p>
       <div class="circle-grid">
         <% @circles.each do |circle|%>
@@ -19,11 +20,11 @@
             <% else %>
               <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
             <% end %>
-          <% end %>        
-        <% end %>
+          <% end %>
+         <% end %>        
+        </div>
       </div>
     </div>
-  </div>
   <div class="feed-container">
         <%= render "shared/home-card" %>
   </div>
