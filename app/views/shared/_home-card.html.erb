@@ -1,3 +1,20 @@
-<div>
-  <%=  %>
+<div class="card">
+  <% @events.each do |event| %>
+      <% if event.photo.attached? %>
+        <%= cl_image_tag event.photo.key, width: 200, height: 100, crop: :fill %>
+      <%# <% else %>
+        <%# <%=  %>
+      <% end %>
+    <% end %>
+  <div class="icons">
+    <i class="fa-duotone fa-user-group"></i>
+    <i class="fa-solid fa-circle"></i>
+    <i class="fa-light fa-circle"></i>
+    <% @events.each do |event| %>
+      <%= cl_image_tag event.start_date%>
+    <% end %>
+  </div>
+  <div class="circle">
+
+  </div>
 </div>

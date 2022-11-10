@@ -3,6 +3,7 @@
     <%= f.input :title %>
     <%= f.input :location %>
     <%= f.input :private, as: :check_boxes, collection: [['Yes',true], ['No',false]], required: true %>
+    <%= f.input :photo, as: :file %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
     <%= f.association :circles, collection: @circles, input_html: { class: 'multiselectuser'}%>

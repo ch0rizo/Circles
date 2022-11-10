@@ -1,3 +1,5 @@
 class UsersController < ApplicationController
-  def profile; end
+  def profile
+    @events = Event.all
+  end
 end
