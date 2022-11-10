@@ -1,0 +1,35 @@
+.circle-show-title {
+  display: flex;
+  h2 {
+    margin-bottom: 5px;
+  }
+}
+
+.circle-show-details {
+  padding-left: 20px;
+  p {
+    margin-top: 0px;
+    margin-bottom: 1px;
+  }
+}
+
+.circle-show-details-private {
+  display: flex;
+  p {
+    padding-right: 30px;
+  }
+
+  i {
+    padding-right: 5px;
+  }
+}
+
+.circle-avatar-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: rgb(226, 115, 5) 3px solid;
+  margin-left: 10px;
+  padding: 2px;
+  object-fit: cover;
+}

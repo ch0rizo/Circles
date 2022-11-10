@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import CircleChatroomSubscriptionController from "./circle_chatroom_subscription_controller"
+application.register("circle-chatroom-subscription", CircleChatroomSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
