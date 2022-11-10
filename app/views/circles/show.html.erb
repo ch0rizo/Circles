@@ -58,7 +58,7 @@
     <% @circle.circle_messages.each do |circle_message| %>
       <div id="message-<%= circle_message.id %>">
         <small>
-          <strong><%= circle_message.user_id.first_name %></strong>
+          <strong><%= circle_message.user.first_name %></strong>
           <i><%= circle_message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
         </small>
         <p><%= circle_message.content %></p>
