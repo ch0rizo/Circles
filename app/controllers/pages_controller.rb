@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @events = Event.all
+    @circles = Circle.all
   end
 end

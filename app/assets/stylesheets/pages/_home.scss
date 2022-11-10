@@ -4,6 +4,10 @@ body {
   color: white;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+  
 .main-container {
   width: 90vw;
   height: 100vh;
@@ -31,17 +35,25 @@ body {
 .orbit-container {
   border: solid 2px yellow;
   height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .circles-container {
   border: solid 2px pink;
   height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .feed-container {
   display: flex;
   border: solid 2px red;
   width: 90%;
+  display: flex;
 }
 
 .white-color {

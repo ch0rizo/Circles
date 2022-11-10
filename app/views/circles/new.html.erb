@@ -4,7 +4,12 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :photo, as: :file %>
-    <%= f.input :private, as: :select, collection: [['Yes',true], ['No',false]], required: true %>
+    <%= f.input :private, as: :radio_buttons, collection: [['Yes',true], ['No',false]], required: true %>
+    <% if @user_names.length <= 0 %>
+      <%= "You have no friends to invite" %>
+    <% else %>
+      <%= f.association :users, label: "Who do you want to add to your circle?" , collection: @user_names, input_html: { class: 'multiselectuser'}%>
+    <% end %>
     <%= f.submit %>
   <% end %>
 </div>

@@ -1,0 +1,32 @@
+<h1><%= @circle.name.upcase %></h1>
+<p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
+
+<h4>Members</h4>
+<% @circle.users.each do |user| %>
+  <ul style="list-style: none">
+    <li><%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
+  </ul>
+<% end %>
+
+<h2>Upcoming Events:</h2>
+<% @circle.events.each do |event| %>
+  <% if event.start_date.future? %>
+    <ul>
+      <li><%= event.title %></li> 
+    </ul>
+  <% end %>
+<% end %>
+
+<h2>Previous Events:</h2>
+<% @circle.events.each do |event| %>
+  <% unless event.start_date.future? %>
+    <ul>
+      <li><%= event.title %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+
+<div class="btn btn-primary">
+  <%= link_to "Create new Event", new_event_path  %>
+</div>
