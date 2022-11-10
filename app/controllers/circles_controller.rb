@@ -19,9 +19,18 @@ class CirclesController < ApplicationController
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
   end
+  
+  def destroy
+    @circle = Circle.find(params[:id])
+    if current_user == @circle.user
+      @circle.destroy
+    end
 
+    redirect_to root_path
+  end
 
   private
+  
   def circle_params
     params.require(:circle).permit(:name, :description, :photo, :private, user_ids: [])
   end
