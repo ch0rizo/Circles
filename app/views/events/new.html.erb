@@ -5,7 +5,7 @@
     <%= f.input :private, as: :check_boxes, collection: [['Yes',true], ['No',false]], required: true %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
-    <%= f.association :circles, collection: @circles, input_html: { class: 'multiselectuser'}%>
+    <%= f.association :circles, collection: current_user.circles.each {|circle| circle.name}, input_html: { class: 'multiselectuser'}%>
     <%= f.submit %>
   <% end %>
 </div>
