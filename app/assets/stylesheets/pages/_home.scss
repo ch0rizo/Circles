@@ -3,3 +3,54 @@ body {
   background-color: #090020;
   color: white;
 }
+
+.main-container {
+  width: 90vw;
+  height: 100vh;
+  border: solid 2px white;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.side-container {
+  display: flex;
+  width: 20%;
+  border: solid 2px green;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.logo-container {
+  border: solid 2px blue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.orbit-container {
+  border: solid 2px yellow;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circles-container {
+  border: solid 2px pink;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feed-container {
+  display: flex;
+  border: solid 2px red;
+  width: 90%;
+  display: flex;
+}
+
+.white-color {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(104deg) brightness(102%) contrast(105%);
+}
