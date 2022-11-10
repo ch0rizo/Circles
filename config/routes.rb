@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :circles, only: %i[new create destroy edit update show] do
     resources :user_circles, only: %i[create update]
     resources :circle_events, only: %i[create destroy]
-    resources :circle_messages, only: %i[create destroy]
+    resources :circle_messages, only: %i[create]
     resources :events, only: %i[new create]
   end
 

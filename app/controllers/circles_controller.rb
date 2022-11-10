@@ -18,6 +18,7 @@ class CirclesController < ApplicationController
   def show
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
+    @circle_message = CircleMessage.new
   end
   
   def destroy

@@ -1,0 +1,2 @@
+class CircleMessagesController < ApplicationController
+end
