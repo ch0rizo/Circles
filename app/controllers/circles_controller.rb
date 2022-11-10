@@ -10,10 +10,19 @@ class CirclesController < ApplicationController
       @user_circle.user = current_user
       @user_circle.circle = @circle
       @user_circle.save
-      redirect_to circles_path, notice: 'Nice, your Circle was created!'
+      redirect_to root_path, notice: 'Nice, your Circle was created!'
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @circle = Circle.find(params[:id])
+    if current_user == @circle.user
+      @circle.destroy
+    end
+
+    redirect_to root_path
   end
 
   private
