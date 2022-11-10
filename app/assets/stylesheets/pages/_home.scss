@@ -10,31 +10,33 @@ a {
 }
 
 .main-container {
-  width: 90vw;
+  width: 95vw;
   height: 100vh;
   border: solid 2px white;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 .side-container {
   display: flex;
-  width: 20%;
-  border: solid 2px green;
+  width: 15%;
+  // border: solid 2px green;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .logo-container {
-  border: solid 2px blue;
+  // border: solid 2px blue;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .orbit-container {
-  border: solid 2px yellow;
+  // border: solid 2px yellow;
   height: 30%;
   display: flex;
   justify-content: center;
@@ -43,7 +45,7 @@ a {
 }
 
 .circles-container {
-  border: solid 2px pink;
+  // border: solid 2px pink;
   height: 60%;
   display: flex;
   flex-direction: column;
@@ -55,9 +57,25 @@ a {
 
 .feed-container {
   display: flex;
-  border: solid 2px red;
+  // border: solid 2px red;
   width: 90%;
   display: flex;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.circle-grid {
+  // border: solid 2px orangered;
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .white-color {
