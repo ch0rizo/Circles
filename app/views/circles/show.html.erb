@@ -1,0 +1,12 @@
+<h1><%= @circle.name %></h1>
+<p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
+
+<h2>Upcoming Events:</h2>
+
+<% if %>
+  
+<% end %>
+
+<div class="btn btn-primary">
+  <%= link_to "Create new Event", new_event_path  %>
+</div>
