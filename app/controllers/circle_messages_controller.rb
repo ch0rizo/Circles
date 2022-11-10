@@ -5,7 +5,11 @@ class CircleMessagesController < ApplicationController
     @circle_message.circle = @circle
     @circle_message.user = current_user
     if @circle_message.save
-      redirect_to @circle
+      CircleChatroomChannel.broadcast_to(
+        @circle,
+        render_to_string(partial: "circle_message", locals: {circle_message: @circle_message})
+      )
+      head :ok
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
