@@ -1,31 +1,51 @@
-<h1><%= @circle.name.upcase %></h1>
-<p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
+<div class="circle-show-title">
+  <%= cl_image_tag @circle.photo.key, class: "circle-avatar", alt: "circle-avatar" %>
+  <div class="circle-show-details">
+    <h2><%= @circle.name.upcase %></h2>
+    <p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
+    <div class="circle-show-details-private">
+      <p><i class="fa-solid fa-user-group"></i><%= @circle.users.count %> MEMBERS</p>
+      <% if @circle.private == true %>
+        <p><i class="fa-solid fa-circle"></i>PRIVATE</p>
+      <% else %>
+        <p><i class="fa-regular fa-circle"></i>OPEN</p>
+      <% end %>
+    </div>
+  </div>
 
+</div>
 <h4>Members</h4>
 <% @circle.users.each do |user| %>
   <ul style="list-style: none">
-    <li><%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
+    <li style="font-size: 12px"><%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
   </ul>
 <% end %>
 
 <h2>Upcoming Events:</h2>
-<% @circle.events.each do |event| %>
-  <% if event.start_date.future? %>
-    <ul>
-      <li><%= event.title %></li> 
-    </ul>
+<% if @circle.events.length != 0 %>
+  <% @circle.events.each do |event| %>
+    <% if event.start_date.future? %>
+      <ul>
+        <li><%= event.title %></li> 
+      </ul>
+    <% end %>
   <% end %>
+<% else %>
+  <p>You have no upcoming events...</p>
 <% end %>
 
 <h2>Previous Events:</h2>
-<% @circle.events.each do |event| %>
-  <% unless event.start_date.future? %>
-    <ul>
-      <li><%= event.title %></li>
-    </ul>
+<% if @circle.events.length != 0 %>
+  <% @circle.events.each do |event| %>
+    <% unless event.start_date.future? %>
+      <ul>
+        <li><%= event.title %></li>
+      </ul>
+    <% end %>
   <% end %>
+<% else %>
+  <p>No previous events...</p>
 <% end %>
-
 
 <div class="btn btn-primary">
   <%= link_to "Create new Event", new_event_path  %>
