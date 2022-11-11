@@ -1,0 +1,20 @@
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.circles {
+  border: solid 2px orangered;
+  display: flex;
+  gap: 20px;
+  flex-direction:  column;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  overflow-y: scroll;
+}
