@@ -10,9 +10,9 @@ class EventsController < ApplicationController
     @event.user = current_user
     @event.private = params[:event][:private][1]
     if @event.save
-      redirect_to root_path, notice: "Made event successful"
+      redirect_to root_path, notice: "Event created!"
     else
-      redirect_to root_path, notice: "Unsuccessful, can't make your circle"
+      redirect_to root_path, notice: "Event not created, please try again"
     end
   end
 

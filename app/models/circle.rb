@@ -5,6 +5,7 @@ class Circle < ApplicationRecord
   has_many :users, through: :user_circles
   has_many :circle_messages, dependent: :destroy
   has_one_attached :photo
+  has_one_attached :banner
 
-  validates :name, :private, :photo, presence: true
+  validates :name, presence: true
 end

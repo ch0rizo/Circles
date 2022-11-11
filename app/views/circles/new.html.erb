@@ -1,10 +1,13 @@
-<div class="container">
+<div class="container-form">
   <h1>Create a new Circle</h1>
   <%= simple_form_for @circle do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :photo, as: :file %>
     <%= f.input :private, as: :radio_buttons, collection: [['Yes',true], ['No',false]], required: true %>
+    <%= f.input :border_color, as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: "color-select-wrapper",
+                label: "Choose a color for your circle" , collection: @colors, item_wrapper_class: "circle-color-input",
+                input_html: { class: 'multiselectuser', value: ""}%>
     <% if @user_names.length <= 0 %>
       <%= "You have no friends to invite" %>
     <% else %>
