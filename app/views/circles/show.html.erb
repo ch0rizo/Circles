@@ -2,7 +2,7 @@
   <%= cl_image_tag @circle.banner.key %> 
 </div>
 <div class="circle-show-title">
-  <%= cl_image_tag @circle.photo.key, class: "circle-avatar-circle", alt: "circle-avatar" %>
+  <%= cl_image_tag @circle.photo.key, class: "circle-avatar-circle", :style => "border-color: #{@circle.border_color}", alt: "circle-avatar" %>
   <div class="circle-show-details">
     <h2><%= @circle.name.upcase %></h2>
     <p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
@@ -88,4 +88,3 @@
 <div class="btn btn-primary">
   <%= link_to "Create new Event", new_event_path  %>
 </div>
-
