@@ -1,6 +1,12 @@
-<div class="circle-show-banner">
-  <%= cl_image_tag @circle.banner.key %> 
-</div>
+<% if @circle.banner.key? %>
+  <div class="circle-show-banner">
+    <%= cl_image_tag @circle.banner.key %> 
+  </div>
+<% else %>
+  <div class="circle-show-banner">
+    <%= cl_image_tag "0x0_bfxmqe" %>
+  </div>
+<% end %>
 <div class="circle-show-title">
   <%= cl_image_tag @circle.photo.key, class: "circle-avatar-circle", :style => "border-color: #{@circle.border_color}", alt: "circle-avatar" %>
   <div class="circle-show-details">
