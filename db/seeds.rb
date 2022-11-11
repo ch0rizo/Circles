@@ -14,6 +14,9 @@ User.destroy_all
 puts "> Creating the main character..."
 
 main_user = User.create(email: 'benten@gmail.com', password: 'password', username: 'benten_', first_name: 'Ben', last_name: 'Ten')
+user_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668172413/development/julian-wan-WNoLnJo7tS8-unsplash_svo56p.jpg"
+user_file = URI.open(user_url)
+main_user.photo.attach(io: user_file, filename: 'circle_img.png', content_type: 'image/png')
 
 
 puts "> Creating other random shit"
@@ -90,7 +93,7 @@ end
 
 # Work circle
 circle3 = Circle.create(
-  name: 'Work',
+  name: 'Circle - Startup',
   private: false
 )
 
