@@ -5,9 +5,9 @@
     </div>
     <div class="orbit-container">
       <div class="profile-container">
-        <%= link_to profile_path(@user) do %>
-          <% if @user.photo.key? %>
-            <%= cl_image_tag @user.photo.key, class: "circle-avatar"%>
+        <%= link_to profile_path(current_user) do %>
+          <% if current_user.photo.key? %>
+            <%= cl_image_tag current_user.photo.key, class: "circle-avatar"%>
           <% else %>
             <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
           <% end %>
