@@ -17,7 +17,14 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.where(id: params[:id])
+    @markers = @event.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {event: event})
+      }
+    end
   end
 
   def event_params
