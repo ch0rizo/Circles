@@ -5,6 +5,7 @@
     <%= f.input :description %>
     <%= f.input :photo, as: :file %>
     <%= f.input :private, as: :radio_buttons, collection: [['Yes',true], ['No',false]], required: true %>
+    <%= f.input :border_color, label: "Choose a color for your circle" , collection: @colors, input_html: { class: 'multiselectuser'}%>
     <% if @user_names.length <= 0 %>
       <%= "You have no friends to invite" %>
     <% else %>

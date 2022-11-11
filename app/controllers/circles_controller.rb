@@ -3,6 +3,7 @@ class CirclesController < ApplicationController
     @circle = Circle.new
     @users = current_user.friends
     @user_names = @users.pluck(:first_name)
+    @colors = %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd]
   end
 
   def create
@@ -23,7 +24,7 @@ class CirclesController < ApplicationController
     @circle_events = CircleEvent.where(@circle_id)
     @circle_message = CircleMessage.new
   end
-  
+
   def destroy
     @circle = Circle.find(params[:id])
     if current_user == @circle.user
@@ -34,8 +35,8 @@ class CirclesController < ApplicationController
   end
 
   private
-  
+
   def circle_params
-    params.require(:circle).permit(:name, :description, :photo, :private)
+    params.require(:circle).permit(:name, :description, :photo, :private, :border_color)
   end
 end

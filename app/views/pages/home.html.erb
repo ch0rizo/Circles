@@ -29,7 +29,7 @@
         <% @circles.each do |circle|%>
           <%= link_to circle_path(circle) do %>
             <% if circle.photo.key? %>
-              <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: rgb(#{rand(0..255)}, #{rand(0..255)}, #{rand(0..255)})", alt: "Circle Avatar" %>
+              <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: #{circle.border_color}", alt: "Circle Avatar" %>
             <% else %>
               <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
             <% end %>
