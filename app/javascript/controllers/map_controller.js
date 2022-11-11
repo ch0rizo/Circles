@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import mapboxgl from "mapbox-gl"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 
 
@@ -13,10 +13,25 @@ export default class extends Controller {
     console.log("hi")
     mapboxgl.accessToken = this.apiKeyValue
 
+    // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+    // mapboxgl: mapboxgl }))
+
+    // this.map = new mapboxgl.Map({
+    //   container: this.element,
+    //   style: "mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb" // <-- use your own!
+    // });
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+
+    // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+    // mapboxgl: mapboxgl }))
+
+    //   this.map = new mapboxgl.Map({
+    //   container: this.element,
+    //   style: "mapbox://styles/mapbox/streets-v10"
+    // })
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
@@ -38,7 +53,7 @@ export default class extends Controller {
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
+        // .setPopup(popup)
         .addTo(this.map)
     })
   }
