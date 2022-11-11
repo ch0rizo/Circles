@@ -23,7 +23,7 @@
     <h4>Members</h4>
     <% @circle.users.each do |user| %>
       <ul style="list-style: none">
-        <li style="font-size: 12px"><%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
+        <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
       </ul>
     <% end %>
   </div>
@@ -32,8 +32,14 @@
     <% if @circle.events.length != 0 %>
       <% @circle.events.each do |event| %>
         <% if event.start_date.future? %>
-          <ul>
-            <li><%= event.title %></li> 
+          <ul style="list-style: none">
+            <% if event.photo.attached? %>
+              <div class="circle-show-event-card">
+                <li><%= event.title %><%= cl_image_tag event.photo.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li> 
+              </div>
+            <% else %>
+              <li><%= event.title %></li> 
+            <% end %>
           </ul>
         <% end %>
       <% end %>
@@ -43,6 +49,22 @@
   </div>
 </div>
 
+<h2>MEMORIES</h2>
+<% if @circle.events.length != 0 %>
+  <% @circle.events.each do |event| %>
+    <% unless event.start_date.future? %>
+      <ul>
+        <li><%= event.title %></li>
+      </ul>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>No previous events...</p>
+<% end %>
+
+<div class="btn btn-primary">
+  <%= link_to "Create new Event", new_event_path  %>
+</div>
 
 <div class="chatroom"
   data-controller="circle-chatroom-subscription"
@@ -65,26 +87,4 @@
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
-</div>
-
-
-
-
-
-
-<h2>Previous Events:</h2>
-<% if @circle.events.length != 0 %>
-  <% @circle.events.each do |event| %>
-    <% unless event.start_date.future? %>
-      <ul>
-        <li><%= event.title %></li>
-      </ul>
-    <% end %>
-  <% end %>
-<% else %>
-  <p>No previous events...</p>
-<% end %>
-
-<div class="btn btn-primary">
-  <%= link_to "Create new Event", new_event_path  %>
 </div>
