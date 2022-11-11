@@ -10,14 +10,21 @@ class EventsController < ApplicationController
     @event.user = current_user
     @event.private = params[:event][:private][1]
     if @event.save
-      redirect_to root_path, notice: "Made event successful"
+      redirect_to root_path, notice: "Event created!"
     else
-      redirect_to root_path, notice: "Unsuccessful, can't make your circle"
+      redirect_to root_path, notice: "Event not created, please try again"
     end
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.where(id: params[:id])
+    @markers = @event.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude
+        # info_window: render_to_string(partial: "info_window", locals: {event: event})
+      }
+    end
   end
 
   def event_params
