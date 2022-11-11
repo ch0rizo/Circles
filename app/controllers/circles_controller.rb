@@ -9,6 +9,9 @@ class CirclesController < ApplicationController
     @circle = Circle.new(circle_params)
     if @circle.save
       @circle.users << current_user
+      params[:circle]["user_ids"].each do |friend|
+        @circle.users << User.find_by(first_name: friend) if friend != ""
+      end
       redirect_to @circle, notice: 'Successfully made your circle!'
     else
       render :new, status: :unprocessable_entity
@@ -33,6 +36,6 @@ class CirclesController < ApplicationController
   private
   
   def circle_params
-    params.require(:circle).permit(:name, :description, :photo, :private, user_ids: [])
+    params.require(:circle).permit(:name, :description, :photo, :private)
   end
 end
