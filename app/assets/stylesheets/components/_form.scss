@@ -1,0 +1,77 @@
+.container-form {
+  display: flex;
+  width: 30vw;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 3%;
+  .h1 {
+    text-align: center;
+
+  }
+}
+
+.color-select-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .form-check-input {
+    position: absolute;
+    transform: scale(0);
+  }
+  .form-check-input + label {
+    cursor: pointer;
+    font-size: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: scale 1s;
+  }
+
+  .form-check-input:checked + label {
+    border: 3px solid white;
+    scale: 1.2;
+  }
+
+  .form-check-input:hover + label {
+    scale: 1.2;
+  }
+}
+
+#circle_border_color_33a8c7 + label{
+  background-color: #33a8c7;
+}
+
+#circle_border_color_52e3e1 + label {
+  background-color: #52e3e1;
+}
+
+#circle_border_color_a0e426 + label {
+  background-color: #a0e426;
+}
+
+#circle_border_color_fdf148 + label {
+  background-color: #fdf148;
+}
+
+#circle_border_color_ffab00 + label {
+  background-color: #ffab00;
+}
+
+#circle_border_color_f77976 + label {
+  background-color: #f77976;
+}
+
+#circle_border_color_f050ae + label {
+  background-color: #f050ae;
+}
+
+#circle_border_color_d883ff + label {
+  background-color: #d883ff;
+}
+
+#circle_border_color_9336fd + label {
+  background-color: #9336fd;
+}
