@@ -2,11 +2,15 @@
   <% @events.each do |event| %>
     <%= link_to event_path(event) do %>
       <% if event.photo.key? %>
-    <div class="image-icon-container" style="background-image: url(<%=cl_image_path event.photo.key %>)">
-      <div class="icons">
+    <div class="event-card">
+      <div class="title-container">
+      <p><%= event.title.upcase %></p>
+      </div>
+      <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0)), url(<%=cl_image_path event.photo.key %>);">
+        <div class="icons">
           <div class="attending">
             <i class="fa-solid fa-user-group"></i>
-            <p> <%= event.users.count %></p>
+            <p><%= event.users.count %></p>
           </div>
             <% if event.private  %>
               <i class="fa-solid fa-circle"> </i>
@@ -14,8 +18,9 @@
               <i class="fa-regular fa-circle"></i>
             <% end %>
             <p><%= event.start_date.strftime("%m/%d") %></p>
-            </div>
-            </div>
+        </div>
+      </div>
+    </div>
         <% else %>
         <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)), url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
           <div class="icons">

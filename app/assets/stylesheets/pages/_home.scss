@@ -12,7 +12,7 @@ a {
 .main-container {
   width: 95vw;
   height: 100vh;
-  border: solid 2px white;
+  // border: solid 2px white;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
@@ -23,20 +23,20 @@ a {
 .side-container {
   display: flex;
   width: 15%;
-  border: solid 2px green;
+  // border: solid 2px green;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .logo-container {
-  border: solid 2px blue;
+  // border: solid 2px blue;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .orbit-container {
-  border: solid 2px yellow;
+  // border: solid 2px yellow;
   height: 30%;
   display: flex;
   justify-content: center;
@@ -45,7 +45,7 @@ a {
 }
 
 .profile-container {
-  border: solid 2px rgb(255, 36, 240);
+  // border: solid 2px rgb(255, 36, 240);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +53,7 @@ a {
 }
 
 .circles-container {
-  border: solid 2px pink;
+  // border: solid 2px pink;
   height: 60%;
   display: flex;
   flex-direction: column;
@@ -65,10 +65,11 @@ a {
 
 .feed-container {
   display: flex;
-  border: solid 2px red;
+  // border: solid 2px red;
   width: 90%;
   display: flex;
-  padding-left: 20px;
+  padding-left: 60px;
+  padding-right: 40px;
 }
 
 .links-container {
@@ -79,7 +80,7 @@ a {
 }
 
 .circle-grid {
-  border: solid 2px orangered;
+  // border: solid 2px orangered;
   display: flex;
   gap: 20px;
   flex-direction: row;
