@@ -4,7 +4,10 @@
       <% if event.photo.key? %>
     <div class="image-icon-container" style="background-image: url(<%=cl_image_path event.photo.key %>)">
       <div class="icons">
+          <div class="attending">
             <i class="fa-solid fa-user-group"></i>
+            <p> <%= event.users.count %></p>
+          </div>
             <% if event.private  %>
               <i class="fa-solid fa-circle"> </i>
             <% else %>
@@ -14,7 +17,7 @@
             </div>
             </div>
         <% else %>
-        <div class="image-icon-container" style="background-image: url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
+        <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)), url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
           <div class="icons">
               <i class="fa-solid fa-user-group"></i>
             <% if event.private  %>
