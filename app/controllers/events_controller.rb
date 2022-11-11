@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.where(id: params[:id])
+    @circles = Circle.all
     @markers = @event.geocoded.map do |event|
       {
         lat: event.latitude,
