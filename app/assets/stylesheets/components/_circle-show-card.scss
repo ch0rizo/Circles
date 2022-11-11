@@ -58,7 +58,21 @@
   margin-right: 250px;
   h4 {
     padding-bottom: 20px;
-    text-align: center;
+    text-align: begin;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      text-decoration: none;
+      img {
+        margin-right: 2px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
   }
 }
 
@@ -76,5 +90,35 @@
 
   .fa-arrow-left:hover {
     color: grey;
+  }
+}
+
+.circle-show-upcoming-events {
+  height: 100%;
+  width: 65vw;
+
+  ul {
+    margin-top: 30px;
+  }
+}
+
+.circle-show-event-card {
+  display: grid;
+  width: 200px;
+  height: 300px;
+
+  p {
+    position: absolute;
+    top: 520px;
+    left: 490px;
+    color: black;
+    font-size: 12px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
   }
 }

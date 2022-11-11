@@ -22,15 +22,15 @@ main_user.photo.attach(io: user_file, filename: 'circle_img.png', content_type: 
 puts "> Creating other random shit"
 
 30.times do
-  User.create(
+  user = User.new(
     email: Faker::Internet.email,
     password: 'password',
     username: Faker::Internet.username,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
   )
-  user = User.last
-  user_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668170310/development/user_3_relhfl.png"
+  user.save
+  user_url = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
   user_file = URI.open(user_url)
   user.photo.attach(io: user_file, filename: 'circle_img.png', content_type: 'image/png')
 end
@@ -61,7 +61,6 @@ UserCircle.create(
     circle_id: circle1.id
   )
 end
-
 
 # Basketball circle
 circle2 = Circle.create(
@@ -115,17 +114,6 @@ UserCircle.create(
   UserCircle.create(
     user_id: User.all.sample.id,
     circle_id: circle3.id
-  )
-end
-
-circle4 = Circle.create(
-  name: 'Rogue',
-  private: false
-)
-4.times do
-  UserCircle.create(
-    user_id: User.all.sample.id,
-    circle_id: circle1.id
   )
 end
 
