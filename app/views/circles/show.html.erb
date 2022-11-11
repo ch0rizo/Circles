@@ -22,7 +22,6 @@
   <div class="circle-show-members">
     <h4>Members</h4>
     <% @circle.users.each do |user| %>
-      <%= raise %>
       <ul style="list-style: none">
         <li style="font-size: 12px"><%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
       </ul>
