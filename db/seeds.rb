@@ -117,6 +117,34 @@ UserCircle.create(
   )
 end
 
+# Friend Circle
+
+circle4 = Circle.create(
+  name: 'The Nest💛',
+  private: true
+)
+# group image
+circle4_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668250710/development/simi-iluyomade-tvbxqXI5mmo-unsplash_wsd9mc.jpg"
+circle4_file = URI.open(circle4_url)
+circle4.photo.attach(io: circle4_file, filename: 'circle_img.png', content_type: 'image/png')
+
+# banner image
+circle_banner4_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668250711/development/papaioannou-kostas-tysecUm5HJA-unsplash_zzptyd.jpg"
+circle_banner4_file = URI.open(circle_banner4_url)
+circle4.banner.attach(io: circle_banner4_file, filename: 'circle_img.png', content_type: 'image/png')
+
+
+UserCircle.create(
+  user_id: main_user.id,
+  circle_id: circle4.id
+)
+6.times do
+  UserCircle.create(
+    user_id: User.all.sample.id,
+    circle_id: circle4.id
+  )
+end
+
 puts '> Finished!'
 puts "> Made #{User.count} users, #{Circle.count} circles"
 
