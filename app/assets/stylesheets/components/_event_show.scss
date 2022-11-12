@@ -21,7 +21,17 @@
 }
 
 .event-show-details {
-  margin-right: 330px;
+  margin-right: 300px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 15px;
+  background-color: #14213d;
+  padding: 30px;
+
+  .event-show-details-info {
+    margin-top: 70px;
+  }
 }
 
 .event-show-picture {
