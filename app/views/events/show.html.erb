@@ -11,7 +11,7 @@
     <div class="event-show-details-info">
       <h3>Details</h3>
       <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
-      <p><%= @event.location %></p>
+      <p><i class="fa-sharp fa-solid fa-location-dot"></i><%= @event.location %></p>
       <div class="event-show-details-info-location">
         <div class="event-show-details-info-location-map"
           data-controller="map"
@@ -19,7 +19,11 @@
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div> 
       </div>
-      <p><%= @event.private? %></p>
+      <% if @event.private? %>
+        <p><i class="fa-solid fa-circle"></i>PRIVATE</p>
+      <% else %>
+        <p><i class="fa-regular fa-circle"></i>PUBLIC</p>
+      <% end %>
     </div>
   </div>
   <div class="event-show-details-right-side">
