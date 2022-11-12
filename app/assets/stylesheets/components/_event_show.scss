@@ -1,3 +1,9 @@
+.event-show-banner {
+  background-color: #14213d;
+  height: 200px;
+  width: 100%;
+}
+
 .title {
   display: flex;
   justify-content: center;
@@ -13,8 +19,8 @@
   border: solid 2px orangered;
   display: flex;
   gap: 20px;
-  flex-direction:  column;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content:space-between;
+  justify-content: space-between;
   overflow-y: scroll;
 }
