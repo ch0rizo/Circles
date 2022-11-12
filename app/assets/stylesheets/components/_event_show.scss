@@ -1,7 +1,52 @@
 .event-show-banner {
   background-color: #14213d;
-  height: 200px;
+  height: 250px;
   width: 100%;
+
+  .event-show-banner-info {
+    position: absolute;
+    top: 120px;
+    left: 200px;
+  }
+
+  h1 {
+    margin-top: 25px;
+  }
+}
+
+.event-show-top {
+  display: flex;
+  margin-left: 200px;
+  margin-top: 40px;
+}
+
+.event-show-details {
+  margin-right: 330px;
+}
+
+.event-show-picture {
+  width: 550px;
+  height: 330px;
+  position: absolute;
+  top: 180px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+}
+
+.event-show-details-info-location {
+  width: 250px;
+  height: 150px;
+
+  .event-show-details-info-location-map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
 }
 
 .title {

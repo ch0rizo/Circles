@@ -1,9 +1,34 @@
 <div class="event-show-banner">
-  <%= @event.start_date %>
-  <%= @event.title %>
+  <div class="event-show-banner-info">
+    <i class="fa-regular fa-calendar-days"></i>
+    <%= @event.start_date.strftime("%A, %m %b, %Y") %>
+    <h1><%= @event.title %></h1>
+  </div>
 </div>
-
-
+<div class="event-show-top">
+  <div class="event-show-details">
+    <h3>Hosted by</h3>
+    <div class="event-show-details-info">
+      <h3>Details</h3>
+      <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
+      <p><%= @event.location %></p>
+      <div class="event-show-details-info-location">
+        <div class="event-show-details-info-location-map"
+          data-controller="map"
+          data-map-markers-value="<%= @marker.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div> 
+      </div>
+      <p><%= @event.private? %></p>
+    </div>
+  </div>
+  <div class="event-show-details-right-side">
+    <div class="event-show-picture">
+      <%= cl_image_tag @event.photo.key %>
+      <p>HELLO</p>
+    </div>
+  </div>
+</div>
 
 
 
@@ -34,11 +59,6 @@
           <div class="event_details">
             <p> <strong>When?</strong>  <%=@event[0].start_date %> - <%= @event[0].end_date %></p>
             <p><strong>Private?</strong>  <%= @event[0].private? %></p>
-          </div>
-          <div style="width: 20%; height: 200px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
       </div>
     </div>
