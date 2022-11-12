@@ -3,7 +3,7 @@
   <%= simple_form_for @event do |f| %>
     <%= f.input :title %>
     <%= f.input :location %>
-    <%= f.input :private, as: :check_boxes, collection: [['Yes',true], ['No',false]], required: true %>
+    <%= f.input :private, as: :radio_buttons, collection: [['Yes',true], ['No',false]], required: true %>
     <%= f.input :photo, as: :file %>
     <%= f.input :start_date, as: :string, input_html: {data: { controller: "flatpicker"}} %>
     <%= f.input :end_date, as: :string, input_html: {data: { controller: "flatpicker"}} %>

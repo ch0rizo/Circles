@@ -64,7 +64,7 @@ end
 
 # Basketball circle
 circle2 = Circle.create(
-  name: 'Miami Bulls',
+  name: 'Miami Bulls🏀',
   private: true
 )
 
@@ -114,6 +114,34 @@ UserCircle.create(
   UserCircle.create(
     user_id: User.all.sample.id,
     circle_id: circle3.id
+  )
+end
+
+# Friend Circle
+
+circle4 = Circle.create(
+  name: 'The Nest💛',
+  private: true
+)
+# group image
+circle4_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668250710/development/simi-iluyomade-tvbxqXI5mmo-unsplash_wsd9mc.jpg"
+circle4_file = URI.open(circle4_url)
+circle4.photo.attach(io: circle4_file, filename: 'circle_img.png', content_type: 'image/png')
+
+# banner image
+circle_banner4_url = "https://images.unsplash.com/photo-1475483768296-6163e08872a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+circle_banner4_file = URI.open(circle_banner4_url)
+circle4.banner.attach(io: circle_banner4_file, filename: 'circle_img.png', content_type: 'image/png')
+
+
+UserCircle.create(
+  user_id: main_user.id,
+  circle_id: circle4.id
+)
+6.times do
+  UserCircle.create(
+    user_id: User.all.sample.id,
+    circle_id: circle4.id
   )
 end
 
