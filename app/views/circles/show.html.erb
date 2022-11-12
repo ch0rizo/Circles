@@ -35,23 +35,25 @@
   </div>
   <div class="circle-show-upcoming-events">
     <h2>Upcoming Events:</h2>
-    <% if @circle.events.length != 0 %>
-      <% @circle.events.each do |event| %>
-        <% if event.start_date.future? %>
-          <ul style="list-style: none">
-            <% if event.photo.attached? %>
-              <div class="circle-show-event-card">
-                <li><%= event.title %><%= cl_image_tag event.photo.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li> 
-              </div>
-            <% else %>
-              <li><%= event.title %></li> 
-            <% end %>
-          </ul>
+    <div class="circle-show-upcoming-events-cards">
+      <% if @circle.events.length != 0 %>
+        <% @circle.events.each do |event| %>
+          <% if event.start_date.future? %>
+            <ul style="list-style: none">
+              <% if event.photo.attached? %>
+                <div class="circle-show-event-card">
+                  <li><%= event.title %><%= cl_image_tag event.photo.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li> 
+                </div>
+              <% else %>
+                <li><%= event.title %></li> 
+              <% end %>
+            </ul>
+          <% end %>
         <% end %>
+      <% else %>
+        <p>You have no upcoming events...</p>
       <% end %>
-    <% else %>
-      <p>You have no upcoming events...</p>
-    <% end %>
+    </div>
   </div>
 </div>
 

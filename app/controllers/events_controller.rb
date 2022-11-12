@@ -17,15 +17,14 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.where(id: params[:id])
+    @event = Event.find(params[:id])
     @circles = Circle.all
-    @markers = @event.geocoded.map do |event|
+    @marker = 
       {
-        lat: event.latitude,
-        lng: event.longitude
+        lat: @event.latitude,
+        lng: @event.longitude
         # info_window: render_to_string(partial: "info_window", locals: {event: event})
       }
-    end
   end
 
   def event_params
