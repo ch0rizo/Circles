@@ -56,20 +56,20 @@
     </div>
   </div>
 </div>
-
+<div class="circle-show-middle">
 <h2>MEMORIES</h2>
-<% if @circle.events.length != 0 %>
-  <% @circle.events.each do |event| %>
-    <% unless event.start_date.future? %>
-      <ul>
-        <li><%= event.title %></li>
-      </ul>
+  <% if @circle.events.length != 0 %>
+    <% @circle.events.each do |event| %>
+      <% unless event.start_date.future? %>
+        <ul>
+          <li><%= event.title %></li>
+        </ul>
+      <% end %>
     <% end %>
+  <% else %>
+    <p>No previous events...</p>
   <% end %>
-<% else %>
-  <p>No previous events...</p>
-<% end %>
-
+</div>
 <div class="btn btn-primary">
   <%= link_to "Create new Event", new_event_path  %>
 </div>
