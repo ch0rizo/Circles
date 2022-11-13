@@ -56,8 +56,20 @@
     </div>
   </div>
 </div>
-<div class="circle-show-middle">
+<%# <div class="circle-show-middle"> %>
 <h2>MEMORIES</h2>
+<section class="splide" aria-label="Splide Basic HTML Example" data-controller="slider">
+  <div class="splide__track">
+    <ul class="splide__list">
+      <li class="splide__slide">Slide 01</li>
+    </ul>
+  </div>
+</section>
+
+
+
+
+
   <% if @circle.events.length != 0 %>
     <% @circle.events.each do |event| %>
       <% unless event.start_date.future? %>
