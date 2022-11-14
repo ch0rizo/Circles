@@ -36,11 +36,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body modal-body-content">
-            <p>FUCK YOU!</p>
+            <%= simple_form_for [@circle, @user_circle] do |f| %>
+              <%= f.association :user, collection: @not_in_group_users, label_method: :full_name %>
+              <%= f.submit "Add" %> 
+            <% end %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add</button>
+            
           </div>
         </div>
       </div>
@@ -70,7 +73,7 @@
         <% @circle.events.each do |event| %>
           <% if event.start_date.future? %>
             <ul style="list-style: none">
-              <% if event.photos.first.attached? %>
+              <% if event.photos.attached? %>
                 <div class="circle-show-event-card">
                   <li><%= event.title %><%= cl_image_tag event.photos.first.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
                 </div>
@@ -91,7 +94,7 @@
   <div class="splide__track">
     <ul class="splide__list">
       <% @circle.events.each do |event| %>
-        <li class="splide__slide"><%= cl_image_tag event.photo.key %></li>
+        <li class="splide__slide"><%= cl_image_tag event.photos[0].key %></li>
       <% end %>
     </ul>
   </div>
