@@ -15,3 +15,6 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import GradientController from "./gradient_controller"
+application.register("gradient", GradientController)
