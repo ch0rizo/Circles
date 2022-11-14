@@ -17,9 +17,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to event_path(@event)
+  end
+
   def show
     @event = Event.find(params[:id])
-    @circles = Circle.all
+    @circles = @event.circles
+    @circle_event = CircleEvent.new
     @marker =
       {
         lat: @event.latitude,

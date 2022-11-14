@@ -7,7 +7,7 @@
 </div>
 <div class="event-show-top">
   <div class="event-show-details">
-    <h3>Hosted by</h3>
+    <h3>Attending</h3>
       <div class="circles_event_page">
         <% @circles.each do |circle|%>
             <%= link_to circle_path(circle) do %>
@@ -19,6 +19,13 @@
             <% end %>
           <% end %>
         </div>
+    <div>
+      <h3>Invite a Circle</h3>
+      <%= simple_form_for [@event, @circle_event] do |f| %>
+        <%= f.association :circle, as: :radio_buttons, label: "", required: false, collection: current_user.circles %>
+        <%= f.submit "Add Circle" %>
+      <% end %>
+    </div>
     <div class="event-show-details-info">
       <h4>Details</h4>
       <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
