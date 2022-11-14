@@ -70,7 +70,7 @@
         <% @circle.events.each do |event| %>
           <% if event.start_date.future? %>
             <ul style="list-style: none">
-              <% if event.photos.first.attached? %>
+              <% if event.photos.attached? %>
                 <div class="circle-show-event-card">
                   <li><%= event.title %><%= cl_image_tag event.photos.first.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
                 </div>
@@ -91,7 +91,7 @@
   <div class="splide__track">
     <ul class="splide__list">
       <% @circle.events.each do |event| %>
-        <li class="splide__slide"><%= cl_image_tag event.photo.key %></li>
+        <li class="splide__slide"><%= cl_image_tag event.photos[0].key %></li>
       <% end %>
     </ul>
   </div>
