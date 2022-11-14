@@ -30,9 +30,10 @@ puts "> Creating other random shit"
     last_name: Faker::Name.last_name
   )
   user.save
-  user_url = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-  user_file = URI.open(user_url)
-  user.photo.attach(io: user_file, filename: 'circle_img.png', content_type: 'image/png')
+  # user_url = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
+  # user_file = URI.open(user_url)
+  # user.photo.attach(io: user_file, filename: 'circle_img.png', content_type: 'image/png')
+  user.photo.attach(io: File.open("app/assets/images/avatar/CirclesAvatar.png"), filename: "user_avatar.png", content_type: 'image/png')
 end
 
 # Family circle
@@ -147,4 +148,3 @@ end
 
 puts '> Finished!'
 puts "> Made #{User.count} users, #{Circle.count} circles"
-
