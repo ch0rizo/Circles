@@ -13,7 +13,7 @@ class CirclesController < ApplicationController
       params[:circle]["user_ids"].each do |friend|
         @circle.users << User.find_by(first_name: friend) if friend != ""
       end
-      redirect_to @circle, notice: 'Successfully made your circle!'
+      redirect_to @circle, notice: 'New Circle created!'
     else
       render :new, status: :unprocessable_entity
     end

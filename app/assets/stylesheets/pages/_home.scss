@@ -21,9 +21,9 @@ a {
 }
 
 .side-container {
+  // border: solid 2px green;
   display: flex;
   width: 15%;
-  // border: solid 2px green;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -35,13 +35,13 @@ a {
   justify-content: center;
 
   img {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
 }
 
 .orbit-container {
   // border: solid 2px yellow;
-  height: 30%;
+  height: 27%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,22 +58,32 @@ a {
 
 .circles-container {
   // border: solid 2px pink;
-  height: 60%;
+  height: 54%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   text-align: center;
   padding-block: 2px;
+
+  p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 }
 
 .feed-container {
-  display: flex;
   // border: solid 2px red;
+  display: flex;
   width: 90%;
   display: flex;
   padding-left: 60px;
   padding-right: 40px;
+  overflow-y: scroll;
+}
+
+.feed-container::-webkit-scrollbar {
+  display: none;
 }
 
 .links-container {
