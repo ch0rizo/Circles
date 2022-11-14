@@ -29,17 +29,18 @@
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content modal-content-circle-show">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+            <i class="fa-regular fa-address-book"></i>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Add friends</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body modal-body-content">
             <p>FUCK YOU!</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add</button>
           </div>
         </div>
       </div>
@@ -55,7 +56,7 @@
   <div class="circle-show-members">
     <h4>Members</h4> 
     <div class="circle-show-members-info">
-      <% @circle.users.each do |user| %>
+      <% @other_users.each do |user| %>
         <ul style="list-style: none">
           <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
         </ul>
@@ -69,9 +70,9 @@
         <% @circle.events.each do |event| %>
           <% if event.start_date.future? %>
             <ul style="list-style: none">
-              <% if event.photo.attached? %>
+              <% if event.photos.first.attached? %>
                 <div class="circle-show-event-card">
-                  <li><%= event.title %><%= cl_image_tag event.photo.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
+                  <li><%= event.title %><%= cl_image_tag event.photos.first.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
                 </div>
               <% else %>
                 <li><%= event.title %></li>

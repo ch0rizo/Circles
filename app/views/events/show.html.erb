@@ -1,4 +1,8 @@
 <div class="event-show-banner">
+  <%= link_to root_path do %>
+  <img width="190" class="white-color" src="/assets/Logo/Circles_Logo-e6615bb1c72dbb5ff38d80795d3a366b32aba638c3026b02a41fd11ae81491a0.svg">
+  <% end %>
+</h2>
   <div class="event-show-banner-info">
     <i class="fa-regular fa-calendar-days"></i>
     <%= @event.start_date.strftime("%A, %m %b, %Y") %>
@@ -7,7 +11,11 @@
 </div>
 <div class="event-show-top">
   <div class="event-show-details">
-    <h3>Attending</h3>
+    <h3>Hosted By</h3>
+      <%= link_to profile_path(current_user) do %>
+        <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
+      <% end %>
+    <h4>Attending</h4>
       <div class="circles_event_page">
         <% @circles.each do |circle|%>
             <%= link_to circle_path(circle) do %>
@@ -46,8 +54,28 @@
     </div>
   </div>
   <div class="event-show-details-right-side">
-    <div class="event-show-picture">
-      <%= cl_image_tag @event.photo.key %>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @event.photos.each_with_index do |photo, index| %>
+          <% if index == 0 %>
+            <div class="carousel-item active">
+              <%= cl_image_tag photo.key, class: "d-block w-100"%>
+            </div>
+            <% else %>
+            <div class="carousel-item">
+              <%= cl_image_tag photo.key, class: "d-block w-100"%>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
     </div>
   </div>
 </div>

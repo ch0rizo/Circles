@@ -27,15 +27,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @circles = @event.circles
     @circle_event = CircleEvent.new
-    @marker =
+    @marker = Event.where(id: params[:id]).geocoded.map do |event|
       {
-        lat: @event.latitude,
-        lng: @event.longitude
+        lat: event.latitude,
+        lng: event.longitude
         # info_window: render_to_string(partial: "info_window", locals: {event: event})
       }
+    end
   end
 
   def event_params
-    params.require(:event).permit(:title, :start_date, :end_date, :photo, :location, :private, :user_id, circle_ids: [])
+    params.require(:event).permit(:title, :start_date, :end_date, :location, :private, :user_id, circle_ids: [], photos: [])
   end
 end

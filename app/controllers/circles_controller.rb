@@ -19,10 +19,11 @@ class CirclesController < ApplicationController
     end
   end
 
-  def show
+  def show 
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
     @circle_message = CircleMessage.new
+    @other_users = @circle.users.reject { |user| user == current_user }
   end
 
   def destroy
