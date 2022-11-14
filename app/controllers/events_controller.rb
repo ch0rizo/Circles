@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    # raise
     @event.user = current_user
     @event.private = params[:event][:private][1]
     if @event.save
