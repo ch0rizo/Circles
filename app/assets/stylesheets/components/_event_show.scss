@@ -45,10 +45,12 @@ margin-bottom: 20px;
     margin-top: 40px;
   }
 }
-
+.carousel {
+  width: 600px;
+}
 .event-show-picture {
   width: 600px;
-  height: 330px;
+  height: 380px;
   position: absolute;
   top: 180px;
   img {
@@ -57,6 +59,16 @@ margin-bottom: 20px;
     object-fit: cover;
     border-radius: 15px;
     margin-top: -65px;
+  }
+}
+
+.event-show-details-right-side{
+  margin-top: -150px;
+  img {
+    // width: 550px !important;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
   }
 }
 

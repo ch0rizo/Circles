@@ -69,9 +69,9 @@
         <% @circle.events.each do |event| %>
           <% if event.start_date.future? %>
             <ul style="list-style: none">
-              <% if event.photo.attached? %>
+              <% if event.photos.first.attached? %>
                 <div class="circle-show-event-card">
-                  <li><%= event.title %><%= cl_image_tag event.photo.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
+                  <li><%= event.title %><%= cl_image_tag event.photos.first.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
                 </div>
               <% else %>
                 <li><%= event.title %></li>
