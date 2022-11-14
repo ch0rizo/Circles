@@ -20,6 +20,12 @@
         <p><i class="fa-regular fa-circle"></i>OPEN</p>
       <% end %>
     </div>
+    <div class="btn btn-primary">
+      <%= link_to "Invite Friends", root_path  %>
+    </div>
+    <div class="btn btn-primary">
+      <%= link_to "Create Event", new_event_path  %>
+    </div>
   </div>
 </div>
 
@@ -56,32 +62,13 @@
     </div>
   </div>
 </div>
-<%# <div class="circle-show-middle"> %>
 <h2>MEMORIES</h2>
 <section class="splide" aria-label="Splide Basic HTML Example" data-controller="slider">
   <div class="splide__track">
     <ul class="splide__list">
-      <li class="splide__slide">Slide 01</li>
+      <% @circle.events.each do |event| %>
+        <li class="splide__slide"><%= cl_image_tag event.photo.key %></li>
+      <% end %>
     </ul>
   </div>
 </section>
-
-
-
-
-
-  <% if @circle.events.length != 0 %>
-    <% @circle.events.each do |event| %>
-      <% unless event.start_date.future? %>
-        <ul>
-          <li><%= event.title %></li>
-        </ul>
-      <% end %>
-    <% end %>
-  <% else %>
-    <p>No previous events...</p>
-  <% end %>
-</div>
-<div class="btn btn-primary">
-  <%= link_to "Create new Event", new_event_path  %>
-</div>
