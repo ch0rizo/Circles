@@ -1,6 +1,6 @@
 <% if @circle.banner.key? %>
   <div class="circle-show-banner">
-    <%= cl_image_tag @circle.banner.key %> 
+    <%= cl_image_tag @circle.banner.key %>
   </div>
 <% else %>
   <div class="circle-show-banner">
@@ -42,10 +42,10 @@
             <ul style="list-style: none">
               <% if event.photo.attached? %>
                 <div class="circle-show-event-card">
-                  <li><%= event.title %><%= cl_image_tag event.photo.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li> 
+                  <li><%= event.title %><%= cl_image_tag event.photo.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
                 </div>
               <% else %>
-                <li><%= event.title %></li> 
+                <li><%= event.title %></li>
               <% end %>
             </ul>
           <% end %>
