@@ -20,8 +20,29 @@
         <p><i class="fa-regular fa-circle"></i>OPEN</p>
       <% end %>
     </div>
-    <div class="btn btn-primary">
-      <%= link_to "Invite Friends", root_path  %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <i class="fa-solid fa-plus"></i>
+      <i class="fa-solid fa-user-group"></i>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>FUCK YOU!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="btn btn-primary">
       <%= link_to "Create Event", new_event_path  %>
@@ -32,12 +53,14 @@
 <div class="circle-show-top">
   <%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %>
   <div class="circle-show-members">
-    <h4>Members</h4>
-    <% @circle.users.each do |user| %>
-      <ul style="list-style: none">
-        <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
-      </ul>
-    <% end %>
+    <h4>Members</h4> 
+    <div class="circle-show-members-info">
+      <% @circle.users.each do |user| %>
+        <ul style="list-style: none">
+          <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
+        </ul>
+      <% end %>
+    </div>
   </div>
   <div class="circle-show-upcoming-events">
     <h2>Upcoming Events:</h2>
