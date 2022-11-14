@@ -5,7 +5,7 @@
 
   .event-show-banner-info {
     position: absolute;
-    top: 120px;
+    top: 80px;
     left: 200px;
   }
 
@@ -14,14 +14,26 @@
   }
 }
 
+h4 {
+   margin-top: 30px;
+}
+
+.circles_event_page {
+  margin-top: 10px;
+}
+
 .event-show-top {
   display: flex;
   margin-left: 200px;
   margin-top: 40px;
 }
 
+.event-show-picture {
+margin-bottom: 20px;
+}
+
 .event-show-details {
-  margin-right: 300px;
+  margin-right: 320px;
   border-width: 1px;
   border-style: solid;
   border-color: black;
@@ -30,12 +42,12 @@
   padding: 30px;
 
   .event-show-details-info {
-    margin-top: 70px;
+    margin-top: 40px;
   }
 }
 
 .event-show-picture {
-  width: 550px;
+  width: 600px;
   height: 330px;
   position: absolute;
   top: 180px;
@@ -44,6 +56,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
+    margin-top: -65px;
   }
 }
 
@@ -78,4 +91,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
   overflow-y: scroll;
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
