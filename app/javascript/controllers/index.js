@@ -18,3 +18,7 @@ application.register("map", MapController)
 
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)
+
+import GradientController from "./gradient_controller"
+application.register("gradient", GradientController)
+
