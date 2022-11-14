@@ -10,19 +10,31 @@ class CirclesController < ApplicationController
     @circle = Circle.new(circle_params)
     if @circle.save
       @circle.users << current_user
-      params[:circle]["user_ids"].each do |friend|
-        @circle.users << User.find_by(first_name: friend) if friend != ""
-      end
+      # params[:circle]["user_ids"].each do |friend|
+      #   @circle.users << User.find_by(first_name: friend) if friend != ""
+      # end
       redirect_to @circle, notice: 'New Circle created!'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def update
+    @circle = Circle.find(params[:id])
+    if @circle.update(circle_params)
+      redirect_to @circle, notice: 'Added friend!'
+      raise
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def show 
+    @users = User.all
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
     @circle_message = CircleMessage.new
+    @not_in_group_users = User.where.not(id: @circle.users.map(&:id))
     @other_users = @circle.users.reject { |user| user == current_user }
   end
 
@@ -38,6 +50,6 @@ class CirclesController < ApplicationController
   private
 
   def circle_params
-    params.require(:circle).permit(:name, :description, :photo, :private, :border_color)
+    params.require(:circle).permit(:name, :description, :photo, :private, :border_color, user_ids: [])
   end
 end

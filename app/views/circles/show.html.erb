@@ -36,7 +36,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body modal-body-content">
-            <p>FUCK YOU!</p>
+            <%= simple_form_for @circle do |f| %>
+              <%= f.association :users, collection: @not_in_group_users.map { |user| user.full_name }, input_html: { class: 'multiselectuser'} %>
+              <%= f.submit %>
+            <% end %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
