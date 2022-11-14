@@ -19,21 +19,12 @@ class CirclesController < ApplicationController
     end
   end
 
-  def update
-    @circle = Circle.find(params[:id])
-    if @circle.update(circle_params)
-      redirect_to @circle, notice: 'Added friend!'
-      raise
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
   def show 
     @users = User.all
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
     @circle_message = CircleMessage.new
+    @user_circle = UserCircle.new
     @not_in_group_users = User.where.not(id: @circle.users.map(&:id))
     @other_users = @circle.users.reject { |user| user == current_user }
   end
