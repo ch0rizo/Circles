@@ -7,7 +7,11 @@
 </div>
 <div class="event-show-top">
   <div class="event-show-details">
-    <h3>Hosted by</h3>
+    <h3>Hosted By</h3>
+      <%= link_to profile_path(current_user) do %>
+        <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
+      <% end %>
+    <h4>Attending</h4>
       <div class="circles_event_page">
         <% @circles.each do |circle|%>
             <%= link_to circle_path(circle) do %>
