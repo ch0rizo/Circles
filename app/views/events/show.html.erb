@@ -8,72 +8,8 @@
 <div class="event-show-top">
   <div class="event-show-details">
     <h3>Hosted by</h3>
-    <p>bla bla bla...</p>
-    <div class="event-show-details-info">
-      <h3>Details</h3>
-      <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
-      <p><i class="fa-sharp fa-solid fa-location-dot"></i><%= @event.location %></p>
-      <div class="event-show-details-info-location">
-        <div class="event-show-details-info-location-map"
-          data-controller="map"
-          data-map-markers-value="<%= @marker.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div> 
-      </div>
-      <% if @event.private? %>
-        <p><i class="fa-solid fa-circle"></i>PRIVATE</p>
-      <% else %>
-        <p><i class="fa-regular fa-circle"></i>PUBLIC</p>
-      <% end %>
-    </div>
-  </div>
-  <div class="event-show-details-right-side">
-    <div class="event-show-picture">
-      <%= cl_image_tag @event.photo.key %>
-      <p>HELLO</p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<% if @event.title == 'lol' %>
-  <div class="container">
-    <div class="title"><h1><strong> <%= @event[0].title %></strong></h1></div>
-      <div class="header">
-          <div class="circle-grid">
-          <% @event.each do |event|%>
-              <% if event.photo.key? %>
-                <%= cl_image_tag event.photo.key%>
-              <% else %>
-                <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97"%>
-              <% end %>
-          <% end %>
-        </div>
-          <div class="event_details">
-            <p> <strong>When?</strong>  <%=@event[0].start_date %> - <%= @event[0].end_date %></p>
-            <p><strong>Private?</strong>  <%= @event[0].private? %></p>
-          </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="body">
-      <div class="circles">
-        <p> These Circles attending the Event</p>
-        <div class="circles">
-          <% @circles.each do |circle|%>
+      <div class="circles_event_page">
+        <% @circles.each do |circle|%>
             <%= link_to circle_path(circle) do %>
               <% if circle.photo.key? %>
                 <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: #{circle.border_color}", alt: "Circle Avatar" %>
@@ -83,15 +19,28 @@
             <% end %>
           <% end %>
         </div>
-        <div class="chat">
-          <h1>chat functions comes here</h1>
+    <div class="event-show-details-info">
+      <h4>Details</h4>
+      <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
+      <% if @event.private? %>
+        <p><i class="fa-solid fa-circle"></i> Private Event</p>
+      <% else %>
+        <p><i class="fa-regular fa-circle"></i> Public Event</p>
+      <% end %>
+      <h4>Location</h4>
+      <p><i class="fa-sharp fa-solid fa-location-dot"> </i>  <%= @event.location %></p>
+      <div class="event-show-details-info-location">
+        <div class="event-show-details-info-location-map"
+          data-controller="map"
+          data-map-markers-value="<%= @marker.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
-        <div class="media">
-          <h1>We are putting Media in here: pictures playlists etc </h1>
-        </div>
-
       </div>
     </div>
-
   </div>
-<% end %>
+  <div class="event-show-details-right-side">
+    <div class="event-show-picture">
+      <%= cl_image_tag @event.photo.key %>
+    </div>
+  </div>
+</div>
