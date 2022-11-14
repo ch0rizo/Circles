@@ -54,6 +54,7 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 2;
 }
 
 .circles-container {
@@ -91,6 +92,7 @@ a {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  z-index: 2;
 }
 
 .circle-grid {
@@ -119,6 +121,7 @@ a {
   left: 25px;
   height: 300px;
   width: 300px;
+  z-index: 1;
 }
 
 /* ---------- Inner orbit - This is the circles closest to the central point ---------- */
