@@ -28,12 +28,13 @@
   justify-content: space-between;
   // left:0;
   color: white;
-  align-items: center;
+  align-items: baseline;
 }
 
 .image-icon-container{
   position: relative;
   padding: 5%;
+  padding-top: 3%;
   border-radius: 5px;
   height: 100%;
   background-size: cover;

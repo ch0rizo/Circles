@@ -35,7 +35,8 @@ end
 # Family circle
 family_circle = Circle.create(
   name: 'Family 🧡',
-  private: true
+  private: true,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 # group image
 family_circle_url = "https://images.unsplash.com/photo-1655185497013-db98aca061d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
@@ -61,7 +62,8 @@ end
 # Basketball circle
 basketball_circle = Circle.create(
   name: 'Miami Bulls 🏀',
-  private: true
+  private: true,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 
 # group image
@@ -88,7 +90,8 @@ end
 # Work circle
 work_circle = Circle.create(
   name: 'The Office 💻',
-  private: false
+  private: false,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 
 # group image
@@ -115,7 +118,8 @@ end
 # Friends Circle
 friends_circle = Circle.create(
   name: 'The Day Ones 💯',
-  private: true
+  private: true,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 # group image
 friends_circle_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668250710/development/simi-iluyomade-tvbxqXI5mmo-unsplash_wsd9mc.jpg"
