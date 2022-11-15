@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :event_messages, only: %i[create destroy]
   end
 
+  resources :users, only: :index
   get "profile", to: "users#profile"
 end

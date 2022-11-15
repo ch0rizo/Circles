@@ -23,6 +23,7 @@ class CirclesController < ApplicationController
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
     @circle_message = CircleMessage.new
+    @users = User.all
   end
 
   def destroy
