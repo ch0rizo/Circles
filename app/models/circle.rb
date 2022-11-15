@@ -6,6 +6,7 @@ class Circle < ApplicationRecord
   has_many :circle_messages, dependent: :destroy
   has_one_attached :photo
   has_one_attached :banner
+  has_many :circle_playlists
 
   validates :name, presence: true
 end

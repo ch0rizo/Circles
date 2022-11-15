@@ -18,18 +18,36 @@ user_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668172413/develo
 user_file = URI.open(user_url)
 main_user.photo.attach(io: user_file, filename: 'circle_img.png', content_type: 'image/png')
 
-puts "> Creating other random shit"
+puts "> Creating male users"
 
-30.times do
+15.times do
   user = User.new(
     email: Faker::Internet.email,
     password: 'password',
     username: Faker::Internet.username,
-    first_name: Faker::Name.first_name,
+    first_name: Faker::Name.male_first_name,
     last_name: Faker::Name.last_name
   )
   user.save
-  user.photo.attach(io: File.open("app/assets/images/avatar/CirclesAvatar.png"), filename: "user_avatar.png", content_type: 'image/png')
+  male_user_avatar_url = "https://xsgames.co/randomusers/avatar.php?g=male"
+  male_user_avatar_file = URI.open(male_user_avatar_url)
+  user.photo.attach(io: male_user_avatar_file, filename: 'user_avatar.png', content_type: 'image/png')
+end
+
+puts "> Creating female users"
+
+15.times do
+  user = User.new(
+    email: Faker::Internet.email,
+    password: 'password',
+    username: Faker::Internet.username,
+    first_name: Faker::Name.female_first_name,
+    last_name: Faker::Name.last_name
+  )
+  user.save
+  female_user_avatar_url = "https://xsgames.co/randomusers/avatar.php?g=female"
+  female_user_avatar_file = URI.open(female_user_avatar_url)
+  user.photo.attach(io: female_user_avatar_file, filename: 'user_avatar.png', content_type: 'image/png')
 end
 
 # Family circle

@@ -27,6 +27,7 @@ class CirclesController < ApplicationController
     @user_circle = UserCircle.new
     @not_in_group_users = User.where.not(id: @circle.users.map(&:id))
     @other_users = @circle.users.reject { |user| user == current_user }
+    @circle_playlist = CirclePlaylist.new
   end
 
   def destroy
