@@ -15,6 +15,11 @@
   }
 }
 
+.content-event {
+  display: flex;
+  justify-content: space-between;
+}
+
 #logo-event {
   margin-left: 1520px;
   padding-top: 20px;
@@ -79,7 +84,7 @@ margin-bottom: 20px;
   margin-left: 350px;
   img {
     // width: 550px !important;
-    height: 250px;
+    // height: 250px;
     object-fit: cover;
     border-radius: 20px;
   }
@@ -121,4 +126,56 @@ margin-bottom: 20px;
 p {
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+
+.media {
+  background: #14213d;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  width: 20vw;
+  height: 63vh;
+  position: relative;
+  border-radius: 30px;
+  margin-top: 8vh;
+  margin-left: 20vw;
+}
+
+.h5 {
+  padding-bottom: 20px;
+}
+
+#textbox {
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+
+#prevText {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  transform: translateX(-50%);
+  width: 90%;
+  font-size: 32px;
+  text-align: center;
+  text-shadow: 2px 2px 20px #000;;
+}
+
+.upload-icon {
+  position: absolute;
+  width: 5vw;
+  height: 8vh;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  border-radius: 50% !important;
+
 }
