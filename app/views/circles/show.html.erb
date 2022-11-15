@@ -92,12 +92,17 @@
 <div class="chatroom"
   data-controller="circle-chatroom-subscription"
   data-circle-chatroom-subscription-chatroom-id-value="<%= @circle.id %>"
+  data-circle-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
 >
   <h1>#<%= @circle.name %></h1>
 
   <div class="messages" data-circle-chatroom-subscription-target="messages">
     <% @circle.circle_messages.each do |circle_message| %>
-      <%= render "circle_messages/circle_message", circle_message: circle_message %>
+      <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "circle_messages/circle_message", circle_message: circle_message %>
+        </div>
+      </div>
     <% end %>
   </div>
   <%= simple_form_for [@circle, @circle_message],

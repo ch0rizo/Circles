@@ -5,9 +5,11 @@ class EventMessagesController < ApplicationController
     @event_message.event = @event
     @event_message.user = current_user
     if @event_message.save
+
       EventChatroomChannel.broadcast_to(
         @event,
-        render_to_string(partial: "event_message", locals: {event_message: @event_message})
+        message: render_to_string(partial: "event_message", locals: { event_message: @event_message }),
+        sender_id: @event_message.user.id
       )
       head :ok
     else

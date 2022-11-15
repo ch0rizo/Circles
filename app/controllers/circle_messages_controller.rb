@@ -7,7 +7,8 @@ class CircleMessagesController < ApplicationController
     if @circle_message.save
       CircleChatroomChannel.broadcast_to(
         @circle,
-        render_to_string(partial: "circle_message", locals: {circle_message: @circle_message})
+        render_to_string(partial: "circle_message", locals: {circle_message: @circle_message}),
+        sender_id: @circle_message.user.id
       )
       head :ok
     else
