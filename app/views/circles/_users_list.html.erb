@@ -1,9 +1,19 @@
 <div data-search-users-target="users_list">
   <div class="users">
-    <ul>
-      <% users.each do |user| %>
-        <li><%= user.username %></li>
-      <% end %>
-    </ul>
+    <% users.each do |user| %>
+      <div class="circle-add-friend" 
+        data-controller="friend" 
+        data-friend-user-id-value="<%= user.id %>"
+        data-friend-circle-id-value="<%= circle.id %>"
+      >
+        <div class="circle-img-add-friend">
+          <%= cl_image_tag user.photo.key %>
+        </div>
+        <div class="circle-add-friend-info">
+          <p><%= user.first_name %> <%= user.last_name %></p>
+          <p><%= button_tag "Add", data: { action: "friend#submit", "friend-target" => "button" } %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

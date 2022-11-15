@@ -13,6 +13,9 @@ application.register("event-chatroom-subscription", EventChatroomSubscriptionCon
 import FlatpickerController from "./flatpicker_controller"
 application.register("flatpicker", FlatpickerController)
 
+import FriendController from "./friend_controller"
+application.register("friend", FriendController)
+
 import GradientController from "./gradient_controller"
 application.register("gradient", GradientController)
 
