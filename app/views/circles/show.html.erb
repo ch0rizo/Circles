@@ -48,16 +48,11 @@
                                    }
                                    %>
                 <% end %>
-                <%= render "users_list", users: @users %>
+                <%= render "users_list", users: @not_in_group_users, circle: @circle %>
             </div>
-            <%= simple_form_for [@circle, @user_circle] do |f| %>
-              <%= f.association :user, collection: @not_in_group_users, label_method: :full_name %>
-              <%= f.submit "Add" %>
-            <% end %>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
+            <%= link_to "Done!", circle_path(@circle) %>
           </div>
         </div>
       </div>
