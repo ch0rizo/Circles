@@ -15,7 +15,7 @@
 
 .color-select-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   .form-check-input {
@@ -25,10 +25,10 @@
   .form-check-input + label {
     cursor: pointer;
     font-size: 0;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    transition: scale 1s;
+    transition: scale 0.3s;
   }
 
   .form-check-input:checked + label {
@@ -75,4 +75,24 @@
 
 #circle_border_color_9336fd + label {
   background-color: #9336fd;
+}
+
+#circle_border_color_ffbe0b + label {
+  background-color: #ffbe0b;
+}
+
+#circle_border_color_fb5607 + label {
+  background-color: #fb5607;
+}
+
+#circle_border_color_ff006e + label {
+  background-color: #ff006e;
+}
+
+#circle_border_color_8338ec + label {
+  background-color: #8338ec;
+}
+
+#circle_border_color_3a86ff + label {
+  background-color: #3a86ff;
 }
