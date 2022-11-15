@@ -19,7 +19,7 @@ class CirclesController < ApplicationController
     end
   end
 
-  def show 
+  def show
     @users = User.all
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
@@ -27,6 +27,7 @@ class CirclesController < ApplicationController
     @user_circle = UserCircle.new
     @not_in_group_users = User.where.not(id: @circle.users.map(&:id))
     @other_users = @circle.users.reject { |user| user == current_user }
+    @circle_playlist = CirclePlaylist.new
   end
 
   def destroy

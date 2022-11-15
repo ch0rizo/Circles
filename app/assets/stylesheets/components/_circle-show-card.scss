@@ -1,6 +1,6 @@
 .circle-show-banner {
   width: 100%;
-  height: 350px;
+  height: 48vh;
   img {
     width: 100%;
     height: 100%;
@@ -8,32 +8,25 @@
   }
 }
 
+// shadow gradient on banner image
 .circle-show-banner::after {
   display: block;
   position: relative;
-  // background-image: linear-gradient(
-  //   to bottom,
-  //   rgba(255, 255, 255, 0) 0,
-  //   rgb(0, 0, 0) 100%
-  // );
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0,
+    rgb(0, 0, 0) 100%
+  );
   margin-top: -150px;
   height: 150px;
   width: 100%;
   content: '';
 }
 
-// .banner-gradient {
-//   background-image: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1));
-//   background-color: black;
-//   width: 100%;
-//   height: 350px;
-//   z-index: 2;
-// }
-
 .circle-show-title {
   position: absolute;
-  top: 250px;
-  left: 180px;
+  top: 35vh;
+  left: 10vw;
   display: flex;
   h2 {
     margin-bottom: 5px;
@@ -65,21 +58,41 @@
   width: $avatar-size;
   height: $avatar-size;
   border-radius: 50%;
-  border: rgb(226, 115, 5) 3px solid;
+  border: #ff9d00 3px solid;
   margin-left: 10px;
-  padding: 2px;
+  padding: 4px;
   object-fit: cover;
 }
 
-.circle-show-top {
-  margin-top: 100px;
-  margin-bottom: 100px;
+.circle-show-main-container {
+  border: solid 1px yellow;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  width: 95vw;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+}
+
+.circle-show-main-top {
+  border: solid 1px rgb(255, 63, 191);
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.circle-show-main-bottom {
+  border: solid 1px rgb(0, 255, 229);
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .circle-show-members {
-  margin-left: 30px;
-  margin-right: 250px;
+  border: 1px solid orangered;
 
   h4 {
     padding-bottom: 20px;
@@ -123,12 +136,17 @@
 }
 
 .circle-show-upcoming-events {
-  height: 100%;
-  width: 65vw;
+  border: 1px blueviolet solid;
+  width: 46vw;
+  overflow-x: scroll;
 
   ul {
     margin-top: 30px;
   }
+}
+
+.circle-show-upcoming-events::-webkit-scrollbar {
+  display: none;
 }
 
 .circle-show-event-card {
@@ -157,7 +175,8 @@
 
 .circle-show-upcoming-events-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px 40px;
+  grid-template-columns: 1fr 1fr 1fr;
 
   ul {
     margin: 0px;
@@ -165,8 +184,8 @@
   }
 }
 
-.circle-show-middle {
-  margin-left: 30px;
+.memories {
+  border: 1px solid rgb(69, 255, 239)
 }
 
 .splide__list {
@@ -187,6 +206,10 @@
   overflow: scroll;
 }
 
+.circle-show-members-info::-webkit-scrollbar {
+  display: none;
+}
+
 .modal-content-circle-show {
   height: 60vh;
   width: 25vw;
@@ -202,4 +225,27 @@
   .fa-address-book {
     font-size: 25px;
   }
+}
+
+.circle-show-spotify-playlists {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.playlists-grid {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.playlists-grid::-webkit-scrollbar {
+  display: none;
 }
