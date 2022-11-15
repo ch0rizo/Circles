@@ -77,5 +77,33 @@
     <span class="visually-hidden">Next</span>
   </button>
     </div>
+    <div class="content-event">
+      <div class="event-chat">
+        <p>chat</p>
+      </div>
+      <div class="media" id="imgBox">
+        <h5>Share Images</h5>
+        <div id="prevText"></div>
+        <textarea id="textbox" placeholder="Add caption:"></textarea>
+        <input type="file" accept="image/*" name="image" id="file" style="display: none"
+        onchange="loadFile(event)">
+        <label for="file">
+          <%= image_tag "add.png", class:"upload-icon" %>
+          <%# <img scr="image/upload-event/upload.png" class="upload-icon"> %>
+        </label>
+      </div>
+      <script>
+      var textbox = document.getElementById("textbox");
+      var imgBox = document.getElementById("imgBox");
+
+      textbox.onkeyup = textbox.onkeypress = function() {
+        document.getElementById("prevText").innerHTML =this.value;
+      }
+
+      var loadFile = function(event) {
+        imgBox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) + ")";
+      }
+      </script>
+    </div>
   </div>
 </div>
