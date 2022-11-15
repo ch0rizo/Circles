@@ -16,4 +16,5 @@ class Event < ApplicationRecord
   has_many :circles, through: :circle_events
   has_many :event_messages, dependent: :destroy
   has_many_attached :photos
+  has_many_attached :images
 end
