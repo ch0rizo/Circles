@@ -180,15 +180,4 @@
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
-
-<h2>MEMORIES</h2>
-<section class="splide" aria-label="Splide Basic HTML Example" data-controller="slider">
-  <div class="splide__track">
-    <ul class="splide__list">
-      <% @circle.events.each do |event| %>
-        <li class="splide__slide"><%= cl_image_tag event.photos[0].key %></li>
-      <% end %>
-    </ul>
-  </div>
-
 </div>
