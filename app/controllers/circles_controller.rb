@@ -3,7 +3,7 @@ class CirclesController < ApplicationController
     @circle = Circle.new
     @users = current_user.friends
     @user_names = @users.pluck(:first_name)
-    @colors = %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd]
+    @colors = %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd #ffbe0b #fb5607 #ff006e #8338ec #3a86ff]
   end
 
   def create
@@ -19,7 +19,7 @@ class CirclesController < ApplicationController
     end
   end
 
-  def show 
+  def show
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)
     @circle_message = CircleMessage.new
