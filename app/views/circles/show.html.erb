@@ -98,8 +98,8 @@
 
   <div class="messages" data-circle-chatroom-subscription-target="messages">
     <% @circle.circle_messages.each do |circle_message| %>
-      <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-        <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+      <div class="message-row d-flex <%= circle_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= circle_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
           <%= render "circle_messages/circle_message", circle_message: circle_message %>
         </div>
       </div>
