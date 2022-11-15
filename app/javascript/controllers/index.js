@@ -7,8 +7,17 @@ import { application } from "./application"
 import CircleChatroomSubscriptionController from "./circle_chatroom_subscription_controller"
 application.register("circle-chatroom-subscription", CircleChatroomSubscriptionController)
 
+import EventChatroomSubscriptionController from "./event_chatroom_subscription_controller"
+application.register("event-chatroom-subscription", EventChatroomSubscriptionController)
+
 import FlatpickerController from "./flatpicker_controller"
 application.register("flatpicker", FlatpickerController)
+
+import FriendController from "./friend_controller"
+application.register("friend", FriendController)
+
+import GradientController from "./gradient_controller"
+application.register("gradient", GradientController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
@@ -16,9 +25,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import SearchUsersController from "./search_users_controller"
+application.register("search-users", SearchUsersController)
+
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)
-
-import GradientController from "./gradient_controller"
-application.register("gradient", GradientController)
-

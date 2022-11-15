@@ -16,9 +16,10 @@ Rails.application.routes.draw do
 
   resources :events, only: %i[new create destroy edit update show] do
     resources :user_events, only: %i[create update destroy]
-    resources :event_messages, only: %i[create destroy]
-    resources :circle_events, only: %i[create destroy]
+    resources :event_messages, only: %i[create]
+    resources :circle_events, only: %i[create]
   end
 
+  resources :users, only: :index
   get "profile", to: "users#profile"
 end
