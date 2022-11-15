@@ -27,7 +27,7 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.buttonTarget.replaceWith(<i class="fa-solid fa-check"></i>);
+        this.buttonTarget.replaceWith(`<i class="fa-solid fa-check"></i>`);
         console.log('Success:', data);
       })
       .catch((error) => {
