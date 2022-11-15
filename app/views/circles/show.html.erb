@@ -69,7 +69,7 @@
   <div class="circle-show-main-top">
 
     <div class="circle-show-members">
-      <h4>Members</h4>
+      <h4>MEMBERS</h4>
       <div class="circle-show-members-info">
         <% @other_users.each do |user| %>
           <ul style="list-style: none">
@@ -80,7 +80,7 @@
     </div>
 
     <div class="circle-show-upcoming-events">
-      <h2>Upcoming Events</h2>
+      <h4>UPCOMING EVENTS</h4>
       <div class="circle-show-upcoming-events-cards">
         <% if @circle.events.length != 0 %>
           <% @circle.events.each do |event| %>
@@ -103,16 +103,20 @@
     </div>
 
     <div class="circle-show-spotify-playlists">
-      <h2>Circle Playlists</h2>
+      <div class="spotify-playlists-header">
+        <h4>CIRCLE PLAYLISTS</h4>
+      </div>
       <div class="playlists-grid">
         <% @circle.circle_playlists.each do |playlist| %>
           <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <% end %>
       </div>
-    <!-- Playlist Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPlaylist">
-        <p>Add a Playlist</p>
-      </button>
+      <div class="spotify-playlists-footer">
+        <!-- Playlist Button trigger modal -->
+        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+          <p>Add a Playlist</p>
+        </button>
+      </div>
 
       <!-- Modal -->
       <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
@@ -141,7 +145,7 @@
 
   <div class="circle-show-main-bottom">
     <div class="memories">
-    <h2>MEMORIES</h2>
+    <h4>MEMORIES</h4>
     <section class="splide" aria-label="Splide Basic HTML Example" data-controller="slider">
       <div class="splide__track">
         <ul class="splide__list">

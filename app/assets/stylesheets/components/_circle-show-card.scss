@@ -65,7 +65,7 @@
 }
 
 .circle-show-main-container {
-  border: solid 1px yellow;
+  // border: solid 1px yellow;
   padding-top: 10%;
   padding-bottom: 10%;
   width: 95vw;
@@ -75,7 +75,7 @@
 }
 
 .circle-show-main-top {
-  border: solid 1px rgb(255, 63, 191);
+  // border: solid 1px rgb(255, 63, 191);
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -83,7 +83,7 @@
 }
 
 .circle-show-main-bottom {
-  border: solid 1px rgb(0, 255, 229);
+  // border: solid 1px rgb(0, 255, 229);
   margin-top: 5%;
   display: flex;
   flex-direction: row;
@@ -92,7 +92,7 @@
 }
 
 .circle-show-members {
-  border: 1px solid orangered;
+  // border: 1px solid orangered;
 
   h4 {
     padding-bottom: 20px;
@@ -136,7 +136,7 @@
 }
 
 .circle-show-upcoming-events {
-  border: 1px blueviolet solid;
+  // border: 1px blueviolet solid;
   width: 46vw;
   overflow-x: scroll;
 
@@ -185,7 +185,7 @@
 }
 
 .memories {
-  border: 1px solid rgb(69, 255, 239)
+  // border: 1px solid rgb(69, 255, 239)
 }
 
 .splide__list {
@@ -228,21 +228,37 @@
 }
 
 .circle-show-spotify-playlists {
-  border: 1px solid green;
+  // border: 1px solid green;
   display: flex;
   flex-direction: column;
   width: 30%;
   justify-content: center;
   text-align: center;
+  align-items: center;
+}
+
+.spotify-playlists-header {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.spotify-playlists-footer {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: flex-end;
 }
 
 .playlists-grid {
   display: flex;
   gap: 20px;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+  height: 39vh;
   overflow-y: scroll;
+  width: 90%;
+  align-items: flex-start;
 }
 
 .playlists-grid::-webkit-scrollbar {
