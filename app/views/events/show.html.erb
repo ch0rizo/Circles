@@ -79,3 +79,25 @@
     </div>
   </div>
 </div>
+<div class="container chatroom"
+  data-controller="event-chatroom-subscription"
+  data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
+>
+  <h1>#<%= @event.title %></h1>
+
+  <div class="messages" data-event-chatroom-subscription-target="messages">
+    <% @event.event_messages.each do |event_message| %>
+      <%= render "event_messages/event_message", event_message: event_message %>
+    <% end %>
+    <%= simple_form_for [@event, @event_message],
+      html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@event.title}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
+</div>

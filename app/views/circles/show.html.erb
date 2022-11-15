@@ -89,6 +89,29 @@
     </div>
   </div>
 </div>
+<div class="chatroom"
+  data-controller="circle-chatroom-subscription"
+  data-circle-chatroom-subscription-chatroom-id-value="<%= @circle.id %>"
+>
+  <h1>#<%= @circle.name %></h1>
+
+  <div class="messages" data-circle-chatroom-subscription-target="messages">
+    <% @circle.circle_messages.each do |circle_message| %>
+      <%= render "circle_messages/circle_message", circle_message: circle_message %>
+    <% end %>
+  </div>
+  <%= simple_form_for [@circle, @circle_message],
+    html: { data: { action: "turbo:submit-end->circle-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{@circle.name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>
+
 <h2>MEMORIES</h2>
 <section class="splide" aria-label="Splide Basic HTML Example" data-controller="slider">
   <div class="splide__track">
