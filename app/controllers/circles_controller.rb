@@ -19,7 +19,7 @@ class CirclesController < ApplicationController
     end
   end
 
-  def show 
+  def show
     @users = User.all
     @circle = Circle.find(params[:id])
     @circle_events = CircleEvent.where(@circle_id)

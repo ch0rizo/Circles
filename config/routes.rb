@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :circle_events, only: %i[create]
   end
 
+  resources :users, only: :index
   get "profile", to: "users#profile"
 end
