@@ -35,7 +35,8 @@ end
 # Family circle
 family_circle = Circle.create(
   name: 'Family 🧡',
-  private: true
+  private: true,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 # group image
 family_circle_url = "https://images.unsplash.com/photo-1655185497013-db98aca061d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
@@ -61,7 +62,8 @@ end
 # Basketball circle
 basketball_circle = Circle.create(
   name: 'Miami Bulls 🏀',
-  private: true
+  private: true,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 
 # group image
@@ -88,7 +90,8 @@ end
 # Work circle
 work_circle = Circle.create(
   name: 'The Office 💻',
-  private: false
+  private: false,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 
 # group image
@@ -115,7 +118,8 @@ end
 # Friends Circle
 friends_circle = Circle.create(
   name: 'The Day Ones 💯',
-  private: true
+  private: true,
+  border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd].sample
 )
 # group image
 friends_circle_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668250710/development/simi-iluyomade-tvbxqXI5mmo-unsplash_wsd9mc.jpg"
@@ -151,7 +155,7 @@ surf_trip = Event.create(
 
 surf_trip_url = "https://images.unsplash.com/photo-1526342122811-2a9c8512023d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
 surf_trip_file = URI.open(surf_trip_url)
-surf_trip.photo.attach(io: surf_trip_file, filename: 'event_img.png', content_type: 'image/png')
+surf_trip.photos.attach(io: surf_trip_file, filename: 'event_img.png', content_type: 'image/png')
 
 nico_party = Event.create(
   title: "Nico's Sweet 16th",
@@ -164,7 +168,7 @@ nico_party = Event.create(
 
 nico_party_url = "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
 nico_party_file = URI.open(nico_party_url)
-nico_party.photo.attach(io: nico_party_file, filename: 'event_img.png', content_type: 'image/png')
+nico_party.photos.attach(io: nico_party_file, filename: 'event_img.png', content_type: 'image/png')
 
 poker_night = Event.create(
   title: "Poker Night",
@@ -177,7 +181,7 @@ poker_night = Event.create(
 
 poker_night_url = "https://images.unsplash.com/photo-1609769322709-2de28ae6503a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=725&q=80"
 poker_night_file = URI.open(poker_night_url)
-poker_night.photo.attach(io: poker_night_file, filename: 'event_img.png', content_type: 'image/png')
+poker_night.photos.attach(io: poker_night_file, filename: 'event_img.png', content_type: 'image/png')
 
 pangea = Event.create(
   title: "Pangea Festival",
@@ -190,7 +194,7 @@ pangea = Event.create(
 
 pangea_url = "https://www.tribeofpangea.com/wp-content/uploads/2020/07/webonly_PANGEA_0104_800.jpg"
 pangea_file = URI.open(pangea_url)
-pangea.photo.attach(io: pangea_file, filename: 'event_img.png', content_type: 'image/png')
+pangea.photos.attach(io: pangea_file, filename: 'event_img.png', content_type: 'image/png')
 
 footy = Event.create(
   title: "5-a-Side Football",
@@ -203,7 +207,7 @@ footy = Event.create(
 
 footy_url = "https://images.unsplash.com/photo-1544698310-74ea9d1c8258?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
 footy_file = URI.open(footy_url)
-footy.photo.attach(io: footy_file, filename: 'event_img.png', content_type: 'image/png')
+footy.photos.attach(io: footy_file, filename: 'event_img.png', content_type: 'image/png')
 
 christmas = Event.create(
   title: "Christmas",
@@ -216,7 +220,7 @@ christmas = Event.create(
 
 christmas_url = "https://images.unsplash.com/photo-1543094754-0790f4838e00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
 christmas_file = URI.open(christmas_url)
-christmas.photo.attach(io: christmas_file, filename: 'event_img.png', content_type: 'image/png')
+christmas.photos.attach(io: christmas_file, filename: 'event_img.png', content_type: 'image/png')
 
 ozcf = Event.create(
   title: "OZCF Market",
@@ -229,7 +233,7 @@ ozcf = Event.create(
 
 ozcf_url = "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
 ozcf_file = URI.open(ozcf_url)
-ozcf.photo.attach(io: ozcf_file, filename: 'event_img.png', content_type: 'image/png')
+ozcf.photos.attach(io: ozcf_file, filename: 'event_img.png', content_type: 'image/png')
 
 braai = Event.create(
   title: "Braai & Watch Bokke",
@@ -242,7 +246,7 @@ braai = Event.create(
 
 braai_url = "https://www.sapeople.com/wp-content/uploads/2022/11/france-win-221112-kurt-lee-arendse-springboks.jpeg"
 braai_file = URI.open(braai_url)
-braai.photo.attach(io: braai_file, filename: 'event_img.png', content_type: 'image/png')
+braai.photos.attach(io: braai_file, filename: 'event_img.png', content_type: 'image/png')
 
 puts '> Finished!'
 puts "> Made #{User.count} users, #{Circle.count} circles and #{Event.count} events!"

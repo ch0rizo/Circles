@@ -1,4 +1,8 @@
 <div class="event-show-banner">
+  <%= link_to root_path do %>
+  <img width="190" class="white-color" id="logo-event", src="/assets/Logo/Circles_Logo-e6615bb1c72dbb5ff38d80795d3a366b32aba638c3026b02a41fd11ae81491a0.svg">
+  <% end %>
+</h2>
   <div class="event-show-banner-info">
     <i class="fa-regular fa-calendar-days"></i>
     <%= @event.start_date.strftime("%A, %m %b, %Y") %>
@@ -7,7 +11,11 @@
 </div>
 <div class="event-show-top">
   <div class="event-show-details">
-    <h3>Hosted by</h3>
+    <h3>Hosted By</h3>
+      <%= link_to profile_path(current_user) do %>
+        <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
+      <% end %>
+    <h4>Attending</h4>
       <div class="circles_event_page">
         <% @circles.each do |circle|%>
             <%= link_to circle_path(circle) do %>
@@ -19,6 +27,13 @@
             <% end %>
           <% end %>
         </div>
+    <div>
+      <h3>Invite a Circle</h3>
+      <%= simple_form_for [@event, @circle_event] do |f| %>
+        <%= f.association :circle, as: :radio_buttons, label: "", required: false, collection: current_user.circles %>
+        <%= f.submit "Add Circle" %>
+      <% end %>
+    </div>
     <div class="event-show-details-info">
       <h4>Details</h4>
       <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
@@ -39,8 +54,87 @@
     </div>
   </div>
   <div class="event-show-details-right-side">
-    <div class="event-show-picture">
-      <%= cl_image_tag @event.photo.key %>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @event.photos.each_with_index do |photo, index| %>
+          <% if index == 0 %>
+            <div class="carousel-item active">
+              <%= cl_image_tag photo.key, class: "d-block w-100"%>
+            </div>
+            <% else %>
+            <div class="carousel-item">
+              <%= cl_image_tag photo.key, class: "d-block w-100"%>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
     </div>
+    <div class="content-event">
+      <div class="event-content">
+          <div class="event-2">
+            <p>chat</p>
+          </div>
+          <div class="event-playlist">
+            <p>playlist</p>
+          </div>
+        </div>
+      <div class="media" id="imgBox">
+        <div id="prevText"></div>
+        <textarea id="textbox" placeholder="Add caption:"></textarea>
+        <input type="file" accept="image/*" name="image" id="file" style="display: none"
+        onchange="loadFile(event)">
+        <label for="file">
+          <%= image_tag "add.png", class:"upload-icon" %>
+          <%# <img scr="image/upload-event/upload.png" class="upload-icon"> %>
+        </label>
+      </div>
+      <script>
+      var textbox = document.getElementById("textbox");
+      var imgBox = document.getElementById("imgBox");
+
+      textbox.onkeyup = textbox.onkeypress = function() {
+        document.getElementById("prevText").innerHTML =this.value;
+      }
+
+      var loadFile = function(event) {
+        imgBox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) + ")";
+      }
+      </script>
+    </div>
+  </div>
+</div>
+<div class="chatroom"
+  data-controller="event-chatroom-subscription"
+  data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
+  data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
+>
+  <h1>#<%= @event.title %></h1>
+
+  <div class="messages" data-event-chatroom-subscription-target="messages">
+    <% @event.event_messages.each do |event_message| %>
+      <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "event_messages/event_message", event_message: event_message %>
+        </div>
+      </div>
+    <% end %>
+    <%= simple_form_for [@event, @event_message],
+      html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@event.title}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
   </div>
 </div>

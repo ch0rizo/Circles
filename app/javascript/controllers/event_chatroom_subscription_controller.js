@@ -1,14 +1,14 @@
 import { Controller } from '@hotwired/stimulus';
 import { createConsumer } from '@rails/actioncable';
 
-// Connects to data-controller="circle-chatroom-subscription"
+// Connects to data-controller="event-chatroom-subscription"
 export default class extends Controller {
   static values = { chatroomId: Number, currentUserId: Number };
   static targets = ['messages'];
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
-      { channel: 'CircleChatroomChannel', id: this.chatroomIdValue },
+      { channel: 'EventChatroomChannel', id: this.chatroomIdValue },
       {
         received: (data) => {
           console.log(data);

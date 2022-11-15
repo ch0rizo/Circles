@@ -1,6 +1,6 @@
 .event-show-banner {
   background-color: #14213d;
-  height: 250px;
+  height: 260px;
   width: 100%;
 
   .event-show-banner-info {
@@ -9,9 +9,20 @@
     left: 200px;
   }
 
+
   h1 {
     margin-top: 25px;
   }
+}
+
+.content-event {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo-event {
+  margin-left: 1520px;
+  padding-top: 20px;
 }
 
 h4 {
@@ -20,6 +31,13 @@ h4 {
 
 .circles_event_page {
   margin-top: 10px;
+
+  margin-bottom: 30px;
+  .circle-avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: -10px;
+  }
 }
 
 .event-show-top {
@@ -33,22 +51,24 @@ margin-bottom: 20px;
 }
 
 .event-show-details {
-  margin-right: 320px;
   border-width: 1px;
   border-style: solid;
   border-color: black;
   border-radius: 15px;
   background-color: #14213d;
   padding: 30px;
+  height: 92vh;
 
   .event-show-details-info {
     margin-top: 40px;
   }
 }
-
+.carousel {
+  width: 600px;
+}
 .event-show-picture {
   width: 600px;
-  height: 330px;
+  height: 380px;
   position: absolute;
   top: 180px;
   img {
@@ -57,6 +77,17 @@ margin-bottom: 20px;
     object-fit: cover;
     border-radius: 15px;
     margin-top: -65px;
+  }
+}
+
+.event-show-details-right-side{
+  margin-top: -150px;
+  margin-left: 350px;
+  img {
+    // width: 550px !important;
+    height: 30vh;
+    object-fit: cover;
+    border-radius: 20px;
   }
 }
 
@@ -96,4 +127,69 @@ margin-bottom: 20px;
 p {
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+.content-event {
+  margin-left: -52px;
+}
+
+.event-content {
+  width: 20vw;
+  height: 30vh;
+  margin-left: -115px;
+  margin-top: 8vh;
+  display: inline-grid;
+
+}
+
+
+.media {
+  background: #14213d;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  width: 20vw;
+  height: 63vh;
+  position: relative;
+  border-radius: 30px;
+  margin-top: 8vh;
+  margin-left: 12vw;
+}
+
+.h5 {
+  padding-bottom: 20px;
+}
+
+#textbox {
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+
+#prevText {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  transform: translateX(-50%);
+  width: 90%;
+  font-size: 32px;
+  text-align: center;
+  text-shadow: 2px 2px 20px #000;;
+}
+
+.upload-icon {
+  position: absolute;
+  width: 5vw;
+  height: 8vh !important;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  border-radius: 50% !important;
+
 }
