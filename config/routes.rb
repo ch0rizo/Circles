@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :circle_messages, only: %i[create]
     resources :events, only: %i[new create]
     resources :users, only: :index
+    resources :circle_playlists, only: %i[new create destroy]
   end
 
   resources :events, only: %i[new create destroy edit update show] do
