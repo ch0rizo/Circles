@@ -38,7 +38,7 @@
           </div>
           <div class="modal-body modal-body-content">
             <div data-controller="search-users">
-                <%= form_with url: users_path, method: :get, html: {class: "mb-4", data: {search_users_target: "form"}} do |f| %>
+                <%= form_with url: circle_users_path(@circle), method: :get, html: {class: "mb-4", data: {search_users_target: "form"}} do |f| %>
                   <%= f.text_field :query,
                                    class: "form-control",
                                    placeholder: "Type a user name",
