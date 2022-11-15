@@ -25,6 +25,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @event_message = EventMessage.new
     @circles = @event.circles
     @circle_event = CircleEvent.new
     @marker = Event.where(id: params[:id]).geocoded.map do |event|
