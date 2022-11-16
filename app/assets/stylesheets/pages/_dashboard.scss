@@ -1,5 +1,15 @@
 .dashboard-header {
   background-color: #202124;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  .fa-arrow-left {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+  }
 }
 
 .dashboard.show {
@@ -21,8 +31,10 @@
   align-items: center;
   padding: 15px;
   height: 67vh;
-  background-color: #202124;
   border-radius: 5px;
+  border-style: solid;
+  border-color: #202124;
+  background-color: #18191c;
 }
 
 // profile
@@ -60,6 +72,8 @@
   position: absolute;
   top: 130px;
   left: 130px;
+  border-style: solid;
+  border-radius: 50%;
 
   img {
     height: 30px;
