@@ -1,96 +1,123 @@
 .event-show-banner {
   background-color: #14213d;
-  height: 260px;
+  height: 35vh;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+}
 
-  .event-show-banner-info {
-    position: absolute;
-    top: 80px;
-    left: 200px;
-  }
-
+.event-show-banner-info {
+  border: 1px solid rgb(255, 106, 233);
+  position: absolute;
+  top: 20vh;
+  left: 10vw;
 
   h1 {
     margin-top: 25px;
   }
 }
 
-.event-show-center {
-  width: 300px;
+.event-show-logo-container {
+  border: 1px solid yellow;
+  display: flex;
+  position: absolute;
+  top: 0vh;
+  padding: 20px;
+  left: 83vw;
 }
 
-#logo-event {
-  margin-left: 87%;
-  padding-top: 1%;
+.event-show-main-container {
+  border: 2px solid rgb(82, 241, 255);
+  width: 95vw;
+  margin: 0 auto;
+  padding-bottom: 10%;
+  padding-top: 10%
 }
 
-h4 {
-   margin-top: 3%;
+.event-show-top-container {
+  border: 1px solid rgb(104, 200, 255);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.circles_event_page {
+.event-show-bottom-container {
+  border: 1px solid rgb(247, 255, 104);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.event-show-chat-container {
+  border: 1px solid greenyellow;
+}
+
+.event-show-attending-circles {
+  border: 1px solid rgb(255, 162, 0);
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   .circle-avatar {
     width: 60px;
     height: 60px;
-    margin-bottom: -10px;
   }
 }
 
-.event-show-top {
+.event-show-spotify-playlists {
+  border: 1px solid green;
   display: flex;
-  margin-left: 200px;
-  margin-top: 40px;
+  flex-direction: column;
+  width: 30%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .event-show-picture {
   margin-bottom: 20px;
 }
 
+.event-show-details-container {
+  border: 1px solid yellow;
+}
+
 .event-show-details {
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
   border-radius: 15px;
   background-color: #14213d;
   padding: 30px;
-  height: 92vh;
+  height: 50vh;
+  // box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.2);
+  overflow-y: scroll;
 
   .event-show-details-info {
     margin-top: 40px;
   }
 }
 
-.event-show-picture {
-  width: 600px;
-  height: 380px;
+.event-show-carousel-container {
+  border: 1px solid orange;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   position: absolute;
-  top: 180px;
-  img.event-photo {
-    width: 100%;
-    height: 100%;
+  top: 10vh;
+  left: 35vw;
+
+  img {
+    height: 40vh;
     object-fit: cover;
     border-radius: 15px;
-    margin-top: -65px;
   }
 }
 
-.event-show-details-right-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-  img {
-    // width: 550px !important;
-    height: 30vh;
-    object-fit: cover;
-    border-radius: 20px;
-  }
+.event-show-carousel-slide {
+  width: 40vw;
 }
 
 .event-show-details-info-location {
-  width: 250px;
+  width: 30vw;
   height: 150px;
 
   .event-show-details-info-location-map {
@@ -127,30 +154,27 @@ p {
   margin-bottom: 5px;
 }
 
-.content-event {
+
+.event-show-content-container {
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   justify-content: center;
-  margin-right: -140px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
 }
 
-.event-content {
-  width: 20vw;
-  height: 30vh;
-  margin-left: -115px;
-  margin-top: 8vh;
-  display: inline-grid;
-}
+.event-show-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color:  #14213d;
+  border-radius: 15px;
+  width: 90%;
+  height: 50vh;
 
-#carouselPhotosControls {
-  width: 600px;
-  position: relative;
-  top: -170px;
-}
-
-#carouselImagesControls {
-  width: 300px;
 }
 
 img.event-image {
@@ -170,7 +194,7 @@ img.event-image {
 
 .add-images-form {
   position: relative;
-  top: -150px;
+  top: 150px;
   display: flex;
   flex-direction: column;
 }
@@ -180,6 +204,12 @@ img.event-image {
   height: 8vh !important;
   cursor: pointer;
   border-radius: 50% !important;
+}
+
+.images-card {
+  width: 100px;
+  height: 100px;
+  background-color: #d2d9e9;
 }
 
 #imgBox {
