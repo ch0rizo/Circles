@@ -31,9 +31,13 @@
   </div>
 </div>
 <div class="event-show-banner-info">
+  <h1><%= @event.title.upcase %></h1>
   <i class="fa-regular fa-calendar-days"></i>
   <%= @event.start_date.strftime("%A, %m %b, %Y") %>
-  <h1><%= @event.title.upcase %></h1>
+  <div class="attending">
+    <i class="fa-solid fa-user-group"></i>
+    <p><%= @event.users.count %></p>
+  </div>
 </div>
 <div class="event-show-main-container">
   <div class="event-show-top-container">
