@@ -12,7 +12,8 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="<%= controller_name %> <%= action_name %>">
+  <body data-controller="cursorlight">
+
     <%# <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
