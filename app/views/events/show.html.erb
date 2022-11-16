@@ -76,13 +76,15 @@
     <div class="event-right-side-host">
       <h5>Hosted by</h5>
       <div class="event-right-side-host-card">
-        <div class="event-right-side-host-body">
-          <%= cl_image_tag User.find(@event.user_id).photo.key %>
-          <div class="event-right-side-host-info">
-            <h2><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></h2>
-            <p>Joined in <%= User.all.first.created_at.strftime("%a, %b %d") %></p>
+        <%= link_to dashboard_path(@event.user_id) do %>
+          <div class="event-right-side-host-body">
+            <%= cl_image_tag User.find(@event.user_id).photo.key %>
+            <div class="event-right-side-host-info">
+              <h2><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></h2>
+              <p>Joined in <%= User.all.first.created_at.strftime("%a, %b %d") %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
     <div class="event-right-side-details">
