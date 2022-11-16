@@ -11,15 +11,17 @@ Rails.application.routes.draw do
     resources :circle_events, only: %i[create destroy]
     resources :circle_messages, only: %i[create]
     resources :events, only: %i[new create]
+    resources :users, only: :index
+    resources :circle_playlists, only: %i[new create destroy]
   end
 
   resources :events, only: %i[new create destroy edit update show] do
     resources :user_events, only: %i[create update destroy]
     resources :event_messages, only: %i[create]
     resources :circle_events, only: %i[create]
+    resources :event_playlists, only: %i[new create destroy]
   end
 
-  resources :users, only: :index
   get "profile", to: "users#profile"
 
   resources :dashboard, only: :show

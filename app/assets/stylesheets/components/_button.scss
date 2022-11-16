@@ -25,3 +25,35 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.global-button {
+  // background-color: #ff9d00;
+  background-color: transparent;
+  border: 2px solid #ff9d00;
+  color: white;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.global-button:hover {
+  background-color: #ff9d00;
+}
+
+#playlist-button {
+  width: 35%;
+  margin-top: 3%;
+}
+
+#add-friends-button {
+  padding: 3%;
+}
+
+#circle-show-create-event {
+  width: 60%;
+}
+
+.circle-show-header-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+}

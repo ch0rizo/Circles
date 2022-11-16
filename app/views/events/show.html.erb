@@ -1,8 +1,7 @@
 <div class="event-show-banner">
   <%= link_to root_path do %>
-  <img width="190" class="white-color" id="logo-event", src="/assets/Logo/Circles_Logo-e6615bb1c72dbb5ff38d80795d3a366b32aba638c3026b02a41fd11ae81491a0.svg">
+    <img width="190" class="white-color" id="logo-event", src="/assets/Logo/Circles_Logo-e6615bb1c72dbb5ff38d80795d3a366b32aba638c3026b02a41fd11ae81491a0.svg">
   <% end %>
-</h2>
   <div class="event-show-banner-info">
     <i class="fa-regular fa-calendar-days"></i>
     <%= @event.start_date.strftime("%A, %m %b, %Y") %>
@@ -12,23 +11,23 @@
 <div class="event-show-top">
   <div class="event-show-details">
     <h3>Hosted By</h3>
-      <%= link_to profile_path(current_user) do %>
-        <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
-      <% end %>
+    <%= link_to profile_path(current_user) do %>
+      <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
+    <% end %>
     <h4>Attending</h4>
-      <div class="circles_event_page">
-        <% @circles.each do |circle|%>
-            <%= link_to circle_path(circle) do %>
-              <% if circle.photo.key? %>
-                <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: #{circle.border_color}", alt: "Circle Avatar" %>
-              <% else %>
-                <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
-              <% end %>
-            <% end %>
+    <div class="circles_event_page">
+      <% @circles.each do |circle|%>
+        <%= link_to circle_path(circle) do %>
+          <% if circle.photo.key? %>
+            <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: #{circle.border_color}", alt: "Circle Avatar" %>
+          <% else %>
+            <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
           <% end %>
-        </div>
+        <% end %>
+      <% end %>
+    </div>
     <div>
-      <h3>Invite a Circle</h3>
+      <h4>Invite a Circle</h4>
       <%= simple_form_for [@event, @circle_event] do |f| %>
         <%= f.association :circle, as: :radio_buttons, label: "", required: false, collection: current_user.circles %>
         <%= f.submit "Add Circle" %>
@@ -53,64 +52,132 @@
       </div>
     </div>
   </div>
+  <div class="event-show-center">
+    <div class="chatroom"
+      data-controller="event-chatroom-subscription"
+      data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
+      data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+      <h1><%= @event.title %> Chat  </h1> 
+
+      <div class="messages" data-event-chatroom-subscription-target="messages">
+        <% @event.event_messages.each do |event_message| %>
+          <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+            <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+              <%= render "event_messages/event_message", event_message: event_message %>
+            </div>
+          </div>
+        <% end %>
+        <%= simple_form_for [@event, @event_message],
+          html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+        %>
+          <%= f.input :content,
+            label: false,
+            placeholder: "Message ##{@event.title}",
+            wrapper_html: {class: "flex-grow-1"}
+          %>
+          <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="event-show-details-right-side">
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselPhotosControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <% @event.photos.each_with_index do |photo, index| %>
           <% if index == 0 %>
             <div class="carousel-item active">
-              <%= cl_image_tag photo.key, class: "d-block w-100"%>
+              <%= cl_image_tag photo.key, class: "d-block w-100 event-photo"%>
             </div>
             <% else %>
             <div class="carousel-item">
-              <%= cl_image_tag photo.key, class: "d-block w-100"%>
+              <%= cl_image_tag photo.key, class: "d-block w-100 event-photo"%>
             </div>
           <% end %>
         <% end %>
       </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselPhotosControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselPhotosControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
     <div class="content-event">
-      <div class="event-content">
-          <div class="event-2">
-            <p>chat</p>
+      <di v class="image-form-wrapper">
+        <div id="carouselImagesControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="prevText">
+            <% @event.images.each_with_index do |image, index| %>
+              <% if index == 0 %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag image.key, class: "event-image" %>
+                </div>
+                <% else %>
+                <div class="carousel-item">
+                  <%= cl_image_tag image.key, class: "event-image" %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-          <div class="event-playlist">
-            <p>playlist</p>
-          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselImagesControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselImagesControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-      <div class="media" id="imgBox">
-        <div id="prevText"></div>
-        <textarea id="textbox" placeholder="Add caption:"></textarea>
-        <input type="file" accept="image/*" name="image" id="file" style="display: none"
-        onchange="loadFile(event)">
-        <label for="file">
-          <%= image_tag "add.png", class:"upload-icon" %>
-          <%# <img scr="image/upload-event/upload.png" class="upload-icon"> %>
-        </label>
+        <%= simple_form_for @event, html: { class: "add-images-form" }  do |f| %>
+          <label class="form-label file optional add-images-label" for="event_images">
+            <%= image_tag "add.png", class:"upload-icon" %>
+          </label>
+          <%= f.input :images, as: :file, label: false, input_html: { multiple: true, class: "images-input" } %>
+          <%= f.submit "Save", class: "add-images-save-btn"  %>
+        <% end %>
       </div>
-      <script>
-      var textbox = document.getElementById("textbox");
-      var imgBox = document.getElementById("imgBox");
-
-      textbox.onkeyup = textbox.onkeypress = function() {
-        document.getElementById("prevText").innerHTML =this.value;
-      }
-
-      var loadFile = function(event) {
-        imgBox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) + ")";
-      }
-      </script>
     </div>
   </div>
 </div>
+    <div class="circle-show-spotify-playlists">
+      <div class="spotify-playlists-header">
+        <h4>EVENT PLAYLISTS</h4>
+      </div>
+      <div class="playlists-grid">
+        <% @event.event_playlists.each do |playlist| %>
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <% end %>
+      </div>
+      <div class="spotify-playlists-footer">
+        <!-- Playlist Button trigger modal -->
+        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+          <p>Add a Playlist</p>
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content modal-content-circle-show">
+            <div class="modal-header">
+              <i class="fa-brands fa-spotify"></i>
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Playlist</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-content">
+              <%= simple_form_for [@event, @event_playlist] do |f| %>
+                <%= f.input :url, label: 'Enter the link to your playlist' %>
+                <%= f.submit "Add" %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 <div class="chatroom"
   data-controller="event-chatroom-subscription"
   data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
