@@ -12,8 +12,8 @@
   position: fixed;
   pointer-events: none;
   background: radial-gradient(
-    circle 15vmax at var(--cursorX) var(--cursorY),
-    rgba(233, 234, 240, 0.3) 0%,
+    circle 40vmax at var(--cursorX) var(--cursorY),
+    rgba(233, 234, 240, 0.1) 0%,
     rgba(233, 234, 240, 0) 80%,
     rgba(0,0,0,0) 100%
   )

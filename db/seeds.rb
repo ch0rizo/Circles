@@ -1,4 +1,6 @@
 puts "> Clearing the DB.."
+
+EventPlaylist.destroy_all
 CircleEvent.destroy_all
 
 UserEvent.destroy_all
@@ -49,6 +51,8 @@ puts "> Creating female users"
   female_user_avatar_file = URI.open(female_user_avatar_url)
   user.photo.attach(io: female_user_avatar_file, filename: 'user_avatar.png', content_type: 'image/png')
 end
+
+puts "> Creating some circles"
 
 # Family circle
 family_circle = Circle.create(

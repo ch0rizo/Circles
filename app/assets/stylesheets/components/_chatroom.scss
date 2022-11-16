@@ -30,8 +30,9 @@
     color: black;
     border-top: 1px solid $gray-200;
     padding: 1rem;
-    position: fixed;
     border-radius: 20px;
+    position: sticky;
+    top: 20%;
 
     .form-group {
       color: black;

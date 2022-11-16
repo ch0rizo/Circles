@@ -139,3 +139,17 @@
     </div>
   </div>
 </div>
+<div class="splitty">
+  <h2>Splitty</h2>
+  <% @event.user_events.each do |user_event| %>
+    <p><%= user_event.user.first_name %>: <%= user_event.balance %></p>
+  <% end %>
+
+    <h2>CREATE A NEW PAYMENT</h2>
+  <%= simple_form_for [@event, @payment] do |f| %>
+    <%= f.input :amount %>
+    <%= f.input :description %>
+    <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
+    <%= f.submit "pop it on the splitty" %>
+  <% end %>
+</div>

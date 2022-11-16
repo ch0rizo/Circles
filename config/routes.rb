@@ -20,10 +20,12 @@ Rails.application.routes.draw do
     resources :event_messages, only: %i[create]
     resources :circle_events, only: %i[create]
     resources :event_playlists, only: %i[new create destroy]
+    resources :payments, only: %i[new create]
   end
+
 
   get "profile", to: "users#profile"
 
   resources :dashboard, only: :show
-  
+
 end
