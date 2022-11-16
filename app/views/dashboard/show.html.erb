@@ -44,14 +44,39 @@
     </div>
   </div>
   <div class="dashboard-right-side">
-    <div class="dashboard-next-event">
-      <h2>Next Event</h2>
-    </div>
     <div class="dashboard-discorver-events">
-      <h2>Discover</h2>
+      <h4 style="margin: 0px">Discover</h4 style="margin: 0px">
+      <div class="dashboard-discover-carousel">
+        <p>asdoiadioasjdia</p>
+      </div>
+    </div>
+    <div class="dashboard-right-top">
+      <div class="dashboard-next-event">
+        <h4 style="margin-top: 10px">Next Event</h4>
+        <%= link_to event_path(@event) do %>
+          <div class="dashboard-next-event-info">
+            <h6><%= @event.title %></h6>
+            <p><%= @event.start_date.strftime("%a, %b %d") %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="dashboard-circles">
+        <h4 style="margin-top: 10px"><i class="fa-solid fa-map-pin"></i> Pinned</h4>
+        <div class="dashboard-circles-info">
+          <p><%= cl_image_tag @circles.first.photo.key %></p>
+          <p><%= @circles.first.name %></p>
+        </div>
+      </div>
     </div>
     <div class="dashboard-invitations">
-      <h2>Invitation</h2>
+      <h4 style="margin-top: 10px">Invitation</h4 style="margin: 0px">
+      <div class="dashboard-invitations-info">
+        <p><%= User.all.second.first_name %> invited you to <strong><%= link_to "#{Event.all.last.title}", event_path(Event.all.last)  %></strong></p>
+        <div class="dashboard-invitations-info-buttons d-flex">
+          <p>Accept|</p>
+          <p>Decline</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

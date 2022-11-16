@@ -143,5 +143,68 @@
 
 .dashboard-right-side {
   width: 30vw;
+}
+
+.dashboard-discorver-events {
+  p {
+    margin: 0px;
+  }
+}
+
+.dashboard-discover-carousel {
   background-color: #202124;
+  height: 50vh;
+}
+
+.dashboard-right-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dashboard-next-event {
+  width: 50%;
+}
+
+.dashboard-next-event-info {
+  height: 8vh;
+  border-radius: 5px;
+  background-color: #202124;
+  padding: 10px;
+
+  h6 {
+    margin: 0px;
+  }
+
+  p {
+    margin: 0px;
+  }
+}
+
+.dashboard-circles {
+  width: 50%;
+}
+
+.dashboard-circles-info {
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  border-radius: 5px;
+  background-color: #202124;
+  padding: 10px;
+
+  img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.dashboard-invitations-info {
+  border-radius: 5px;
+  background-color: #202124;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
