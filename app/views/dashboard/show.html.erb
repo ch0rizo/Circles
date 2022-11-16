@@ -4,19 +4,19 @@
 </div>
 <div class="container dashboard-main-container">
   <div class="dashboard-left-side">
+    <div class="dashboard-profile">
+      <%= cl_image_tag @user.photo.key %>
+      <div class="dashboard-profile-info">
+        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        <p>Joined in <%= @user.created_at.strftime("%a, %b %d") %><i class='fa-solid fa-pen'></i></p>
+      </div>
+    </div>
     <div class="dashboard-orbits">
       <div id="circle-orbit-container">
         <!-- Circles furthest away to the central point -->
         <div id="outer-orbit">
           <div class="outer-orbit-cirlces"></div>
         </div>
-      </div>
-    </div>
-    <div class="dashboard-profile">
-      <%= cl_image_tag @user.photo.key %>
-      <div class="dashboard-profile-info">
-        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-        <p>Joined in <%= @user.created_at.strftime("%a, %b %d") %><i class='fa-solid fa-pen'></i></p>
       </div>
     </div>
   </div>
@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="dashboard-invitations">
-      <h4 style="margin-top: 4px">Invitation</h4 style="margin: 0px">
+      <h4 style="margin-top: 12px; margin-bottom: 0px">Invitation</h4 style="margin: 0px">
       <div class="dashboard-invitations-section">
         <% 4.times do %>
           <div class="dashboard-invitations-info">
