@@ -1,6 +1,4 @@
 .chatroom {
-  margin-top: 160px;
-  margin-left: 90px;
   background: #14213d;
   height: 50vh;
   width: 30vw;
@@ -22,6 +20,10 @@
     height: 100%;
     overflow: scroll;
     padding: 1rem;
+  }
+
+  .messages::-webkit-scrollbar {
+    display: none;
   }
 
   #new_message {
