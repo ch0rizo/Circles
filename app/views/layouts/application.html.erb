@@ -18,5 +18,8 @@
     <div class="mouse-cursor-gradient-tracking">
       <%= yield %>
     </div>
+    <div>
+    <%= render "shared/footer" unless @skip_footer %>
+    </div>
   </body>
 </html>

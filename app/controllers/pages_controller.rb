@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   def home
     @events = Event.all
     @circles = Circle.all
+    @skip_footer = true
   end
 end
