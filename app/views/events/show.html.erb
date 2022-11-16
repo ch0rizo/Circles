@@ -53,7 +53,32 @@
     </div>
   </div>
   <div class="event-show-center">
-    Chat and playlist here
+    <div class="chatroom"
+      data-controller="event-chatroom-subscription"
+      data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
+      data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+      <h1><%= @event.title %> Chat  </h1> 
+
+      <div class="messages" data-event-chatroom-subscription-target="messages">
+        <% @event.event_messages.each do |event_message| %>
+          <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+            <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+              <%= render "event_messages/event_message", event_message: event_message %>
+            </div>
+          </div>
+        <% end %>
+        <%= simple_form_for [@event, @event_message],
+          html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+        %>
+          <%= f.input :content,
+            label: false,
+            placeholder: "Message ##{@event.title}",
+            wrapper_html: {class: "flex-grow-1"}
+          %>
+          <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="event-show-details-right-side">
     <div id="carouselPhotosControls" class="carousel slide" data-bs-ride="carousel">
@@ -113,32 +138,5 @@
         <% end %>
       </div>
     </div>
-  </div>
-</div>
-<div class="chatroom"
-  data-controller="event-chatroom-subscription"
-  data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
-  data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
->
-  <h1>#<%= @event.title %></h1>
-
-  <div class="messages" data-event-chatroom-subscription-target="messages">
-    <% @event.event_messages.each do |event_message| %>
-      <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-        <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-          <%= render "event_messages/event_message", event_message: event_message %>
-        </div>
-      </div>
-    <% end %>
-    <%= simple_form_for [@event, @event_message],
-      html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-    %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Message ##{@event.title}",
-        wrapper_html: {class: "flex-grow-1"}
-      %>
-      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-    <% end %>
   </div>
 </div>
