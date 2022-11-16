@@ -11,7 +11,12 @@ class EventsController < ApplicationController
     @event.user = current_user
     @event.private = params[:event][:private][1]
     if @event.save
-      redirect_to root_path, notice: "Event created!"
+      circle = @event.circle_events.first.circle
+      circle.users.each do |user|
+        user_event = UserEvent.new(event: @event, user: user)
+        user_event.save!
+      end
+      redirect_to event_path(@event), notice: "Event created!"
     else
       redirect_to root_path, notice: "Event not created, please try again"
     end
