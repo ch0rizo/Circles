@@ -12,11 +12,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body data-controller="cursorlight">
     <%# <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <%# <div class="mouse-cursor-gradient-tracking"> %>
-      <%= yield %>
-    <%# </div> %>
+    <%= yield %>
   </body>
 </html>
