@@ -6,6 +6,7 @@
 <% else %>
   <div class="circle-show-banner">
     <%= cl_image_tag "0x0_bfxmqe" %>
+    <%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %>
   </div>
 <% end %>
 <div class="circle-show-title">
@@ -71,7 +72,7 @@
     <div class="circle-show-members">
       <h4>MEMBERS</h4>
       <div class="circle-show-members-info">
-        <% @other_users.each do |user| %>
+        <% @circle.users.each do |user| %>
           <ul style="list-style: none">
             <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
           </ul>
