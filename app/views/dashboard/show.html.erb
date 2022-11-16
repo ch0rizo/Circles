@@ -7,15 +7,23 @@
     <div class="dashboard-profile">
       <%= cl_image_tag @user.photo.key %>
       <div class="dashboard-profile-info">
+        <div class="dashboard-profile-info-left-block">
         <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-        <p>Joined in <%= @user.created_at.strftime("%a, %b %d") %><i class='fa-solid fa-pen'></i></p>
+        <p>Joined in <%= @user.created_at.strftime("%a, %b %d") %></p>
+        </div>
+        <%= link_to edit_user_registration_path(current_user) do %>
+          <p><i class='fa-solid fa-pen'></i></p>
+        <% end %>
       </div>
     </div>
     <div class="dashboard-orbits">
       <div id="circle-orbit-container">
-        <!-- Circles furthest away to the central point -->
-        <div id="outer-orbit">
-          <div class="outer-orbit-cirlces"></div>
+        <div class="middle-orbit-cirlces-4"></div>
+        <!-- Circles second closest to the central point -->
+        <div id="middle-orbit">
+          <div class="middle-orbit-cirlces"><%= cl_image_tag "56_f5yewa" %><%= image_tag "MsgLrgLS.svg", class:"chatbox-svg" %><p class="chatbox-message">Hang?</p></div>
+          <div class="middle-orbit-cirlces-2"><%= cl_image_tag "38_rw7kqv" %><%= image_tag "MsgLrgLS.svg", class:"chatbox-svg" %><p class="chatbox-message">Yeah!</p></div>
+          <div class="middle-orbit-cirlces-3"><%= cl_image_tag "50_awwtoo" %><%= image_tag "MsgSmlLS.svg", class:"chatbox-svg" %><p class="chatbox-message-3">🙌</p></div>
         </div>
       </div>
     </div>
@@ -40,7 +48,7 @@
     </div>
     <h4 style="margin-top: 10px">Splitty</h4>
     <div class="dashboard-splitty">
-      <p>asdnasidnasdnaio</p>
+      <p>Menno we waiting for the splitty...</p>
     </div>
   </div>
   <div class="dashboard-right-side">
@@ -70,10 +78,12 @@
       </div>
       <div class="dashboard-circles">
         <h4 style="margin-top: 10px"><i class="fa-solid fa-map-pin"></i> Pinned</h4>
-        <div class="dashboard-circles-info">
-          <p><%= cl_image_tag @circles.first.photo.key %></p>
-          <p><%= @circles.first.name %></p>
-        </div>
+        <%= link_to circle_path(@circle) do %>
+          <div class="dashboard-circles-info">
+            <p><%= cl_image_tag @circles.first.photo.key %></p>
+            <p><%= @circles.first.name %></p>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="dashboard-invitations">

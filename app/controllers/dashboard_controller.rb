@@ -5,5 +5,6 @@ class DashboardController < ApplicationController
     @events = Event.where(user_id: @user)
     @event = @events[0]
     @circles = @user.circles
+    @circle = @circles[0]
   end
 end
