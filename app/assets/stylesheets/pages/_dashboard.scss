@@ -1,5 +1,15 @@
 .dashboard-header {
   background-color: #202124;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  .fa-arrow-left {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+  }
 }
 
 .dashboard.show {
@@ -20,16 +30,18 @@
   justify-content: center;
   align-items: center;
   padding: 15px;
-  height: 65vh;
-  background-color: #202124;
+  height: 67vh;
   border-radius: 5px;
+  border-style: solid;
+  border-color: #202124;
+  background-color: #18191c;
 }
 
 // profile
 
 .dashboard-profile {
   padding: 15px;
-  margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 5px;
   display: flex;
   background-color: #202124;
@@ -38,41 +50,110 @@
     height: 60px;
     width: 60px;
     border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  p {
+    margin: 0px;
+  }
+
+  h2 {
+    margin: 0px;
+  }
+}
+
+.dashboard-profile-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.middle-orbit-cirlces-4 {
+  position: absolute;
+  top: 130px;
+  left: 130px;
+  border-style: solid;
+  border-radius: 50%;
+
+  img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
   }
 }
 
 .dashboard-left-side {
   width: 30vw;
 
+  /* ---------- Container for the orbiting circles animation ---------- */
   #circle-orbit-container {
     position: relative;
-    top: 25px;
-    left: 25px;
+    top: 0px;
+    left: 0px;
     height: 300px;
     width: 300px;
   }
-  /* ---------- Outer orbit - This is the circles furthest away from the central point ---------- */
-  #outer-orbit {
+
+  /* ---------- Middle orbit - This is the circles second closest to the central point ---------- */
+  #middle-orbit {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 294px;
-    height: 294px;
+    top: 35px;
+    left: 35px;
+    width: 225px;
+    height: 225px;
     border: 2px #4a437f dashed;
     border-radius: 100%;
-    -webkit-animation: spin-right 20s linear infinite;
-    animation: spin-right 20s linear infinite;
+    -webkit-animation: spin-right 15s linear infinite;
+    animation: spin-right 15s linear infinite;
   }
 
-  /* ---------- Repeating styles for the outer orbiting circles ---------- */
-  .outer-orbit-cirlces {
+  /* ---------- Repeating styles for the inner orbiting circles ---------- */
+  .middle-orbit-cirlces {
     position: absolute;
-    top: -17px;
-    left: 125px;
-    height: 30px;
-    width: 30px;
+    top: -20px;
+    left: 60px;
+    height: 50px;
+    width: 50px;
     border-radius: 100%;
-    background-color: #00ffca;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    -webkit-animation: spin-left 15s linear infinite;
+    animation: spin-left 15s linear infinite;
+  }
+
+  .middle-orbit-cirlces-2 {
+    position: absolute;
+    top: 100px;
+    left: 190px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    -webkit-animation: spin-left 15s linear infinite;
+    animation: spin-left 15s linear infinite;
+  }
+
+  .middle-orbit-cirlces-3 {
+    position: absolute;
+    top: 175px;
+    left: 25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    -webkit-animation: spin-left 15s linear infinite;
+    animation: spin-left 15s linear infinite;
   }
 
   /* ---------- Animation ---------- */
@@ -83,6 +164,16 @@
       -ms-transform: rotate(360deg);
       -o-transform: rotate(360deg);
       transform: rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes spin-left {
+    100% {
+      -webkit-transform: rotate(-360deg);
+      -moz-transform: rotate(-360deg);
+      -ms-transform: rotate(-360deg);
+      -o-transform: rotate(-360deg);
+      transform: rotate(-360deg);
     }
   }
 }
@@ -242,4 +333,23 @@
       border-radius: 5px;
     }
   }
+}
+
+.chatbox-svg {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+.chatbox-message {
+  position: absolute;
+  top: 26px;
+  left: 39px;
+  font-size: 13px;
+}
+
+.chatbox-message-3 {
+  position: absolute;
+  top: 25px;
+  left: 48px;
 }
