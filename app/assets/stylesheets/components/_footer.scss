@@ -1,12 +1,14 @@
 .footer {
   background: #202124;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 150px;
   padding: 0px 50px;
   color: #F4F4F4;
   margin-top: 20px;
+  padding-top: 15px;
 }
 
 .footer-logo {
