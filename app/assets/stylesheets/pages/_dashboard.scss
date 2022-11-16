@@ -146,6 +146,8 @@
 }
 
 .dashboard-discorver-events {
+  border-radius: 5px;
+
   p {
     margin: 0px;
   }
@@ -154,6 +156,7 @@
 .dashboard-discover-carousel {
   background-color: #202124;
   height: 50vh;
+  border-radius: 5px;
 }
 
 .dashboard-right-top {
@@ -207,4 +210,36 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  margin-top: 5px;
+}
+
+.dashboard-invitations-section {
+  height: 27vh;
+  overflow: scroll;
+}
+
+.dashboard-discover-carousel {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.splide-content {
+  height: 100%;
+  border-radius: 5px;
+
+  .splide__list {
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .splide__slide {
+    object-fit: cover;
+    border-radius: 5px;
+
+    img {
+      height: 100%;
+      width: auto;
+      border-radius: 5px;
+    }
+  }
 }
