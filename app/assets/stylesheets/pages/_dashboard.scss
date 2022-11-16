@@ -1,0 +1,245 @@
+.dashboard-header {
+  background-color: #202124;
+}
+
+.dashboard.show {
+  background-color: #18191c;
+}
+
+.dashboard-main-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+// left-side
+
+.dashboard-orbits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  height: 65vh;
+  background-color: #202124;
+  border-radius: 5px;
+}
+
+// profile
+
+.dashboard-profile {
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex;
+  background-color: #202124;
+
+  img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+  }
+}
+
+.dashboard-left-side {
+  width: 30vw;
+
+  #circle-orbit-container {
+    position: relative;
+    top: 25px;
+    left: 25px;
+    height: 300px;
+    width: 300px;
+  }
+  /* ---------- Outer orbit - This is the circles furthest away from the central point ---------- */
+  #outer-orbit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 294px;
+    height: 294px;
+    border: 2px #4a437f dashed;
+    border-radius: 100%;
+    -webkit-animation: spin-right 20s linear infinite;
+    animation: spin-right 20s linear infinite;
+  }
+
+  /* ---------- Repeating styles for the outer orbiting circles ---------- */
+  .outer-orbit-cirlces {
+    position: absolute;
+    top: -17px;
+    left: 125px;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: #00ffca;
+  }
+
+  /* ---------- Animation ---------- */
+  @-webkit-keyframes spin-right {
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// middle
+
+.dashboard-middle {
+  width: 30vw;
+}
+
+.dashboard-achivements {
+  display: flex;
+  gap: 5px;
+}
+
+.achivements-info-card {
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202124;
+  border-radius: 5px;
+  padding: 10px;
+
+  .fa-beer-mug-empty {
+    font-size: 30px;
+    padding-right: 10px;
+    color: #edc531;
+  }
+
+  .fa-crown {
+    font-size: 30px;
+    padding-right: 10px;
+    color: #edc531;
+  }
+}
+
+.achivements-info-text {
+  h6 {
+    margin: 0px;
+  }
+
+  p {
+    margin: 0px;
+  }
+}
+
+.dashboard-splitty {
+  background-color: #202124;
+  border-radius: 5px;
+  padding: 10px;
+  height: 63vh;
+
+  .dashboard-splitty-total {
+    align-items: flex-end;
+  }
+}
+
+.dashboard-right-side {
+  width: 30vw;
+}
+
+.dashboard-discorver-events {
+  border-radius: 5px;
+
+  p {
+    margin: 0px;
+  }
+}
+
+.dashboard-discover-carousel {
+  background-color: #202124;
+  height: 50vh;
+  border-radius: 5px;
+}
+
+.dashboard-right-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dashboard-next-event {
+  width: 50%;
+}
+
+.dashboard-next-event-info {
+  height: 8vh;
+  border-radius: 5px;
+  background-color: #202124;
+  padding: 10px;
+
+  h6 {
+    margin: 0px;
+  }
+
+  p {
+    margin: 0px;
+  }
+}
+
+.dashboard-circles {
+  width: 50%;
+}
+
+.dashboard-circles-info {
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  border-radius: 5px;
+  background-color: #202124;
+  padding: 10px;
+
+  img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.dashboard-invitations-info {
+  border-radius: 5px;
+  background-color: #202124;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.dashboard-invitations-section {
+  height: 27vh;
+  overflow: scroll;
+}
+
+.dashboard-discover-carousel {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.splide-content {
+  height: 100%;
+  border-radius: 5px;
+
+  .splide__list {
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .splide__slide {
+    object-fit: cover;
+    border-radius: 5px;
+
+    img {
+      height: 100%;
+      width: auto;
+      border-radius: 5px;
+    }
+  }
+}

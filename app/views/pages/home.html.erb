@@ -6,7 +6,7 @@
     <div class="orbit-container">
       <% if user_signed_in? %>
         <div class="profile-container">
-          <%= link_to profile_path(current_user) do %>
+          <%= link_to dashboard_path(current_user) do %>
             <% if current_user.photo.key? %>
               <%= cl_image_tag current_user.photo.key, class: "circle-avatar"%>
             <% else %>

@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   end
 
   get "profile", to: "users#profile"
+
+  resources :dashboard, only: :show
+  
 end
