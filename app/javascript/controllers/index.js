@@ -7,6 +7,9 @@ import { application } from "./application"
 import CircleChatroomSubscriptionController from "./circle_chatroom_subscription_controller"
 application.register("circle-chatroom-subscription", CircleChatroomSubscriptionController)
 
+import CursorlightController from "./cursorlight_controller"
+application.register("cursorlight", CursorlightController)
+
 import EventChatroomSubscriptionController from "./event_chatroom_subscription_controller"
 application.register("event-chatroom-subscription", EventChatroomSubscriptionController)
 
