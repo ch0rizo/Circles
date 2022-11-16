@@ -28,6 +28,7 @@ class EventsController < ApplicationController
     @event_message = EventMessage.new
     @circles = @event.circles
     @circle_event = CircleEvent.new
+    @event_playlist = EventPlaylist.new
     @marker = Event.where(id: params[:id]).geocoded.map do |event|
       {
         lat: event.latitude,
