@@ -18,4 +18,5 @@ class Event < ApplicationRecord
   has_many_attached :photos
   has_many_attached :images
   has_many :event_playlists
+  has_many :payments, through: :user_events
 end
