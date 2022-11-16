@@ -3,40 +3,55 @@
   <p><strong>Be proud of what you've done today!</strong></p>
 </div>
 <div class="container dashboard-main-container">
-  <div class="dashboard-orbits">
-    <%= cl_image_tag @user.photo.key %>
-    <div id="circle-orbit-container">
-
-      <!-- Circles closest to the central point -->
-      <div id="inner-orbit">
-        <div class="inner-orbit-cirlces"></div>
+  <div class="dashboard-left-side">
+    <div class="dashboard-orbits">
+      <div id="circle-orbit-container">
+        <!-- Circles furthest away to the central point -->
+        <div id="outer-orbit">
+          <div class="outer-orbit-cirlces"></div>
+        </div>
       </div>
-
-      <!-- Circles second closest to the central point -->
-      <div id="middle-orbit">
-        <div class="middle-orbit-cirlces"></div>
+    </div>
+    <div class="dashboard-profile">
+      <%= cl_image_tag @user.photo.key %>
+      <div class="dashboard-profile-info">
+        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        <p>Joined in <%= @user.created_at.strftime("%a, %b %d") %><i class='fa-solid fa-pen'></i></p>
       </div>
-
-      <!-- Circles furthest away to the central point -->
-      <div id="outer-orbit">
-        <div class="outer-orbit-cirlces"></div>
-      </div>
-
     </div>
   </div>
-  <div class="dashboard-side-cotainer">
-    <div class="dashboard-splitty">
-      <h2>Splitty</h2>
-    </div>
-    <div class="dashboard-next-event">
-      <h3>Next Event:</h3>
-      <%= @events[0].title %>
-    </div>
+  <div class="dashboard-middle">
+    <h4 style="margin: 0px">Achivements (2)</h4>
     <div class="dashboard-achivements">
-      <h3>Achivements:</h3>
+      <div class="achivements-info-card">
+        <p><i class="fa-solid fa-beer-mug-empty"></i></p>
+        <div class="achivements-info-text">
+          <h6>Keg Meister!</h6>
+          <p>Downed 15 beers!</p>
+        </div>
+      </div>
+      <div class="achivements-info-card">
+        <p><i class="fa-solid fa-crown"></i></p>
+        <div class="achivements-info-text">
+          <h6>Party KING!</h6>
+          <p>4 all-nighters!</p>
+        </div>
+      </div>
     </div>
-
+    <h4 style="margin-top: 10px">Splitty</h4>
+    <div class="dashboard-splitty">
+      <p>asdnasidnasdnaio</p>
+    </div>
   </div>
-
-
+  <div class="dashboard-right-side">
+    <div class="dashboard-next-event">
+      <h2>Next Event</h2>
+    </div>
+    <div class="dashboard-discorver-events">
+      <h2>Discover</h2>
+    </div>
+    <div class="dashboard-invitations">
+      <h2>Invitation</h2>
+    </div>
+  </div>
 </div>
