@@ -33,3 +33,6 @@ application.register("search-users", SearchUsersController)
 
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)
+
+import TitleController from "./title_controller"
+application.register("title", TitleController)
