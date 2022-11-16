@@ -1,7 +1,7 @@
 <div class="event-show-banner">
   <div class="event-show-logo-container">
     <%= link_to root_path do %>
-      <img width="190" class="white-color" src="/assets/Logo/Circles_Logo-e6615bb1c72dbb5ff38d80795d3a366b32aba638c3026b02a41fd11ae81491a0.svg">
+      <img width="140" class="white-color" src="/assets/Logo/Circles_Logo-e6615bb1c72dbb5ff38d80795d3a366b32aba638c3026b02a41fd11ae81491a0.svg">
     <% end %>
   </div>
 </div>
@@ -37,9 +37,9 @@
 </div>
 <div class="event-show-main-container">
   <div class="event-show-top-container">
-    <div class="event-show-details-container">
+    <div class="event-show-details-container-1">
       <div class="event-show-details">
-        <h3>Hosted By</h3>
+        <h4>HOSTED BY</h4>
         <%= link_to profile_path(@event.user) do %>
           <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
         <% end %>
@@ -62,8 +62,12 @@
             <%= f.submit "Add Circle" %>
           <% end %>
         </div>
+      </div>
+    </div>
+    <div class="event-show-details-container-2">
+      <div class="event-show-details">
         <div class="event-show-details-info">
-          <h4>Details</h4>
+          <h4>DETAILS</h4>
           <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
           <% if @event.private? %>
             <p><i class="fa-solid fa-circle"></i> Private Event</p>
@@ -83,30 +87,33 @@
       </div>
     </div>
     <div class="event-show-chat-container">
-      <div class="chatroom"
-        data-controller="event-chatroom-subscription"
-        data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
-        data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
-        <h1><%= @event.title %> Chat  </h1>
+      <div class="chatroom-content">
+        <div class="chatroom"
+          data-controller="event-chatroom-subscription"
+          data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
+          data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
-        <div class="messages" data-event-chatroom-subscription-target="messages">
-          <% @event.event_messages.each do |event_message| %>
-            <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-              <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-                <%= render "event_messages/event_message", event_message: event_message %>
+          <h4><%= @event.title.upcase %> CHAT  </h4>
+
+          <div class="messages" data-event-chatroom-subscription-target="messages">
+            <% @event.event_messages.each do |event_message| %>
+              <div class="message-row d-flex <%= event_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+                <div class="<%= event_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                  <%= render "event_messages/event_message", event_message: event_message %>
+                </div>
               </div>
-            </div>
-          <% end %>
-          <%= simple_form_for [@event, @event_message],
-            html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-          %>
-            <%= f.input :content,
-              label: false,
-              placeholder: "Message ##{@event.title}",
-              wrapper_html: {class: "flex-grow-1"}
+            <% end %>
+            <%= simple_form_for [@event, @event_message],
+              html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
             %>
-            <%= f.submit "Send", class: "btn btn-primary" %>
-          <% end %>
+              <%= f.input :content,
+                label: false,
+                placeholder: "Message ##{@event.title}",
+                wrapper_html: {class: "flex-grow-1"}
+              %>
+              <%= f.submit "Send", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
