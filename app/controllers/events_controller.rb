@@ -29,6 +29,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @event_user = current_user
+    @payment = Payment.new
     @event_message = EventMessage.new
     @circles = @event.circles
     @circle_event = CircleEvent.new
