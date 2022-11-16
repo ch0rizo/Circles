@@ -96,7 +96,7 @@
   border: 1px solid orangered;
 
   h4 {
-    padding-bottom: 20px;
+    // padding-bottom: 10px;
     text-align: begin;
   }
 
@@ -115,7 +115,12 @@
   }
 }
 
-.circle-show-members::-webkit-scrollbar {
+.circle-show-members-info {
+  height: 65%;
+  overflow: scroll;
+}
+
+.circle-show-members-info::-webkit-scrollbar {
   display: none;
 }
 
@@ -200,15 +205,6 @@
       object-fit: cover;
     }
   }
-}
-
-.circle-show-members-info {
-  height: 40vh;
-  overflow: scroll;
-}
-
-.circle-show-members-info::-webkit-scrollbar {
-  display: none;
 }
 
 .modal-content-circle-show {

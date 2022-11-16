@@ -51,7 +51,7 @@
     <div class="event-show-details-container-1">
       <div class="event-show-details">
         <h4>HOSTED BY</h4>
-        <%= link_to profile_path(@event.user) do %>
+        <%= link_to dashboard_path(@event.user) do %>
           <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
         <% end %>
         <h4>Attending</h4>
