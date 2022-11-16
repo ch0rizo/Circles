@@ -1,0 +1,94 @@
+<div class="dashboard-header">
+  <h5>Good Afternoon, <%= @user.first_name %></h4>
+  <p><strong>Be proud of what you've done today!</strong></p>
+</div>
+<div class="container dashboard-main-container">
+  <div class="dashboard-left-side">
+    <div class="dashboard-orbits">
+      <div id="circle-orbit-container">
+        <!-- Circles furthest away to the central point -->
+        <div id="outer-orbit">
+          <div class="outer-orbit-cirlces"></div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-profile">
+      <%= cl_image_tag @user.photo.key %>
+      <div class="dashboard-profile-info">
+        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        <p>Joined in <%= @user.created_at.strftime("%a, %b %d") %><i class='fa-solid fa-pen'></i></p>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-middle">
+    <h4 style="margin: 0px">Achivements (2)</h4>
+    <div class="dashboard-achivements">
+      <div class="achivements-info-card">
+        <p><i class="fa-solid fa-beer-mug-empty"></i></p>
+        <div class="achivements-info-text">
+          <h6>Keg Meister!</h6>
+          <p>Downed 15 beers!</p>
+        </div>
+      </div>
+      <div class="achivements-info-card">
+        <p><i class="fa-solid fa-crown"></i></p>
+        <div class="achivements-info-text">
+          <h6>Party KING!</h6>
+          <p>4 all-nighters!</p>
+        </div>
+      </div>
+    </div>
+    <h4 style="margin-top: 10px">Splitty</h4>
+    <div class="dashboard-splitty">
+      <p>asdnasidnasdnaio</p>
+    </div>
+  </div>
+  <div class="dashboard-right-side">
+    <div class="dashboard-discorver-events">
+      <h4 style="margin: 0px">Discover</h4 style="margin: 0px">
+      <div class="dashboard-discover-carousel">
+        <section class="splide splide-content" aria-label="Splide Basic HTML Example" data-controller="slider">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <% @all_events.each do |event| %>
+                <li class="splide__slide"><%= cl_image_tag event.photos[0].key %></li>
+              <% end %>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="dashboard-right-top">
+      <div class="dashboard-next-event">
+        <h4 style="margin-top: 10px">Next Event</h4>
+        <%= link_to event_path(@event) do %>
+          <div class="dashboard-next-event-info">
+            <h6><%= @event.title %></h6>
+            <p><%= @event.start_date.strftime("%a, %b %d") %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="dashboard-circles">
+        <h4 style="margin-top: 10px"><i class="fa-solid fa-map-pin"></i> Pinned</h4>
+        <div class="dashboard-circles-info">
+          <p><%= cl_image_tag @circles.first.photo.key %></p>
+          <p><%= @circles.first.name %></p>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-invitations">
+      <h4 style="margin-top: 4px">Invitation</h4 style="margin: 0px">
+      <div class="dashboard-invitations-section">
+        <% 4.times do %>
+          <div class="dashboard-invitations-info">
+            <p><%= User.all.sample.first_name %> invited you to <strong><%= link_to "#{Event.all.sample.title}", event_path(Event.all.last)  %></strong></p>
+            <div class="dashboard-invitations-info-buttons d-flex">
+              <p>Accept|</p>
+              <p>Decline</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
