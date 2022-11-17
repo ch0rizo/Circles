@@ -1,3 +1,8 @@
+<div class="dashboard-header" data-controller="newevent">
+  <%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %>
+  <div class="newevent-text"></div>
+    <%= image_tag "Logo/Circles_Logo.svg", width: "190", class:"white-color" %>
+</div>
 <div class="container-form">
   <h2>CREATE A NEW EVENT</h2>
   <%= simple_form_for @event do |f| %>
