@@ -69,36 +69,70 @@
 
   <div class="circle-show-main-top">
 
-    <div class="circle-show-members">
-      <h4>MEMBERS</h4>
+    <div class="circle-show-members-container">
+      <div class="circle-show-members-header">
+        <h4>MEMBERS</h4>
+      </div>
       <div class="circle-show-members-info">
-        <% @circle.users.each do |user| %>
-          <ul style="list-style: none">
-            <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
-          </ul>
-        <% end %>
+      <div>
+      </div>
+        <ul style="list-style: none">
+          <% @circle.users.each do |user| %>
+          <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
 
-    <div class="circle-show-upcoming-events">
-      <h4>UPCOMING EVENTS</h4>
+    <div class="circle-show-upcoming-events-container">
+      <div class="circle-show-upcoming-events-header">
+        <h4>UPCOMING EVENTS</h4>
+      </div>
       <div class="circle-show-upcoming-events-cards">
         <% if @circle.events.length != 0 %>
           <% @circle.events.each do |event| %>
             <% if event.start_date.future? %>
-              <ul style="list-style: none">
+              <%= link_to event_path(event) do %>
                 <% if event.photos.attached? %>
-                  <div class="circle-show-event-card">
-                    <li><%= event.title %><%= cl_image_tag event.photos.first.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
+                  <div class="event-card">
+                    <div class="title-container">
+                      <p><%= event.title.upcase %></p>
+                    </div>
+                    <div class="image-icon-container" style="background-image: linear-gradient(to bottom, black, black 5%, transparent, transparent 95%), url(<%=cl_image_path event.photos.first.key %>);">
+                      <div class="icons">
+                        <div class="attending">
+                          <i class="fa-solid fa-user-group"></i>
+                          <p><%= event.users.count %></p>
+                        </div>
+                        <% if event.private  %>
+                          <i class="fa-solid fa-circle"> </i>
+                        <% else %>
+                          <i class="fa-regular fa-circle"></i>
+                        <% end %>
+                        <p><%= event.start_date.strftime("%m/%d") %></p>
+                      </div>
+                    </div>
                   </div>
                 <% else %>
-                  <li><%= event.title %></li>
+                    <div class="event-card">
+                      <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)), url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
+                        <div class="icons">
+                            <i class="fa-solid fa-user-group"></i>
+                          <% if event.private  %>
+                            <i class="fa-solid fa-circle"> </i>
+                          <% else %>
+                            <i class="fa-regular fa-circle"></i>
+                          <% end %>
+                          <p><%= event.start_date.strftime("%m/%d") %></p>
+                        </div>
+                      </div>
+                    </div>
                 <% end %>
-              </ul>
+              <% end %>
+            <% else %>
+            <p>You have no upcoming events...</p>
             <% end %>
           <% end %>
-        <% else %>
-          <p>You have no upcoming events...</p>
         <% end %>
       </div>
     </div>
@@ -106,17 +140,15 @@
     <div class="circle-show-spotify-playlists">
       <div class="spotify-playlists-header">
         <h4>CIRCLE PLAYLISTS</h4>
+        <!-- Playlist Button trigger modal -->
+        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+          <h4>+</h4>
+        </button>
       </div>
       <div class="playlists-grid">
         <% @circle.circle_playlists.each do |playlist| %>
           <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <% end %>
-      </div>
-      <div class="spotify-playlists-footer">
-        <!-- Playlist Button trigger modal -->
-        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
-          <p>Add a Playlist</p>
-        </button>
       </div>
 
       <!-- Modal -->
