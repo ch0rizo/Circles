@@ -36,3 +36,6 @@ application.register("slider", SliderController)
 
 import TitleController from "./title_controller"
 application.register("title", TitleController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)
