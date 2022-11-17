@@ -89,7 +89,9 @@
               <ul style="list-style: none">
                 <% if event.photos.attached? %>
                   <div class="circle-show-event-card">
-                    <li><%= event.title %><%= cl_image_tag event.photos.first.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
+                    <%= link_to event_path(event) do %>
+                      <li><%= event.title %><%= cl_image_tag event.photos.first.key %><p><%= event.start_date.strftime("%a, %b %d") %></p></li>
+                    <% end %>
                   </div>
                 <% else %>
                   <li><%= event.title %></li>
