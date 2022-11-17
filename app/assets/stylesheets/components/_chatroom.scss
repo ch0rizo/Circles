@@ -58,7 +58,8 @@ textarea.form-control {
 
 .event-left-side-chatroom {
   .chatroom {
-    margin-left: 15%;
+    margin-right: 15%;
+    width: 40vw;
     .messages {
       height: 90%;
     }
@@ -66,7 +67,7 @@ textarea.form-control {
       margin-top: 0;
       position: relative;
       top: 25px;
-      height: 55px;
+      height: 38px;
     }
   }
 }
