@@ -351,20 +351,22 @@
   left: 30px;
 }
 
-.chatbox-message {
-  position: absolute;
-  top: 36px;
-  left: 39px;
-  font-size: 13px;
+.middle-orbit {
+  .chatbox-message {
+    position: absolute;
+    top: 36px;
+    left: 39px;
+    font-size: 13px;
+  }
+
+  .chatbox-message-3 {
+    position: absolute;
+    top: 33px;
+    left: 48px;
+  }
 }
 
-.chatbox-message-3 {
-  position: absolute;
-  top: 34px;
-  left: 48px;
-}
-
-.text {
+.dashboard-text {
   font-weight: 100;
   font-size: 28px;
 }
