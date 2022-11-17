@@ -55,7 +55,7 @@
     </div>
     <div class="event-left-side-bottom">
       <div class="event-right-side-images">
-        <h4>PICTURES</h4>
+        <h5>PICTURES</h5>
         <div class="event-right-side-images-info">
           <p>Share pictures:</p>
         </div>
@@ -116,7 +116,7 @@
               <%= f.input :amount %>
               <%= f.input :description %>
               <%= f.association :user_event, label: "Payer", collection: @event.user_events, label_method: :user_name %>
-              <%= f.association :user_events, as: :check_boxes, label: "Who's splittin' this?", label_method: :user_name %>
+              <%= f.association :user_events, as: :check_boxes, collection: @event.user_events, label: "Who's splittin' this?", label_method: :user_name %>
               <%= f.submit "pop it on the splitty" %>
             <% end %>
           </div>
@@ -198,10 +198,10 @@
     </div>
     <div class="event-right-side-music">
       <div class="spotify-playlists-header">
-        <h4>EVENT PLAYLISTS</h4>
+        <h5>EVENT PLAYLISTS</h5>
         <!-- Playlist Button trigger modal -->
         <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
-          <h4>+</h4>
+          <h5>+</h5>
         </button>
       </div>
       <div class="playlists-grid">
