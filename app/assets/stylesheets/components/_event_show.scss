@@ -166,7 +166,7 @@
   background-color: #202124;
   padding: 15px;
   border-radius: 5px;
-  height: 33vh;
+  height: 40vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -184,7 +184,7 @@
   overflow-y: scroll;
   height: 18vh;
   padding-top: 10px;
-  border-top: 1px solid white;
+  // border-top: 1px solid white;
 }
 
 .event-right-side-invite-body-circles::-webkit-scrollbar {
@@ -368,4 +368,20 @@
   justify-content: space-between;
   border-top: 1px solid white;
   padding-top: 10px;
+}
+
+.event-right-side-invite {
+  .circle-grid {
+    // border-top: 1px solid white;
+    margin-bottom: 2%;
+  }
+
+  h4 {
+    border-bottom: 1px solid white;
+  }
+  .circle-avatar {
+    width: 55px !important;
+    height: 55px !important;
+
+  }
 }
