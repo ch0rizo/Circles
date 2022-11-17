@@ -2,50 +2,46 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from './application';
+import { application } from "./application"
 
-import CircleChatroomSubscriptionController from './circle_chatroom_subscription_controller';
-application.register(
-  'circle-chatroom-subscription',
-  CircleChatroomSubscriptionController
-);
+import AttendController from "./attend_controller"
+application.register("attend", AttendController)
 
-import CursorlightController from './cursorlight_controller';
-application.register('cursorlight', CursorlightController);
+import CircleChatroomSubscriptionController from "./circle_chatroom_subscription_controller"
+application.register("circle-chatroom-subscription", CircleChatroomSubscriptionController)
 
-import EventChatroomSubscriptionController from './event_chatroom_subscription_controller';
-application.register(
-  'event-chatroom-subscription',
-  EventChatroomSubscriptionController
-);
+import CursorlightController from "./cursorlight_controller"
+application.register("cursorlight", CursorlightController)
 
-import FlatpickerController from './flatpicker_controller';
-application.register('flatpicker', FlatpickerController);
+import EventChatroomSubscriptionController from "./event_chatroom_subscription_controller"
+application.register("event-chatroom-subscription", EventChatroomSubscriptionController)
 
-import FriendController from './friend_controller';
-application.register('friend', FriendController);
+import FlatpickerController from "./flatpicker_controller"
+application.register("flatpicker", FlatpickerController)
 
-import GradientController from './gradient_controller';
-application.register('gradient', GradientController);
+import FriendController from "./friend_controller"
+application.register("friend", FriendController)
 
-import HelloController from './hello_controller';
-application.register('hello', HelloController);
+import GradientController from "./gradient_controller"
+application.register("gradient", GradientController)
 
-import MapController from './map_controller';
-application.register('map', MapController);
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
-import SearchUsersController from './search_users_controller';
-application.register('search-users', SearchUsersController);
+import MapController from "./map_controller"
+application.register("map", MapController)
 
-import SliderController from './slider_controller';
-application.register('slider', SliderController);
+import NeweventController from "./newevent_controller"
+application.register("newevent", NeweventController)
 
-import TitleController from './title_controller';
-application.register('title', TitleController);
+import SearchUsersController from "./search_users_controller"
+application.register("search-users", SearchUsersController)
 
-import NeweventController from './newevent_controller.js';
-application.register('newevent', NeweventController);
+import SliderController from "./slider_controller"
+application.register("slider", SliderController)
 
-import TomSelectController from './tom_select_controller';
-application.register('tom-select', TomSelectController);
+import TitleController from "./title_controller"
+application.register("title", TitleController)
 
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)

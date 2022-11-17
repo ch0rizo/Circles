@@ -22,7 +22,6 @@
   }
 }
 
-
 .dashboard.show {
   background-color: #18191c;
 }
@@ -37,13 +36,43 @@
 
 // left-side
 
-.dashboard-orbits {
+.dashboard-orbit-header {
+  position: relative;
+  margin-top: 20px;
+  background-color: #18191c;
+  border-style: solid;
+  border-color: #202124;
+  padding-left: 15px;
+  padding-top: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  h5 {
+    position: absolute;
+    top: -3px;
+    left: -5px;
+  }
+
+  h4 {
+    margin-left: 10px;
+  }
+  .fa-circle {
+    position: absolute;
+    top: -1vh;
+    left: -1vw;
+    font-size: 30px;
+    color: #d90429;
+  }
+}
+
+.dashboard-orbits-body {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  height: 67vh;
-  border-radius: 5px;
+  height: 60vh;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   border-style: solid;
   border-color: #202124;
   background-color: #18191c;
@@ -54,7 +83,7 @@
 
 .dashboard-profile {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 5px;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -84,14 +113,14 @@
 
 .middle-orbit-cirlces-4 {
   position: absolute;
-  top: 130px;
-  left: 130px;
+  top: 120px;
+  left: 120px;
   border-style: solid;
   border-radius: 50%;
 
   img {
-    height: 30px;
-    width: 30px;
+    height: 55px;
+    width: 55px;
     border-radius: 50%;
   }
 }
