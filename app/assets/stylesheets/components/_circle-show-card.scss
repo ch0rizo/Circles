@@ -67,7 +67,7 @@
 
 .circle-show-main-container {
   border: solid 1px yellow;
-  padding-top: 10%;
+  padding-top: 120px;
   padding-bottom: 10%;
   width: 95vw;
   margin: 0 auto;
@@ -92,8 +92,15 @@
   justify-content: space-between;
 }
 
-.circle-show-members {
-  border: 1px solid orangered;
+.circle-show-members-container {
+  // border: 1px solid orangered;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #202124;
+  border-radius: 5px;
+  padding-top: 10px;
 
   h4 {
     // padding-bottom: 10px;
@@ -105,6 +112,8 @@
     padding: 0;
     li {
       text-decoration: none;
+      margin-top: 15px;
+      margin-bottom: 15px;
       img {
         margin-right: 2px;
         width: 40px;
@@ -115,9 +124,16 @@
   }
 }
 
+.circle-show-members-header {
+  width: 90%;
+  margin-top: 5px;
+}
+
 .circle-show-members-info {
-  height: 65%;
+  max-height: 90%;
+  width: 90%;
   overflow: scroll;
+  border-top: 1px solid white;
 }
 
 .circle-show-members-info::-webkit-scrollbar {
@@ -141,17 +157,40 @@
   }
 }
 
-.circle-show-upcoming-events {
-  border: 1px blueviolet solid;
-  width: 46vw;
-  overflow-x: scroll;
+.circle-show-upcoming-events-container {
+  // border: 1px blueviolet solid;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #202124;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   ul {
     margin-top: 30px;
   }
 }
 
-.circle-show-upcoming-events::-webkit-scrollbar {
+.circle-show-upcoming-events-container::-webkit-scrollbar {
+  display: none;
+}
+
+.circle-show-upcoming-events-header {
+  margin-top: 5px;
+  width: 95%;
+}
+
+.circle-show-upcoming-events-cards {
+  width: 95%;
+  overflow-x: scroll;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.circle-show-upcoming-events-cards::-webkit-scrollbar {
   display: none;
 }
 
@@ -176,17 +215,6 @@
     height: 280px;
     object-fit: cover;
     border-radius: 5px;
-  }
-}
-
-.circle-show-upcoming-events-cards {
-  display: grid;
-  gap: 20px 40px;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  ul {
-    margin: 0px;
-    padding-top: 25px;
   }
 }
 
@@ -225,13 +253,17 @@
 }
 
 .circle-show-spotify-playlists {
-  border: 1px solid green;
+  // border: 1px solid green;
   display: flex;
   flex-direction: column;
   width: 30%;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
   align-items: center;
+  background-color: #202124;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
 }
 
 .spotify-playlists-header {
@@ -239,23 +271,27 @@
   flex-direction: row;
   width: 90%;
   justify-content: space-between;
-}
+  align-items: flex-end;
+  margin-bottom: 10px;
 
-.spotify-playlists-footer {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  justify-content: flex-end;
+  h4 {
+    margin: 0;
+  }
 }
 
 .playlists-grid {
+  border-top: 1px solid white;
   display: flex;
-  gap: 20px;
   flex-direction: column;
-  height: 39vh;
+  max-height: 330px;
   overflow-y: scroll;
   width: 90%;
   align-items: flex-start;
+
+  iframe {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }
 
 .playlists-grid::-webkit-scrollbar {

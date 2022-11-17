@@ -31,7 +31,7 @@
   background-color: transparent;
   border: 2px solid #ff9d00;
   color: white;
-  border-radius: 10px;
+  border-radius: 50%;
   transition: 0.3s ease;
 }
 
@@ -40,8 +40,13 @@
 }
 
 #playlist-button {
-  width: 35%;
-  margin-top: 3%;
+  width: 35px;
+  height: 35px;
+  margin-left: 20px;
+
+  h3 {
+    margin: 0;
+  }
 }
 
 #add-friends-button {
