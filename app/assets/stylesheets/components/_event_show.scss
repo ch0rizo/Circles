@@ -175,6 +175,11 @@
   border-top: 1px solid white;
 }
 
+.event-right-side-invite-body-circles {
+  overflow: scroll;
+  height: 18vh;
+}
+
 .event-right-side-details {
   margin-top: 25px;
   background-color: #202124;
@@ -288,12 +293,13 @@
   border-top: 1px solid white;
 }
 
-.new_circle_event > input {
+.event-right-side-invite-body > input {
   padding: 5px;
   font-size: 16px;
   border-radius: 15px;
   padding-left: 15px;
   padding-right: 15px;
+  margin-top: 8px;
   background-color: transparent;
   border: 2px solid #ff9d00;
   color: white;

@@ -141,8 +141,10 @@
     <div class="event-right-side-invite">
       <h4>Invite a Circle</h4>
       <div class="event-right-side-invite-body">
-        <%= simple_form_for [@event, @circle_event] do |f| %>
-          <%= f.association :circle, as: :radio_buttons, required: false, collection: current_user.circles %>
+        <div class="event-right-side-invite-body-circles">
+          <%= simple_form_for [@event, @circle_event] do |f| %>
+            <%= f.association :circle, as: :radio_buttons, required: false, collection: current_user.circles %>
+        </div>
           <%= f.submit "Add Circle" %>
         <% end %>
       </div>
