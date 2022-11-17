@@ -7,7 +7,7 @@
       <h2><%= @event.title.upcase %></h2>
     </div>
     <div class="event-header-middle-info">
-      <p><i class="fa-solid fa-user-group"></i> <%= @event.users.count %>,  
+      <p><i class="fa-solid fa-user-group"></i> <%= @event.users.count %>  
             <% if @event.private? %>
               <i class="fa-solid fa-lock"></i> Private
             <% else %>
@@ -54,17 +54,10 @@
       </div>
     </div>
     <div class="event-left-side-bottom">
-      <div class="event-left-side-playlist">
-        <div class="playlists-grid">
-          <% @event.event_playlists.each do |playlist| %>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-          <% end %>
-        </div>
-        <div class="spotify-playlists-footer">
-          <!-- Playlist Button trigger modal -->
-          <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
-            <p>Add a Playlist</p>
-          </button>
+      <div class="event-right-side-images">
+        <h4>PICTURES</h4>
+        <div class="event-right-side-images-info">
+          <p>Share pictures:</p>
         </div>
       </div>
       <div class="event-left-side-chatroom">
@@ -99,7 +92,7 @@
     </div>
     <div class="event-left-side-anker">
       <div class="anker-member">
-        <h4>Attendees</h4>
+        <h4>ATTENDEES</h4>
         <div class="anker-member-info">
           <ul>
             <% @event.users.each do |user| %>
@@ -130,7 +123,7 @@
   </div>
   <div class="event-right-side">
     <div class="event-right-side-host">
-      <h5>Hosted by</h5>
+      <h5>HOSTED BY</h5>
       <div class="event-right-side-host-card">
         <%= link_to dashboard_path(@event.user_id) do %>
           <div class="event-right-side-host-body">
@@ -144,7 +137,7 @@
       </div>
     </div>
     <div class="event-right-side-details">
-      <h4>Details</h4>
+      <h4>DETAILS</h4>
       <div class="event-right-side-details-body">
         <div class="event-right-side-details-date d-flex">
           <p><i class="fa-solid fa-calendar-days"></i></p>
@@ -162,7 +155,7 @@
       </div>
     </div>
     <div class="event-right-side-location">
-      <h4><i class="fa-solid fa-location-dot"></i> Location: <%= @event.location %></h4>
+      <h4><i class="fa-solid fa-location-dot"></i> LOCATION: <%= @event.location %></h4>
       <div class="event-right-side-location-body">
         <div class="event-right-side-location-body-address d-flex"></div>
       </div>
@@ -176,17 +169,21 @@
         </div>
       </div>
     </div>
-    <div class="event-right-side-images">
-      <h4>Pictures</h4>
-      <div class="event-right-side-images-info">
-        <p>Share pictures:</p>
-      </div>
-    </div>
     <div class="event-right-side-music">
-      <h4>Music</h4>
-        <div class="event-right-side-music-info">
-          <p>  !!!!!!!!!!!! put the spotty here !!!!!!!!!!  </p>
+      <h4>MUSIC</h4>
+      <div class="event-right-side-music-info">
+        <div class="playlists-grid">
+          <% @event.event_playlists.each do |playlist| %>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <% end %>
         </div>
+        <div class="spotify-playlists-footer">
+          <!-- Playlist Button trigger modal -->
+          <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+            <p>Add a Playlist</p>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
