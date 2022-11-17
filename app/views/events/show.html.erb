@@ -19,16 +19,7 @@
   </div>  
   <div class="event-header-right">
     <div class="btn btn-primary">
-      <div class="event-invite-user">Share
-        <% if lol = false %>
-          <h4>Invite a friend</h4>
-          <div class="event-right-side-invite-body">
-          <%= simple_form_for [@event, @user_event] do |f| %>
-            <%= f.association :user, as: :radio_buttons, required: false, collection: User.all %>
-            <%= f.submit %>
-          <% end %>
-        <% end %>
-      </div>
+      <div class="event-invite-user">Share</div>
     </div>
     <div class="event-header-right-attending">
       <button class="btn btn-success">Attending</button>
@@ -116,18 +107,20 @@
       </div>
       <div class="anker-splitty">
         <div class="splitty">
-          <h2>Splitty</h2>
-          <% @event.user_events.each do |user_event| %>
-            <p><%= user_event.user.first_name %>: <%= user_event.balance %></p>
-          <% end %>
-
-            <h6>CREATE A NEW PAYMENT</h6>
-          <%= simple_form_for [@event, @payment] do |f| %>
-            <%= f.input :amount %>
-            <%= f.input :description %>
-            <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
-            <%= f.submit "pop it on the splitty" %>
-          <% end %>
+          <h2>SPLITTY - Split the costs</h2>
+          <div class="splitty-body">
+            <div class="splitty-people">
+              <% @event.user_events.each do |user_event| %>
+                <p><%= user_event.user.first_name %>: <%= user_event.balance %> <%= user_event.balance = 0 ? "Rand" : "Rand" %></p>
+              <% end %>
+            </div>
+            <%= simple_form_for [@event, @payment] do |f| %>
+              <%= f.input :amount %>
+              <%= f.input :description %>
+              <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
+              <%= f.submit "pop it on the splitty" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -152,7 +145,7 @@
       <div class="event-right-side-invite-body">
         <%= simple_form_for [@event, @circle_event] do |f| %>
           <%= f.association :circle, as: :radio_buttons, required: false, collection: current_user.circles %>
-          <%= f.submit %>
+          <%= f.submit "Add Circle" %>
         <% end %>
       </div>
     </div>
