@@ -115,7 +115,8 @@
             <%= simple_form_for [@event, @payment] do |f| %>
               <%= f.input :amount %>
               <%= f.input :description %>
-              <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
+              <%= f.association :user_event, label: "Payer", collection: @event.user_events, label_method: :user_name %>
+              <%= f.association :user_events, as: :check_boxes, label: "Who's splittin' this?", label_method: :user_name %>
               <%= f.submit "pop it on the splitty" %>
             <% end %>
           </div>
@@ -198,6 +199,6 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>

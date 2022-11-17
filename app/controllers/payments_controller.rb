@@ -6,15 +6,16 @@ class PaymentsController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
-    @payment = Payment.new(payment_params)
-    user = @payment.user_event
-    others = @event.user_events.where.not(user: user)
-    split_amount = @payment.amount / @event.user_events.count
-    user.balance += @payment.amount - split_amount
-    user.save
-    others.each do |splitee|
-      splitee.balance -= split_amount
-      splitee.save
+    payment = Payment.new(payment_params)
+    payment.save
+    splittees = payment.user_events
+    payer = payment.user_event
+    split_amount = payment.amount / (splittees.count + 1)
+    payer.balance += payment.amount - split_amount
+    payer.save
+    splittees.each do |splittee|
+      splittee.balance -= split_amount
+      splittee.save
     end
 
     redirect_to event_path(@event)
@@ -23,6 +24,6 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-    params.require(:payment).permit(:user_event_id, :description, :amount, user_events_ids: [])
+    params.require(:payment).permit(:user_event_id, :description, :amount, user_event_ids: [])
   end
 end
