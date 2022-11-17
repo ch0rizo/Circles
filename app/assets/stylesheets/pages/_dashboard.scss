@@ -22,6 +22,7 @@
   justify-content: flex-start;
   gap: 20px;
   margin-top: 50px;
+  margin-bottom: 10vh;
 }
 
 // left-side
@@ -352,18 +353,21 @@
 
 .chatbox-message {
   position: absolute;
-  top: 26px;
+  top: 36px;
   left: 39px;
   font-size: 13px;
 }
 
 .chatbox-message-3 {
   position: absolute;
-  top: 25px;
+  top: 33px;
   left: 48px;
 }
 
-.text {
+.middle-orbit {
+}
+
+.dashboard-text {
   font-weight: 100;
   font-size: 28px;
 }

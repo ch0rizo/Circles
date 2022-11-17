@@ -1,6 +1,6 @@
 <div class="dashboard-header" data-controller="title">
   <%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %>
-  <div class="text"></div>
+  <div class="dashboard-text"></div>
 </div>
 <div class="container dashboard-main-container">
   <div class="dashboard-left-side">
@@ -71,10 +71,16 @@
     <div class="dashboard-right-top">
       <div class="dashboard-next-event">
         <h4 style="margin-top: 10px">Next Event</h4>
-        <%= link_to event_path(@event) do %>
+        <% if @events.count > 0 %>
+          <%= link_to event_path(@event) do %>
+            <div class="dashboard-next-event-info">
+              <h6><%= @event.title %></h6>
+              <p><%= @event.start_date.strftime("%a, %b %d") %></p>
+            </div>
+          <% end %>
+        <% else %>
           <div class="dashboard-next-event-info">
-            <h6><%= @event.title %></h6>
-            <p><%= @event.start_date.strftime("%a, %b %d") %></p>
+            <p>No upcoming events...</p>
           </div>
         <% end %>
       </div>

@@ -1,104 +1,73 @@
-<div class="event-show-banner">
-  <div class="event-show-logo-container">
-    <%= link_to root_path do %>
-      <img width="140" class="white-color" src="/assets/Logo/Circles_Logo-e6615bb1c72dbb5ff38d80795d3a366b32aba638c3026b02a41fd11ae81491a0.svg">
-    <% end %>
+<div class="event-header">
+  <div class="event-header-left">
+    <h1><%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %></h1>
   </div>
-</div>
-<div class="event-show-carousel-container">
-  <div class="event-show-carousel-slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <% @event.photos.each_with_index do |photo, index| %>
-        <% if index == 0 %>
-          <div class="carousel-item active">
-            <%= cl_image_tag photo.key, class: "d-block w-100 event-photo"%>
-          </div>
+  <div class="event-header-middle">
+    <div class="event-header-middle-title">
+      <h2><%= @event.title.upcase %></h2>
+    </div>
+    <div class="event-header-middle-info">
+      <p><i class="fa-solid fa-user-group"></i> <%= @event.users.count %>,  
+            <% if @event.private? %>
+              <i class="fa-solid fa-lock"></i> Private
             <% else %>
-          <div class="carousel-item">
-            <%= cl_image_tag photo.key, class: "d-block w-100 event-photo"%>
-          </div>
+              <i class="fa-solid fa-unlock"></i> Public
             <% end %>
-        <% end %>
+      </p>
+      <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPhotosControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselPhotosControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  </div>  
+  <div class="event-header-right">
+    <div class="btn btn-primary">Share</div>
+    <div class="event-header-right-attending">
+      <button class="btn btn-success">Attending</button>
+    </div>
   </div>
 </div>
-<div class="event-show-banner-info">
-  <h1><%= @event.title.upcase %></h1>
-  <i class="fa-regular fa-calendar-days"></i>
-  <%= @event.start_date.strftime("%A, %m %b, %Y") %>
-  <div class="event-privacy">
-    <% if @event.private? %>
-      <p><i class="fa-solid fa-circle"></i> Private Event</p>
-    <% else %>
-      <p><i class="fa-regular fa-circle"></i> Public Event</p>
-    <% end %>
-  </div>
-  <div class="attending">
-    <i class="fa-solid fa-user-group"></i>
-    <p><%= @event.users.count + 1%></p>
-  </div>
-</div>
-<div class="event-show-main-container">
-  <div class="event-show-top-container">
-    <div class="event-show-details-container-1">
-      <div class="event-show-details">
-        <h4>HOSTED BY</h4>
-        <%= link_to dashboard_path(@event.user) do %>
-          <%= cl_image_tag @event.user.photo.key, class: "circle-avatar"%>
-        <% end %>
-        <h4>Attending</h4>
-        <div class="event-show-attending-circles">
-          <% @circles.each do |circle|%>
-            <%= link_to circle_path(circle) do %>
-              <% if circle.photo.key? %>
-                <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: #{circle.border_color}", alt: "Circle Avatar" %>
-              <% else %>
-                <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
+<div class="container event-main-container">
+  <div class="event-left-side">
+    <div class="event-left-side-banner">
+      <div class="event-show-carousel-container">
+        <div class="event-show-carousel-slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @event.photos.each_with_index do |photo, index| %>
+              <% if index == 0 %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag photo.key, class: "d-block w-100 event-photo"%>
+                </div>
+                  <% else %>
+                <div class="carousel-item">
+                  <%= cl_image_tag photo.key, class: "d-block w-100 event-photo"%>
+                </div>
+                  <% end %>
               <% end %>
-            <% end %>
-          <% end %>
-        </div>
-        <div>
-          <h4>Invite a Circle</h4>
-          <%= simple_form_for [@event, @circle_event] do |f| %>
-            <%= f.association :circle, as: :radio_buttons, label: "", required: false, collection: current_user.circles %>
-            <%= f.submit "Add Circle" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="event-show-details-container-2">
-      <div class="event-show-details">
-        <div class="event-show-details-info">
-          <h4>DETAILS</h4>
-          <p><%= @event.start_date.strftime("%a, %m %b") %> - <%= @event.end_date.strftime("%a, %m %b") %></p>
-          <% if @event.private? %>
-            <p><i class="fa-solid fa-circle"></i> Private Event</p>
-          <% else %>
-            <p><i class="fa-regular fa-circle"></i> Public Event</p>
-          <% end %>
-          <h4>Location</h4>
-          <p><i class="fa-sharp fa-solid fa-location-dot"> </i>  <%= @event.location %></p>
-          <div class="event-show-details-info-location">
-            <div class="event-show-details-info-location-map"
-              data-controller="map"
-              data-map-markers-value="<%= @marker.to_json %>"
-              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselPhotosControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselPhotosControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="event-show-chat-container">
-      <div class="chatroom-content">
+    <div class="event-left-side-bottom">
+      <div class="event-left-side-playlist">
+        <div class="playlists-grid">
+          <% @event.event_playlists.each do |playlist| %>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <% end %>
+        </div>
+        <div class="spotify-playlists-footer">
+          <!-- Playlist Button trigger modal -->
+          <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+            <p>Add a Playlist</p>
+          </button>
+        </div>
+      </div>
+      <div class="event-left-side-chatroom">
         <div class="chatroom"
           data-controller="event-chatroom-subscription"
           data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
@@ -114,7 +83,8 @@
                 </div>
               </div>
             <% end %>
-            <%= simple_form_for [@event, @event_message],
+          </div>
+          <%= simple_form_for [@event, @event_message],
               html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
             %>
               <%= f.input :content,
@@ -124,102 +94,100 @@
               %>
               <%= f.submit "Send", class: "btn btn-primary" %>
             <% end %>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="event-show-bottom-container">
-    <div class="event-show-spotify-playlists">
-      <div class="spotify-playlists-header">
-        <h4>EVENT PLAYLISTS</h4>
+    <div class="event-left-side-anker">
+      <div class="anker-member">
+        <h4>Attendees</h4>
+        <div class="anker-member-info">
+          <ul>
+            <% @event.users.each do |user| %>
+              <li><%= cl_image_tag user.photo.key %>
+                  <p><%= user.first_name %> <%= user.last_name %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="playlists-grid">
-        <% @event.event_playlists.each do |playlist| %>
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <% end %>
-      </div>
-      <div class="spotify-playlists-footer">
-        <!-- Playlist Button trigger modal -->
-        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
-          <p>Add a Playlist</p>
-        </button>
-      </div>
+      <div class="anker-splitty">
+        <div class="splitty">
+          <h2>Splitty</h2>
+          <% @event.user_events.each do |user_event| %>
+            <p><%= user_event.user.first_name %>: <%= user_event.balance %></p>
+          <% end %>
 
-      <!-- Modal -->
-      <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content modal-content-circle-show">
-            <div class="modal-header">
-              <i class="fa-brands fa-spotify"></i>
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Playlist</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body modal-body-content">
-              <%= simple_form_for [@event, @event_playlist] do |f| %>
-                <%= f.input :url, label: 'Enter the link to your playlist' %>
-                <%= f.submit "Add" %>
-              <% end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="event-show-content-container">
-      <div class="spotify-playlists-header">
-        <h4>EVENT PHOTOS</h4>
-      </div>
-      <div class="event-show-content">
-        <div class="image-form-wrapper">
-          <div id="carouselImagesControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="prevText">
-              <% @event.images.each_with_index do |image, index| %>
-                <% if index == 0 %>
-                  <div class="carousel-item active">
-                    <%= cl_image_tag image.key, class: "event-image" %>
-                  </div>
-                  <% else %>
-                  <div class="carousel-item">
-                    <%= cl_image_tag image.key, class: "event-image" %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselImagesControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselImagesControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-          <%= simple_form_for @event, html: { class: "add-images-form" }  do |f| %>
-            <label class="form-label file optional add-images-label" for="event_images">
-              <%= image_tag "add.png", class:"upload-icon" %>
-            </label>
-            <%= f.input :images, as: :file, label: false, input_html: { multiple: true, class: "images-input" } %>
-            <%= f.submit "Save", class: "add-images-save-btn"  %>
+            <h6>CREATE A NEW PAYMENT</h6>
+          <%= simple_form_for [@event, @payment] do |f| %>
+            <%= f.input :amount %>
+            <%= f.input :description %>
+            <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
+            <%= f.submit "pop it on the splitty" %>
           <% end %>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="event-right-side">
+    <div class="event-right-side-host">
+      <h5>Hosted by</h5>
+      <div class="event-right-side-host-card">
+        <%= link_to dashboard_path(@event.user_id) do %>
+          <div class="event-right-side-host-body">
+            <%= cl_image_tag User.find(@event.user_id).photo.key %>
+            <div class="event-right-side-host-info">
+              <h2><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></h2>
+              <p>Joined in <%= User.all.first.created_at.strftime("%a, %b %d") %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="event-right-side-details">
+      <h4>Details</h4>
+      <div class="event-right-side-details-body">
+        <div class="event-right-side-details-date d-flex">
+          <p><i class="fa-solid fa-calendar-days"></i></p>
+          <p>Starts at: <strong><%= @event.start_date.strftime("%A, %B %d, %Y") %></strong> <br> Ends at: <strong><%= @event.end_date.strftime("%A, %B %d, %Y") %></strong></p>
+        </div>
+        <div class="event-right-side-details-private d-flex">
+          <% if @event.private? %>
+            <p><i class="fa-solid fa-lock"></i></p>
+            <p>Private Event</p>
+          <% else %>
+            <p><i class="fa-solid fa-unlock"></i></i></p>
+            <p>Public Event</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="event-right-side-location">
+      <h4><i class="fa-solid fa-location-dot"></i> Location: <%= @event.location %></h4>
+      <div class="event-right-side-location-body">
+        <div class="event-right-side-location-body-address d-flex"></div>
+      </div>
+      <div class="event-right-side-map">
+        <div class="event-show-details-info-location">
+          <div class="event-show-details-info-location-map"
+            data-controller="map"
+            data-map-markers-value="<%= @marker.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="event-right-side-images">
+      <h4>Pictures</h4>
+      <div class="event-right-side-images-info">
+        <p>Share pictures:</p>
+      </div>
+    </div>
+    <div class="event-right-side-music">
+      <h4>Music</h4>
+        <div class="event-right-side-music-info">
+          <p>  !!!!!!!!!!!! put the spotty here !!!!!!!!!!  </p>
+        </div>
     </div>
   </div>
 </div>
 
-<div class="splitty">
-  <h2>Splitty</h2>
-  <% @event.user_events.each do |user_event| %>
-    <p><%= user_event.user.first_name %>: <%= user_event.balance %></p>
-  <% end %>
-
-    <h2>CREATE A NEW PAYMENT</h2>
-  <%= simple_form_for [@event, @payment] do |f| %>
-    <%= f.input :amount %>
-    <%= f.input :description %>
-    <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
-    <%= f.submit "pop it on the splitty" %>
-  <% end %>
-</div>

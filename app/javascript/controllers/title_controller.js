@@ -66,8 +66,7 @@ export default class extends Controller {
     // ——————————————————————————————————————————————————
 
     const phrases = [
-      'Good Morning,',
-      'Ben Ten',
+      'Good Day, Ben Ten',
       'What are you up to this weekend',
       'Party?',
       'Surf?',
@@ -75,7 +74,7 @@ export default class extends Controller {
       'Or just chill?',
     ];
 
-    const el = document.querySelector('.text');
+    const el = document.querySelector('.dashboard-text');
     const fx = new TextScramble(el);
 
     let counter = 0;
