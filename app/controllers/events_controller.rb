@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     @event.private = params[:event][:private][1]
     if @event.save
       circle = @event.circle_events.first.circle
+      UserEvent.create(event: @event, user: current_user)
       circle.users.each do |user|
         user_event = UserEvent.new(event: @event, user: user)
         user_event.save!
