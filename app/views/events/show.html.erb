@@ -97,6 +97,36 @@
         </div>
       </div>
     </div>
+    <div class="event-left-side-anker">
+      <div class="anker-member">
+        <h4>Attendees</h4>
+        <div class="anker-member-info">
+          <ul>
+            <% @event.users.each do |user| %>
+              <li><%= cl_image_tag user.photo.key %>
+                  <p><%= user.first_name %> <%= user.last_name %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="anker-splitty">
+        <div class="splitty">
+          <h2>Splitty</h2>
+          <% @event.user_events.each do |user_event| %>
+            <p><%= user_event.user.first_name %>: <%= user_event.balance %></p>
+          <% end %>
+
+            <h6>CREATE A NEW PAYMENT</h6>
+          <%= simple_form_for [@event, @payment] do |f| %>
+            <%= f.input :amount %>
+            <%= f.input :description %>
+            <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
+            <%= f.submit "pop it on the splitty" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="event-right-side">
     <div class="event-right-side-host">
@@ -130,12 +160,9 @@
       </div>
     </div>
     <div class="event-right-side-location">
-      <h4>Maps</h4>
+      <h4><i class="fa-solid fa-location-dot"></i> Location: <%= @event.location %></h4>
       <div class="event-right-side-location-body">
-        <div class="event-right-side-location-body-address d-flex">
-          <p><i class="fa-solid fa-location-crosshairs"></i></p>
-          <p><%= @event.location %></p>
-        </div>
+        <div class="event-right-side-location-body-address d-flex"></div>
       </div>
       <div class="event-right-side-map">
         <div class="event-show-details-info-location">
@@ -147,19 +174,12 @@
         </div>
       </div>
     </div>
+    <div class="event-right-side-images">
+      <h4>Pictures</h4>
+      <div class="event-right-side-images-info">
+        <p>Share pictures:</p>
+      </div>
+    </div>
   </div>
 </div>
-<div class="splitty">
-  <h2>Splitty</h2>
-  <% @event.user_events.each do |user_event| %>
-    <p><%= user_event.user.first_name %>: <%= user_event.balance %></p>
-  <% end %>
 
-    <h2>CREATE A NEW PAYMENT</h2>
-  <%= simple_form_for [@event, @payment] do |f| %>
-    <%= f.input :amount %>
-    <%= f.input :description %>
-    <%= f.association :user_event, collection: @event.user_events.each {|user_event| user_event.user.first_name}, input_html: { class: 'multiselectuser'} %>
-    <%= f.submit "pop it on the splitty" %>
-  <% end %>
-</div>

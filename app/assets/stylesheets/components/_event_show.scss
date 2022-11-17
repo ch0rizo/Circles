@@ -186,7 +186,7 @@
 
 .event-show-details-info-location {
   width: 100%;
-  height: 38vh;
+  height: 43vh;
 
   .event-show-details-info-location-map {
     width: 100%;
@@ -194,4 +194,47 @@
     object-fit: cover;
     border-radius: 15px;
   }
+}
+
+.event-right-side-images {
+  margin-top: 28px;
+  background-color: #202124;
+  padding: 15px;
+  border-radius: 5px;
+  height: 15vh;
+}
+
+.event-right-side-images-info {
+  display: flex;
+  align-items: center;
+  border-top: solid;
+  border-color: #ced4da;
+  padding: 5px;
+}
+
+.event-left-side-anker {
+  display: flex;
+  margin-top: 28px;
+  height: 50vh;
+}
+
+.anker-member {
+  background-color: #202124;
+  padding: 15px;
+  border-radius: 5px;
+  width: 20vw;
+  height: 100%;
+}
+
+.anker-splitty {
+  background-color: #202124;
+  padding: 15px;
+  border-radius: 5px;
+  margin-left: 25px;
+  width: 100%;
+  height: 100%;
+}
+
+.anker-member-info {
+  border-top: 1px solid white;
 }
