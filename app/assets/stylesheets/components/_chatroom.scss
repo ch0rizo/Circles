@@ -71,3 +71,27 @@ textarea.form-control {
     }
   }
 }
+
+.circle-show-chatoom-container {
+  .chatroom {
+    // margin-left: 41%;
+    height: 100%;
+    width: 100%;
+    // .messages {
+    //   // height: 19%;
+
+    // }
+    #new_event_message {
+      margin-top: 0;
+      position: relative;
+      top: 25px;
+      height: 38px;
+    }
+  }
+  .sender-style {
+    color: white;
+  }
+  // .message-row {
+  //   height: 100%;
+  // }
+}

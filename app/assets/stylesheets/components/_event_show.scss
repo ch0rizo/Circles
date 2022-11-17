@@ -63,7 +63,7 @@
 }
 
 .event-main-container {
-  // border: 1px solid rgb(255, 109, 133);
+  border: 1px solid rgb(255, 109, 133);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -74,21 +74,21 @@
 }
 
 .event-left-side-container {
-  // border: 1px solid rgb(113, 170, 255);
+  border: 1px solid rgb(113, 170, 255);
   display: flex;
   flex-direction: column;
   width: 70%;
 }
 
 .event-right-side-container {
-  // border: 1px solid orange;
+  border: 1px solid orange;
   display: flex;
   flex-direction: column;
   width: 25%;
 }
 
 .event-left-side-banner {
-  // border: 1px solid greenyellow;
+  border: 1px solid greenyellow;
   height: 60vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -166,18 +166,33 @@
   background-color: #202124;
   padding: 15px;
   border-radius: 5px;
-  height: 33vh;
+  height: 40vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.event-right-side-invite-header {
+  display: flex;
+}
+
 .event-right-side-invite-body {
+  overflow: scroll;
   padding-top: 10px;
   border-top: 1px solid white;
 }
 
 .event-right-side-invite-body-circles {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 18vh;
+  padding-top: 10px;
+  // border-top: 1px solid white;
+}
+
+.event-right-side-invite-body-circles::-webkit-scrollbar {
+  display: none;
+}
+
+.event-right-side-invite-footer {
+  display: flex;
 }
 
 .event-right-side-details {
@@ -185,8 +200,12 @@
   background-color: #202124;
   padding: 15px;
   border-radius: 5px;
-  height: 28vh;
+  height: 170px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.event-right-side-details-header {
+  display: flex;
 }
 
 .event-right-side-details-body {
@@ -281,19 +300,24 @@
 }
 
 .event-right-side-music {
-  background-color: #202124;
-  padding: 15px;
-  border-radius: 5px;
-  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 50vh;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+  background-color: #202124;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  margin-top: 5%;
 }
 
 .event-right-side-music-info {
   border-top: 1px solid white;
 }
 
-.event-right-side-invite-body > input {
+.event-add-circle-button {
   padding: 5px;
   font-size: 16px;
   border-radius: 15px;
@@ -344,4 +368,20 @@
   justify-content: space-between;
   border-top: 1px solid white;
   padding-top: 10px;
+}
+
+.event-right-side-invite {
+  .circle-grid {
+    // border-top: 1px solid white;
+    margin-bottom: 2%;
+  }
+
+  h4 {
+    border-bottom: 1px solid white;
+  }
+  .circle-avatar {
+    width: 55px !important;
+    height: 55px !important;
+
+  }
 }
