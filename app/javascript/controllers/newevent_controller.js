@@ -68,9 +68,9 @@ export default class extends Controller {
     const phrases = [
       'What Event do you want to create?',
       'A Party?',
-      'A trip Away?',
+      'A trip away?',
       'A dinner?',
-      'You choose we execute?',
+      'You choose we execute',
     ];
 
     const el = document.querySelector('.newevent-text');
