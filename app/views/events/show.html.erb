@@ -18,7 +18,18 @@
     </div>
   </div>  
   <div class="event-header-right">
-    <div class="btn btn-primary">Share</div>
+    <div class="btn btn-primary">
+      <div class="event-invite-user">Share
+        <% if lol = false %>
+          <h4>Invite a friend</h4>
+          <div class="event-right-side-invite-body">
+          <%= simple_form_for [@event, @user_event] do |f| %>
+            <%= f.association :user, as: :radio_buttons, required: false, collection: User.all %>
+            <%= f.submit %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <div class="event-header-right-attending">
       <button class="btn btn-success">Attending</button>
     </div>
@@ -133,6 +144,15 @@
               <p>Joined in <%= User.all.first.created_at.strftime("%a, %b %d") %></p>
             </div>
           </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="event-right-side-invite">
+      <h4>Invite a Circle</h4>
+      <div class="event-right-side-invite-body">
+        <%= simple_form_for [@event, @circle_event] do |f| %>
+          <%= f.association :circle, as: :radio_buttons, required: false, collection: current_user.circles %>
+          <%= f.submit %>
         <% end %>
       </div>
     </div>

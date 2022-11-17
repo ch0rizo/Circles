@@ -145,6 +145,20 @@
   margin-top: 10px;
 }
 
+.event-right-side-invite {
+  margin-top: 25px;
+  background-color: #202124;
+  padding: 15px;
+  border-radius: 5px;
+  height: 33vh;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.event-right-side-invite-body {
+  padding-top: 10px;
+  border-top: 1px solid white;
+}
+
 .event-right-side-details {
   margin-top: 25px;
   background-color: #202124;
@@ -169,7 +183,7 @@
 }
 
 .event-right-side-location {
-  margin-top: 32px;
+  margin-top: 25px;
   background-color: #202124;
   padding: 15px;
   border-radius: 5px;
