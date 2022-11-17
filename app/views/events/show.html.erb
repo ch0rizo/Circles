@@ -7,7 +7,7 @@
       <h2><%= @event.title.upcase %></h2>
     </div>
     <div class="event-header-middle-info">
-      <p><i class="fa-solid fa-user-group"></i> <%= @event.users.count %>  
+      <p><i class="fa-solid fa-user-group"></i> <%= @event.users.count %>
             <% if @event.private? %>
               <i class="fa-solid fa-lock"></i> Private
             <% else %>
@@ -16,7 +16,7 @@
       </p>
       <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
     </div>
-  </div>  
+  </div>
   <div class="event-header-right">
     <div class="btn btn-primary">Share</div>
     <div class="event-header-right-attending">
@@ -24,8 +24,8 @@
     </div>
   </div>
 </div>
-<div class="container event-main-container">
-  <div class="event-left-side">
+<div class="event-main-container">
+  <div class="event-left-side-container">
     <div class="event-left-side-banner">
       <div class="event-show-carousel-container">
         <div class="event-show-carousel-slide" data-bs-ride="carousel">
@@ -66,7 +66,7 @@
           data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
           data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
-          <h4><%= @event.title.upcase %> CHAT  </h4>
+          <h4><%= @event.title.upcase %> CHAT</h4>
 
           <div class="messages" data-event-chatroom-subscription-target="messages">
             <% @event.event_messages.each do |event_message| %>
@@ -121,7 +121,7 @@
       </div>
     </div>
   </div>
-  <div class="event-right-side">
+  <div class="event-right-side-container">
     <div class="event-right-side-host">
       <h5>HOSTED BY</h5>
       <div class="event-right-side-host-card">
@@ -129,19 +129,19 @@
           <div class="event-right-side-host-body">
             <%= cl_image_tag User.find(@event.user_id).photo.key %>
             <div class="event-right-side-host-info">
-              <h2><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></h2>
-              <p>Joined in <%= User.all.first.created_at.strftime("%a, %b %d") %></p>
+              <h4><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></h4>
+              <p>Joined <%= User.all.first.created_at.strftime("%b %Y") %></p>
             </div>
           </div>
         <% end %>
       </div>
     </div>
     <div class="event-right-side-details">
-      <h4>DETAILS</h4>
+      <h5>DETAILS</h5>
       <div class="event-right-side-details-body">
         <div class="event-right-side-details-date d-flex">
           <p><i class="fa-solid fa-calendar-days"></i></p>
-          <p>Starts at: <strong><%= @event.start_date.strftime("%A, %B %d, %Y") %></strong> <br> Ends at: <strong><%= @event.end_date.strftime("%A, %B %d, %Y") %></strong></p>
+          <p><strong>START:</strong> <%= @event.start_date.strftime("%A, %B %d, %Y") %> <br> <strong>END:</strong> <%= @event.end_date.strftime("%A, %B %d, %Y") %></p>
         </div>
         <div class="event-right-side-details-private d-flex">
           <% if @event.private? %>
@@ -155,7 +155,7 @@
       </div>
     </div>
     <div class="event-right-side-location">
-      <h4><i class="fa-solid fa-location-dot"></i> LOCATION: <%= @event.location %></h4>
+      <h5><i class="fa-solid fa-location-dot"></i> LOCATION : <%= @event.location %></h5>
       <div class="event-right-side-location-body">
         <div class="event-right-side-location-body-address d-flex"></div>
       </div>
@@ -170,7 +170,7 @@
       </div>
     </div>
     <div class="event-right-side-music">
-      <h4>MUSIC</h4>
+      <h5>EVENT PLAYLISTS</h5>
       <div class="event-right-side-music-info">
         <div class="playlists-grid">
           <% @event.event_playlists.each do |playlist| %>
@@ -185,6 +185,6 @@
         </div>
       </div>
     </div>
+    
   </div>
 </div>
-

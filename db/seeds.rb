@@ -1,6 +1,7 @@
 puts "> Clearing the DB.."
 
 EventPlaylist.destroy_all
+CirclePlaylist.destroy_all
 CircleEvent.destroy_all
 
 UserEvent.destroy_all
