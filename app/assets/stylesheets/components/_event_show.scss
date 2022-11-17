@@ -63,7 +63,7 @@
 }
 
 .event-main-container {
-  border: 1px solid rgb(255, 109, 133);
+  // border: 1px solid rgb(255, 109, 133);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -74,21 +74,21 @@
 }
 
 .event-left-side-container {
-  border: 1px solid rgb(113, 170, 255);
+  // border: 1px solid rgb(113, 170, 255);
   display: flex;
   flex-direction: column;
   width: 70%;
 }
 
 .event-right-side-container {
-  border: 1px solid orange;
+  // border: 1px solid orange;
   display: flex;
   flex-direction: column;
   width: 25%;
 }
 
 .event-left-side-banner {
-  border: 1px solid greenyellow;
+  // border: 1px solid greenyellow;
   height: 60vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -178,6 +178,10 @@
   overflow: scroll;
   padding-top: 10px;
   border-top: 1px solid white;
+}
+
+.event-right-side-invite-body::-webkit-scrollbar {
+  display: none;
 }
 
 .event-right-side-invite-body-circles {
@@ -295,8 +299,12 @@
 .anker-member-info {
   border-top: 1px solid white;
   margin-bottom: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
   height: 300px;
+}
+
+.anker-member-info::-webkit-scrollbar {
+  display: none;
 }
 
 .event-right-side-music {
