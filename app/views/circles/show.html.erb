@@ -71,7 +71,7 @@
 
       <div class="circle-show-members-container">
         <div class="circle-show-members-header">
-          <h4>MEMBERS</h4>
+          <h5>MEMBERS</h5>
         </div>
         <div class="circle-show-members-info">
         <div>
@@ -86,7 +86,7 @@
 
       <div class="circle-show-upcoming-events-container">
         <div class="circle-show-upcoming-events-header">
-          <h4>UPCOMING EVENTS</h4>
+          <h5>UPCOMING EVENTS</h5>
         </div>
         <div class="circle-show-upcoming-events-cards">
           <% if @circle.events.length != 0 %>
@@ -114,34 +114,34 @@
                       </div>
                     </div>
                   <% else %>
-                      <div class="circle-show-event-card">
-                        <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)), url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
-                          <div class="icons">
-                              <i class="fa-solid fa-user-group"></i>
-                            <% if event.private  %>
-                              <i class="fa-solid fa-circle"> </i>
-                            <% else %>
-                              <i class="fa-regular fa-circle"></i>
-                            <% end %>
-                            <p><%= event.start_date.strftime("%m/%d") %></p>
-                          </div>
+                    <div class="circle-show-event-card">
+                      <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)), url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
+                        <div class="icons">
+                            <i class="fa-solid fa-user-group"></i>
+                          <% if event.private  %>
+                            <i class="fa-solid fa-circle"> </i>
+                          <% else %>
+                            <i class="fa-regular fa-circle"></i>
+                          <% end %>
+                          <p><%= event.start_date.strftime("%m/%d") %></p>
                         </div>
                       </div>
+                    </div>
                   <% end %>
                 <% end %>
-              <% else %>
-              <p>You have no upcoming events...</p>
               <% end %>
             <% end %>
+          <% else %>
+          <p>You have no upcoming events...</p>
           <% end %>
+          </div>
         </div>
-      </div>
 
     </div>
     <div class="circle-show-main-bottom">
       <div class="circle-show-memories-container">
         <div class="circle-show-memories-header">
-          <h4>MEMORIES</h4>
+          <h5>MEMORIES</h5>
         </div>
         <div class="circle-show-memories-slider-container">
           <section class="splide my-3" aria-label="Splide Basic HTML Example" data-controller="slider">
@@ -157,10 +157,10 @@
       </div>
       <div class="circle-show-spotify-playlists">
         <div class="spotify-playlists-header">
-          <h4>CIRCLE PLAYLISTS</h4>
+          <h5>CIRCLE PLAYLISTS</h5>
           <!-- Playlist Button trigger modal -->
           <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
-            <h4>+</h4>
+            <h5>+</h5>
           </button>
         </div>
         <div class="playlists-grid">
@@ -194,9 +194,11 @@
       </div>
     </div>
   <div class="circle-show-main-right">
-    <div class="circle-show-chatoom-container">
-      <div class="chatroom" data-controller="circle-chatroom-subscription" data-circle-chatroom-subscription-chatroom-id-value="<%= @circle.id %>" data-circle-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
-        <h1><%= @circle.name %> Chat</h1>
+    <div class="circle-show-chatroom-container">
+      <div class="circle-show-chatroom-header">
+        <h5><%= @circle.name.upcase %> CHAT</h5>
+      </div>
+        <div class="circle-show-chatroom" data-controller="circle-chatroom-subscription" data-circle-chatroom-subscription-chatroom-id-value="<%= @circle.id %>" data-circle-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
         <div class="messages" data-circle-chatroom-subscription-target="messages">
           <% @circle.circle_messages.each do |circle_message| %>
@@ -208,8 +210,8 @@
           <% end %>
         </div>
         <%= simple_form_for [@circle, @circle_message], html: { data: { action: "turbo:submit-end->circle-chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
-        <%= f.input :content, label: false, placeholder: "Message ##{@circle.name}", wrapper_html: {class: "flex-grow-1"} %>
-        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+        <%= f.input :content, label: false, placeholder: "Message #{@circle.name}", wrapper_html: {class: "flex-grow-1"} %>
+        <%= f.submit "Send", class: "global-button-chat mb-3" %>
         <% end %>
       </div>
     </div>
