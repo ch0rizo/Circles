@@ -12,7 +12,7 @@
 <div class="circle-show-title">
   <%= cl_image_tag @circle.photo.key, class: "circle-avatar-circle", :style => "border-color: #{@circle.border_color}", alt: "circle-avatar" %>
   <div class="circle-show-details">
-    <h2><%= @circle.name.upcase %></h2>
+    <h1><%= @circle.name.upcase %></h1>
     <p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
     <div class="circle-show-details-private">
       <p><i class="fa-solid fa-user-group"></i><%= @circle.users.count %> MEMBERS</p>
@@ -66,58 +66,44 @@
 </div>
 
 <div class="circle-show-main-container">
+  <div class="circle-show-main-left">
+    <div class="circle-show-main-top">
 
-  <div class="circle-show-main-top">
+      <div class="circle-show-members-container">
+        <div class="circle-show-members-header">
+          <h4>MEMBERS</h4>
+        </div>
+        <div class="circle-show-members-info">
+        <div>
+        </div>
+          <ul style="list-style: none">
+            <% @circle.users.each do |user| %>
+            <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
 
-    <div class="circle-show-members-container">
-      <div class="circle-show-members-header">
-        <h4>MEMBERS</h4>
-      </div>
-      <div class="circle-show-members-info">
-      <div>
-      </div>
-        <ul style="list-style: none">
-          <% @circle.users.each do |user| %>
-          <li style="font-size: 12px"><%= cl_image_tag user.photo.key %> <%= user.first_name.upcase %> <%= user.last_name.upcase %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-
-    <div class="circle-show-upcoming-events-container">
-      <div class="circle-show-upcoming-events-header">
-        <h4>UPCOMING EVENTS</h4>
-      </div>
-      <div class="circle-show-upcoming-events-cards">
-        <% if @circle.events.length != 0 %>
-          <% @circle.events.each do |event| %>
-            <% if event.start_date.future? %>
-              <%= link_to event_path(event) do %>
-                <% if event.photos.attached? %>
-                  <div class="event-card">
-                    <div class="title-container">
-                      <p><%= event.title.upcase %></p>
-                    </div>
-                    <div class="image-icon-container" style="background-image: linear-gradient(to bottom, black, black 5%, transparent, transparent 95%), url(<%=cl_image_path event.photos.first.key %>);">
-                      <div class="icons">
-                        <div class="attending">
-                          <i class="fa-solid fa-user-group"></i>
-                          <p><%= event.users.count %></p>
-                        </div>
-                        <% if event.private  %>
-                          <i class="fa-solid fa-circle"> </i>
-                        <% else %>
-                          <i class="fa-regular fa-circle"></i>
-                        <% end %>
-                        <p><%= event.start_date.strftime("%m/%d") %></p>
+      <div class="circle-show-upcoming-events-container">
+        <div class="circle-show-upcoming-events-header">
+          <h4>UPCOMING EVENTS</h4>
+        </div>
+        <div class="circle-show-upcoming-events-cards">
+          <% if @circle.events.length != 0 %>
+            <% @circle.events.each do |event| %>
+              <% if event.start_date.future? %>
+                <%= link_to event_path(event) do %>
+                  <% if event.photos.attached? %>
+                    <div class="circle-show-event-card">
+                      <div class="title-container">
+                        <p><%= event.title.upcase %></p>
                       </div>
-                    </div>
-                  </div>
-                <% else %>
-                    <div class="event-card">
-                      <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)), url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
+                      <div class="image-icon-container" style="background-image: linear-gradient(to bottom, black, black 5%, transparent, transparent 95%), url(<%=cl_image_path event.photos.first.key %>);">
                         <div class="icons">
+                          <div class="attending">
                             <i class="fa-solid fa-user-group"></i>
+                            <p><%= event.users.count %></p>
+                          </div>
                           <% if event.private  %>
                             <i class="fa-solid fa-circle"> </i>
                           <% else %>
@@ -127,94 +113,105 @@
                         </div>
                       </div>
                     </div>
+                  <% else %>
+                      <div class="circle-show-event-card">
+                        <div class="image-icon-container" style="background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)), url(<%=cl_image_path "hk6soz418q50zk89hkppwut8mp97" %>)">
+                          <div class="icons">
+                              <i class="fa-solid fa-user-group"></i>
+                            <% if event.private  %>
+                              <i class="fa-solid fa-circle"> </i>
+                            <% else %>
+                              <i class="fa-regular fa-circle"></i>
+                            <% end %>
+                            <p><%= event.start_date.strftime("%m/%d") %></p>
+                          </div>
+                        </div>
+                      </div>
+                  <% end %>
                 <% end %>
+              <% else %>
+              <p>You have no upcoming events...</p>
               <% end %>
-            <% else %>
-            <p>You have no upcoming events...</p>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
+
     </div>
-
-    <div class="circle-show-spotify-playlists">
-      <div class="spotify-playlists-header">
-        <h4>CIRCLE PLAYLISTS</h4>
-        <!-- Playlist Button trigger modal -->
-        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
-          <h4>+</h4>
-        </button>
-      </div>
-      <div class="playlists-grid">
-        <% @circle.circle_playlists.each do |playlist| %>
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <% end %>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content modal-content-circle-show">
-            <div class="modal-header">
-              <i class="fa-brands fa-spotify"></i>
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Playlist</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="circle-show-main-bottom">
+      <div class="circle-show-memories-container">
+        <div class="circle-show-memories-header">
+          <h4>MEMORIES</h4>
+        </div>
+        <div class="circle-show-memories-slider-container">
+          <section class="splide my-3" aria-label="Splide Basic HTML Example" data-controller="slider">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <% @circle.events.each do |event| %>
+                  <li class="splide__slide"><%= cl_image_tag event.photos[0].key %></li>
+                <% end %>
+              </ul>
             </div>
-            <div class="modal-body modal-body-content">
-              <%= simple_form_for [@circle, @circle_playlist] do |f| %>
-                <%= f.input :url, label: 'Enter the link to your playlist' %>
-                <%= f.submit "Add" %>
-              <% end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </section>
+        </div>
+      </div>
+      <div class="circle-show-spotify-playlists">
+        <div class="spotify-playlists-header">
+          <h4>CIRCLE PLAYLISTS</h4>
+          <!-- Playlist Button trigger modal -->
+          <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+            <h4>+</h4>
+          </button>
+        </div>
+        <div class="playlists-grid">
+          <% @circle.circle_playlists.each do |playlist| %>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <% end %>
+        </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content modal-content-circle-show">
+                <div class="modal-header">
+                  <i class="fa-brands fa-spotify"></i>
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Playlist</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body-content">
+                  <%= simple_form_for [@circle, @circle_playlist] do |f| %>
+                    <%= f.input :url, label: 'Enter the link to your playlist' %>
+                    <%= f.submit "Add" %>
+                  <% end %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  <div class="circle-show-main-right">
+    <div class="circle-show-chatoom-container">
+      <div class="chatroom" data-controller="circle-chatroom-subscription" data-circle-chatroom-subscription-chatroom-id-value="<%= @circle.id %>" data-circle-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+        <h1>#<%= @circle.name %></h1>
 
-  </div>
-
-  <div class="circle-show-main-bottom">
-    <div class="memories">
-    <h4>MEMORIES</h4>
-    <section class="splide" aria-label="Splide Basic HTML Example" data-controller="slider">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <% @circle.events.each do |event| %>
-            <li class="splide__slide"><%= cl_image_tag event.photos[0].key %></li>
+        <div class="messages" data-circle-chatroom-subscription-target="messages">
+          <% @circle.circle_messages.each do |circle_message| %>
+            <div class="message-row d-flex <%= circle_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+              <div class="<%= circle_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                <%= render "circle_messages/circle_message", circle_message: circle_message %>
+              </div>
+            </div>
           <% end %>
-        </ul>
-      </div>
-    </section>
-    </div>
-</div>
-<div class="chatroom"
-  data-controller="circle-chatroom-subscription"
-  data-circle-chatroom-subscription-chatroom-id-value="<%= @circle.id %>"
-  data-circle-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
->
-  <h1>#<%= @circle.name %></h1>
-
-  <div class="messages" data-circle-chatroom-subscription-target="messages">
-    <% @circle.circle_messages.each do |circle_message| %>
-      <div class="message-row d-flex <%= circle_message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-        <div class="<%= circle_message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-          <%= render "circle_messages/circle_message", circle_message: circle_message %>
         </div>
+        <%= simple_form_for [@circle, @circle_message], html: { data: { action: "turbo:submit-end->circle-chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+        <%= f.input :content, label: false, placeholder: "Message ##{@circle.name}", wrapper_html: {class: "flex-grow-1"} %>
+        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-  <%= simple_form_for [@circle, @circle_message],
-    html: { data: { action: "turbo:submit-end->circle-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@circle.name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
-</div>
 </div>

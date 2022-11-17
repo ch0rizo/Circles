@@ -1,6 +1,7 @@
 puts "> Clearing the DB.."
 
 EventPlaylist.destroy_all
+CirclePlaylist.destroy_all
 CircleEvent.destroy_all
 
 UserEvent.destroy_all
@@ -186,7 +187,7 @@ wagon_circle = Circle.create(
   border_color: %w[#33a8c7 #52e3e1 #a0e426 #fdf148 #ffab00 #f77976 #f050ae #d883ff #9336fd #ffbe0b #fb5607 #ff006e #8338ec #3a86ff].sample
 )
 # group image
-wagon_circle_url = "https://www.smartshanghai.com/uploads/repository/2022/04/18/4bdf9551-4d55-49dd-b37e-1b2b3fc63231.png"
+wagon_circle_url = "https://lh3.googleusercontent.com/p/AF1QipO9t_lD_AyFwuYqnTl-SDoqOF-JiFsAZk50uBYv=s1360-w1360-h1020"
 wagon_circle_file = URI.open(wagon_circle_url)
 wagon_circle.photo.attach(io: wagon_circle_file, filename: 'circle_img.png', content_type: 'image/png')
 
@@ -302,8 +303,23 @@ surf_trip_url = "https://images.unsplash.com/photo-1526342122811-2a9c8512023d?ix
 surf_trip_file = URI.open(surf_trip_url)
 surf_trip.photos.attach(io: surf_trip_file, filename: 'event_img.png', content_type: 'image/png')
 
+EventPlaylist.create(
+  url: "https://open.spotify.com/playlist/1dg4MQuRRxbWkQMb1SnbQX?si=d1bd88b31ce846c4",
+  event: surf_trip
+)
+
+EventPlaylist.create(
+  url: "https://open.spotify.com/playlist/3vnd357nDv9MOLaW3UFEdN?si=678fd516cc0c4ed7",
+  event: surf_trip
+)
+
+EventPlaylist.create(
+  url: "https://open.spotify.com/playlist/2lOLiLsEelhkdzXTIROsX2?si=f7bfd1c1c1194ea0",
+  event: surf_trip
+)
+
 nico_party = Event.create(
-  title: "Nico's Sweet 16th",
+  title: "Nico's Sweet 20th",
   private: true,
   location: "Hamburg",
   user: User.all.sample,
