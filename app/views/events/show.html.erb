@@ -1,11 +1,22 @@
 <div class="event-header">
   <div class="event-header-left">
-    <h2><%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %><%= @event.title %></h2>
-    <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
+    <h1><%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %></h1>
   </div>
   <div class="event-header-middle">
-    <p>Splitty incoming</p>
-  </div>
+    <div class="event-header-middle-title">
+      <h2><%= @event.title.upcase %></h2>
+    </div>
+    <div class="event-header-middle-info">
+      <p><i class="fa-solid fa-user-group"></i> <%= @event.users.count %>,  
+            <% if @event.private? %>
+              <i class="fa-solid fa-lock"></i> Private
+            <% else %>
+              <i class="fa-solid fa-unlock"></i> Public
+            <% end %>
+      </p>
+      <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
+    </div>
+  </div>  
   <div class="event-header-right">
     <div class="btn btn-primary">Share</div>
     <div class="event-header-right-attending">
