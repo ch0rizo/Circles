@@ -83,7 +83,7 @@
         <% if @events.count > 0 %>
           <%= link_to event_path(@event) do %>
             <div class="dashboard-next-event-info">
-              <h6><%= @event.title %></h6>
+              <h6><%= @events.last.title %></h6>
               <p><%= @event.start_date.strftime("%a, %b %d") %></p>
             </div>
           <% end %>

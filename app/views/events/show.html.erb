@@ -1,4 +1,4 @@
-<div class="event-header">
+<div class="event-header" data-controller="attend" data-attend-url-value="<%= event_user_events_url(@event) %>">
   <div class="event-header-left">
     <h1><%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %></h1>
   </div>
@@ -7,19 +7,21 @@
       <h2><%= @event.title.upcase %></h2>
     </div>
     <div class="event-header-middle-info">
-      <p><i class="fa-solid fa-user-group"></i> <%= @event.users.count %>
-            <% if @event.private? %>
-              <i class="fa-solid fa-lock"></i> Private
-            <% else %>
-              <i class="fa-solid fa-unlock"></i> Public
-            <% end %>
+      <p>
+        <i class="fa-solid fa-user-group"></i>
+        <span data-attend-target="userCount"><%= @event.users.count %></span>
+        <% if @event.private? %>
+          <i class="fa-solid fa-lock"></i> Private
+        <% else %>
+          <i class="fa-solid fa-unlock"></i> Public
+        <% end %>
       </p>
       <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
     </div>
   </div>
-  <div class="event-header-right" data-controller="attend">
+  <div class="event-header-right">
     <div class="event-header-right-attending">
-      <button class="btn btn-success loool" data-action="click->attend#clicky">Attend Event</button>
+      <%= link_to "Attend Event", event_user_events_path(@event), data: { turbo_method: :post, action: "click->attend#clicky" }, class:"btn btn-success loool" %>
     </div>
   </div>
 </div>
