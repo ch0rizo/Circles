@@ -52,7 +52,8 @@
 .event-left-side-bottom {
   display: flex;
   justify-content: flex-start;
-  height: 350px;
+  height: 400px;
+  min-height: 400px;
   margin-top: 25px;
   background-color: #202124;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

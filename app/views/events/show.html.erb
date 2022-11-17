@@ -57,7 +57,8 @@
                 </div>
               </div>
             <% end %>
-            <%= simple_form_for [@event, @event_message],
+          </div>
+          <%= simple_form_for [@event, @event_message],
               html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
             %>
               <%= f.input :content,
@@ -67,7 +68,6 @@
               %>
               <%= f.submit "Send", class: "btn btn-primary" %>
             <% end %>
-          </div>
         </div>
       </div>
     </div>
@@ -90,11 +90,11 @@
     <div class="event-right-side-details">
       <h4>Details</h4>
       <div class="event-right-side-details-body">
-        <div class="event-right-side-details-date d-flex"> 
+        <div class="event-right-side-details-date d-flex">
           <p><i class="fa-solid fa-calendar-days"></i></p>
           <p>Starts at: <strong><%= @event.start_date.strftime("%A, %B %d, %Y") %></strong> <br> Ends at: <strong><%= @event.end_date.strftime("%A, %B %d, %Y") %></strong></p>
         </div>
-        <div class="event-right-side-details-private d-flex"> 
+        <div class="event-right-side-details-private d-flex">
           <% if @event.private? %>
             <p><i class="fa-solid fa-lock"></i></p>
             <p>Private Event</p>
