@@ -257,6 +257,8 @@
 .anker-member-info {
   border-top: 1px solid white;
   margin-bottom: 10px;
+  overflow: scroll;
+  height: 300px;
 }
 
 .event-right-side-music {
@@ -270,4 +272,56 @@
 
 .event-right-side-music-info {
   border-top: 1px solid white;
+}
+
+.new_circle_event > input {
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: transparent;
+  border: 2px solid #ff9d00;
+  color: white;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: #ff9d00;
+  }
+}
+
+.anker-member-info {
+  ul {
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.splitty-people {
+  overflow: scroll;
+  height: 300px;
+}
+
+.splitty-body {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid white;
+  padding-top: 10px;
 }

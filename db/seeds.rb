@@ -303,7 +303,7 @@ surf_trip_file = URI.open(surf_trip_url)
 surf_trip.photos.attach(io: surf_trip_file, filename: 'event_img.png', content_type: 'image/png')
 
 nico_party = Event.create(
-  title: "Nico's Sweet 16th",
+  title: "Nico's Sweet 20th",
   private: true,
   location: "Hamburg",
   user: User.all.sample,
