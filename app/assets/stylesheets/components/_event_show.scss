@@ -171,13 +171,10 @@
 }
 
 .event-right-side-invite-body {
-  padding-top: 10px;
-  border-top: 1px solid white;
-}
-
-.event-right-side-invite-body-circles {
   overflow: scroll;
   height: 18vh;
+  padding-top: 10px;
+  border-top: 1px solid white;
 }
 
 .event-right-side-details {
@@ -293,7 +290,7 @@
   border-top: 1px solid white;
 }
 
-.event-right-side-invite-body > input {
+.event-add-circle-button {
   padding: 5px;
   font-size: 16px;
   border-radius: 15px;

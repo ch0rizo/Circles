@@ -9,7 +9,7 @@
       <div class="dashboard-profile-info">
         <div class="dashboard-profile-info-left-block">
         <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-        <p>Joined in <%= @user.created_at.strftime("%a, %b %d") %></p>
+        <p>Joined <%= @user.created_at.strftime("%a, %b %d") %></p>
         </div>
         <%= link_to edit_user_registration_path(current_user) do %>
           <p><i class='fa-solid fa-pen'></i></p>

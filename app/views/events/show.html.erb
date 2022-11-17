@@ -140,14 +140,14 @@
     </div>
     <div class="event-right-side-invite">
       <h4>Invite a Circle</h4>
-      <div class="event-right-side-invite-body">
-        <div class="event-right-side-invite-body-circles">
-          <%= simple_form_for [@event, @circle_event] do |f| %>
+      <%= simple_form_for [@event, @circle_event] do |f| %>
+        <div class="event-right-side-invite-body">
+          <div class="event-right-side-invite-body-circles">
             <%= f.association :circle, as: :radio_buttons, required: false, collection: current_user.circles %>
-        </div>
-          <%= f.submit "Add Circle" %>
-        <% end %>
-      </div>
+          </div>
+        </div>        
+        <%= f.button :submit, "Add Circle", class:"event-add-circle-button" %>
+      <% end %>
     </div>
     <div class="event-right-side-details">
       <h5>DETAILS</h5>
