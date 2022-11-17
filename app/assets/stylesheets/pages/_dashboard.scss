@@ -189,8 +189,19 @@
 }
 
 .dashboard-achivements {
-  display: flex;
+  border-radius: 5px;
+  background-color: #202124;
   gap: 5px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.dashboard-achivements-body {
+  border-top: 1px solid white;
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+  padding-top: 15px;
 }
 
 .achivements-info-card {
@@ -198,10 +209,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #202124;
   border-radius: 5px;
   padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 1px solid white;
 
   .fa-beer-mug-empty {
     font-size: 30px;
@@ -227,6 +237,7 @@
 }
 
 .dashboard-splitty {
+  margin-top: 10px;
   background-color: #202124;
   border-radius: 5px;
   padding: 10px;
@@ -243,6 +254,8 @@
 }
 
 .dashboard-discorver-events {
+  background-color: #202124;
+  padding: 10px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -252,9 +265,9 @@
 }
 
 .dashboard-discover-carousel {
-  background-color: #202124;
+  border-top: 1px solid white;
   height: 50vh;
-  border-radius: 5px;
+  padding: 10px;
 }
 
 .dashboard-right-top {
@@ -269,7 +282,6 @@
 
 .dashboard-next-event-info {
   height: 8vh;
-  border-radius: 5px;
   background-color: #202124;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -321,7 +333,6 @@
 
 .dashboard-discover-carousel {
   height: 100%;
-  border-radius: 5px;
 }
 
 .splide-content {
@@ -362,9 +373,6 @@
   position: absolute;
   top: 33px;
   left: 48px;
-}
-
-.middle-orbit {
 }
 
 .dashboard-text {

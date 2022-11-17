@@ -319,7 +319,7 @@ EventPlaylist.create(
 )
 
 nico_party = Event.create(
-  title: "Nico's Sweet 16th",
+  title: "Nico's Sweet 20th",
   private: true,
   location: "Hamburg",
   user: User.all.sample,
