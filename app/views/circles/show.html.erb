@@ -196,7 +196,7 @@
   <div class="circle-show-main-right">
     <div class="circle-show-chatoom-container">
       <div class="chatroom" data-controller="circle-chatroom-subscription" data-circle-chatroom-subscription-chatroom-id-value="<%= @circle.id %>" data-circle-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
-        <h1>#<%= @circle.name %></h1>
+        <h1><%= @circle.name %> Chat</h1>
 
         <div class="messages" data-circle-chatroom-subscription-target="messages">
           <% @circle.circle_messages.each do |circle_message| %>
