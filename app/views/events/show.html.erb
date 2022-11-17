@@ -140,12 +140,23 @@
     </div>
     <div class="event-right-side-invite">
       <h4>Invite a Circle</h4>
+      <div class="circle-grid">
+        <% @circles.each do |circle|%>
+          <%= link_to circle_path(circle) do %>
+            <% if circle.photo.key? %>
+              <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: #{circle.border_color}", alt: "Circle Avatar" %>
+            <% else %>
+              <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
       <%= simple_form_for [@event, @circle_event] do |f| %>
         <div class="event-right-side-invite-body">
           <div class="event-right-side-invite-body-circles">
             <%= f.association :circle, as: :radio_buttons, required: false, collection: current_user.circles %>
           </div>
-        </div>        
+        </div>
         <%= f.button :submit, "Add Circle", class:"event-add-circle-button" %>
       <% end %>
     </div>
