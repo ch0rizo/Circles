@@ -56,7 +56,7 @@
     </div>
   </div>
   <div class="dashboard-right-side">
-    <div class="dashboard-discorver-events">
+    <div class="dashboard-discover-events">
       <h4>Discover</h4>
       <div class="dashboard-discover-carousel">
         <section class="splide splide-content" aria-label="Splide Basic HTML Example" data-controller="slider">
@@ -72,7 +72,7 @@
     </div>
     <div class="dashboard-right-top">
       <div class="dashboard-next-event">
-        <h4 style="margin-top: 10px">Next Event</h4>
+        <h4>Next Event</h4>
         <% if @events.count > 0 %>
           <%= link_to event_path(@event) do %>
             <div class="dashboard-next-event-info">
@@ -87,7 +87,7 @@
         <% end %>
       </div>
       <div class="dashboard-circles">
-        <h4 style="margin-top: 10px"><i class="fa-solid fa-map-pin"></i> Pinned</h4>
+        <h4><i class="fa-solid fa-map-pin"></i> Pinned</h4>
         <%= link_to circle_path(@circle) do %>
           <div class="dashboard-circles-info">
             <p><%= cl_image_tag @circles.first.photo.key %></p>
@@ -97,7 +97,7 @@
       </div>
     </div>
     <div class="dashboard-invitations">
-      <h4 style="margin-top: 12px; margin-bottom: 0px">Invitation</h4 style="margin: 0px">
+      <h4>Invitation</h4>
       <div class="dashboard-invitations-section">
         <% 4.times do %>
           <div class="dashboard-invitations-info">
