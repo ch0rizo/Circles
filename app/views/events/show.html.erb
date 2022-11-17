@@ -17,11 +17,9 @@
       <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
     </div>
   </div>  
-  <div class="event-header-right">
-    <div class="btn btn-primary">
-      <div class="event-invite-user">Share</div>
-    </div>
-    <div class="event-header-right-attending">
+  <div class="event-header-right d-flex">
+    <div class="header-buttons">
+      <button class="btn btn-primary">Share</div>
       <button class="btn btn-success">Attending</button>
     </div>
   </div>
