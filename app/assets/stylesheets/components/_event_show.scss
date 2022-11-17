@@ -390,6 +390,19 @@
   .circle-avatar {
     width: 55px !important;
     height: 55px !important;
+  }
+}
 
+.loool {
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  border-radius: 25px;
+  border: 1px solid white;
+  background-color: transparent;
+  transition: 0.3s ease;
+
+  .loool:hover {
+    background-color: #202124;
   }
 }
