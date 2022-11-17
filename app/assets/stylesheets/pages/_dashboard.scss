@@ -251,7 +251,7 @@
   background-color: #202124;
   border-radius: 5px;
   padding: 10px;
-  height: 63vh;
+  height: 60vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   .dashboard-splitty-total {
@@ -263,9 +263,9 @@
   width: 30vw;
 }
 
-.dashboard-discorver-events {
+.dashboard-discover-events {
   background-color: #202124;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -287,42 +287,62 @@
 }
 
 .dashboard-next-event {
+  background-color: #202124;
   width: 50%;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 13vh;
+  margin-top: 20px;
+  border-radius: 5px;
+
+  h4 {
+    margin-bottom: 5px;
+  }
 }
 
 .dashboard-next-event-info {
-  height: 8vh;
-  background-color: #202124;
-  padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
+  border-top: 1px solid white;
   h6 {
     margin: 0px;
   }
 
   p {
-    margin: 0px;
+    margin-top: 15px;
   }
 }
 
 .dashboard-circles {
+  background-color: #202124;
   width: 50%;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 13vh;
+  margin-top: 20px;
+  border-radius: 5px;
+  width: 50%;
+
+  h4 {
+    margin-bottom: 5px;
+  }
 }
 
 .dashboard-circles-info {
   display: flex;
   align-items: center;
-  height: 8vh;
-  border-radius: 5px;
-  background-color: #202124;
-  padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-top: 1px solid white;
+  padding-top: 10px;
 
   img {
     height: 35px;
     width: 35px;
     border-radius: 50%;
     margin-right: 10px;
+  }
+}
+
+.dashboard-invitations {
+  h4 {
+    margin-top: 13px;
   }
 }
 
@@ -337,8 +357,9 @@
 }
 
 .dashboard-invitations-section {
-  height: 27vh;
+  height: 17vh;
   overflow: scroll;
+  border-radius: 5px;
 }
 
 .dashboard-discover-carousel {
