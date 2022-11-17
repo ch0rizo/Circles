@@ -1,3 +1,18 @@
+<div class="event-header">
+  <div class="event-header-left">
+    <h2><%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %><%= @event.title %></h2>
+    <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
+  </div>
+  <div class="event-header-middle">
+    <p>Splitty incoming</p>
+  </div>
+  <div class="event-header-right">
+    <div class="btn btn-primary">Share</div>
+    <div class="event-header-right-attending">
+      <button class="btn btn-success">Attending</button>
+    </div>
+  </div>
+</div>
 <div class="container event-main-container">
   <div class="event-left-side">
     <div class="event-left-side-banner">
@@ -120,22 +135,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<div class="event-footer">
-  <div class="event-footer-left">
-    <h2><%= @event.title %></h2>
-    <p><%= @event.start_date.strftime("%a, %b %d") %> - <%= @event.end_date.strftime("%a, %b %d") %></p>
-  </div>
-  <div class="event-footer-middle">
-    <p>Splitty incoming</p>
-  </div>
-  <div class="event-footer-right">
-    <div class="btn btn-primary">Share</div>
-    <div class="event-footer-right-attending">
-      <button class="btn btn-success">Attending</button>
-      <button class="btn btn-danger">Not Attending</button>
     </div>
   </div>
 </div>

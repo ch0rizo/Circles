@@ -74,7 +74,7 @@ export default class extends Controller {
       'Or just chill?',
     ];
 
-    const el = document.querySelector('.text');
+    const el = document.querySelector('.dashboard-text');
     const fx = new TextScramble(el);
 
     let counter = 0;
