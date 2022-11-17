@@ -54,19 +54,11 @@
       </div>
     </div>
     <div class="event-left-side-bottom">
-      <div class="event-right-side-images">
-        <h5>PICTURES</h5>
-        <div class="event-right-side-images-info">
-          <p>Share pictures:</p>
+      <div class="event-show-chatroom-container">
+        <div class="event-show-chatroom-header">
+          <h5><%= @event.title.upcase %> CHAT</h5>
         </div>
-      </div>
-      <div class="event-left-side-chatroom">
-        <div class="chatroom"
-          data-controller="event-chatroom-subscription"
-          data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>"
-          data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
-
-          <h4><%= @event.title.upcase %> CHAT</h4>
+          <div class="event-show-chatroom" data-controller="event-chatroom-subscription" data-event-chatroom-subscription-chatroom-id-value="<%= @event.id %>" data-event-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
           <div class="messages" data-event-chatroom-subscription-target="messages">
             <% @event.event_messages.each do |event_message| %>
@@ -77,16 +69,46 @@
               </div>
             <% end %>
           </div>
-          <%= simple_form_for [@event, @event_message],
-              html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-            %>
-              <%= f.input :content,
-                label: false,
-                placeholder: "Message ##{@event.title}",
-                wrapper_html: {class: "flex-grow-1"}
-              %>
-              <%= f.submit "Send", class: "btn btn-primary" %>
-            <% end %>
+          <%= simple_form_for [@event, @event_message], html: { data: { action: "turbo:submit-end->event-chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+          <%= f.input :content, label: false, placeholder: "Message #{@event.title}", wrapper_html: {class: "flex-grow-1"} %>
+          <%= f.submit "Send", class: "global-button-chat" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="event-right-side-music">
+      <div class="spotify-playlists-header">
+        <h5>EVENT PLAYLISTS</h5>
+        <!-- Playlist Button trigger modal -->
+        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+          <h5>+</h5>
+        </button>
+      </div>
+      <div class="event-playlists-grid">
+        <% @event.event_playlists.each do |playlist| %>
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <% end %>
+      </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content modal-content-circle-show">
+              <div class="modal-header">
+                <i class="fa-brands fa-spotify"></i>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Playlist</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body modal-body-content">
+                <%= simple_form_for [@event, @event_playlist] do |f| %>
+                  <%= f.input :url, label: 'Enter the link to your playlist' %>
+                  <%= f.submit "Add" %>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,7 +162,7 @@
       </div>
     </div>
     <div class="event-right-side-invite">
-      <h4>Invite a Circle</h4>
+      <h5>INVITE A CIRCLE</h5>
       <div class="circle-grid">
         <% @circles.each do |circle|%>
           <%= link_to circle_path(circle) do %>
@@ -196,42 +218,6 @@
         </div>
       </div>
     </div>
-    <div class="event-right-side-music">
-      <div class="spotify-playlists-header">
-        <h5>EVENT PLAYLISTS</h5>
-        <!-- Playlist Button trigger modal -->
-        <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
-          <h5>+</h5>
-        </button>
-      </div>
-      <div class="playlists-grid">
-        <% @event.event_playlists.each do |playlist| %>
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <% end %>
-      </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content modal-content-circle-show">
-              <div class="modal-header">
-                <i class="fa-brands fa-spotify"></i>
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Playlist</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body modal-body-content">
-                <%= simple_form_for [@event, @event_playlist] do |f| %>
-                  <%= f.input :url, label: 'Enter the link to your playlist' %>
-                  <%= f.submit "Add" %>
-                <% end %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

@@ -63,7 +63,7 @@
 }
 
 .event-main-container {
-  // border: 1px solid rgb(255, 109, 133);
+  border: 1px solid rgb(255, 109, 133);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -74,14 +74,14 @@
 }
 
 .event-left-side-container {
-  // border: 1px solid rgb(113, 170, 255);
+  border: 1px solid rgb(113, 170, 255);
   display: flex;
   flex-direction: column;
   width: 70%;
 }
 
 .event-right-side-container {
-  // border: 1px solid orange;
+  border: 1px solid orange;
   display: flex;
   flex-direction: column;
   width: 25%;
@@ -105,23 +105,39 @@
 }
 
 .event-left-side-bottom {
+  border: 1px solid greenyellow;
   display: flex;
-  justify-content: flex-start;
-  height: 400px;
-  min-height: 400px;
+  flex-direction: row;
+  justify-content: space-between;
+  // height: 450px;
   margin-top: 25px;
+}
+
+.event-show-chatroom-container {
   background-color: #202124;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 5px;
+  width: 50%;
+  height: 500px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .event-left-side-playlist {
-    height: 100%;
-    width: 26vw;
-  }
+.event-show-chatroom-header {
+  width: 90%;
+  margin-top: 5px;
+}
 
-  .chatroom {
-    height: 100%;
-    width: 34vw;
+.event-show-chatroom {
+  background: #202124;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid white;
+  .messages {
+    height: 400px;
   }
 }
 
@@ -168,6 +184,21 @@
   border-radius: 5px;
   height: 40vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  .circle-grid {
+    // border-top: 1px solid white;
+    margin-bottom: 2%;
+  }
+
+  h5 {
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+  }
+  .circle-avatar {
+    width: 55px !important;
+    height: 55px !important;
+
+  }
 }
 
 .event-right-side-invite-header {
@@ -310,7 +341,7 @@
 .event-right-side-music {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 46%;
   justify-content: flex-start;
   text-align: center;
   align-items: center;
@@ -318,8 +349,27 @@
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 5px;
-  margin-top: 5%;
 }
+
+.event-playlists-grid {
+  border-top: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  max-height: 435px;
+  overflow-y: scroll;
+  width: 90%;
+  align-items: flex-start;
+
+  iframe {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.event-playlists-grid::-webkit-scrollbar {
+  display: none;
+}
+
 
 .event-right-side-music-info {
   border-top: 1px solid white;
@@ -376,20 +426,4 @@
   justify-content: space-between;
   border-top: 1px solid white;
   padding-top: 10px;
-}
-
-.event-right-side-invite {
-  .circle-grid {
-    // border-top: 1px solid white;
-    margin-bottom: 2%;
-  }
-
-  h4 {
-    border-bottom: 1px solid white;
-  }
-  .circle-avatar {
-    width: 55px !important;
-    height: 55px !important;
-
-  }
 }
