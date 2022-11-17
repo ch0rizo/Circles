@@ -10,7 +10,7 @@ export default class extends Controller {
   static targets = ['button'];
 
   connect() {
-    this.token = document.querySelector('meta[name="csrf-token"]').content;
+    this.csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   }
 
   submit() {
@@ -19,7 +19,7 @@ export default class extends Controller {
     fetch(`/circles/${this.circleIdValue}/user_circles`, {
       method: 'POST', // or 'PUT'
       headers: {
-        'X-CSRF-Token': this.token,
+        'X-CSRF-Token': this.csrfToken,
         'Content-Type': 'application/json',
         accept: 'application/json',
       },
