@@ -426,9 +426,14 @@
   background-color: #202124;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   margin-top: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  p {
+    margin: 0px;
+  }
 }
 
 .dashboard-invitations-section {
@@ -475,7 +480,7 @@
 .chatbox-message {
   position: absolute;
   top: 36px;
-  left: 39px;
+  left: 34px;
   font-size: 13px;
 }
 
