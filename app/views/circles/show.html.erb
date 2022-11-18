@@ -13,7 +13,7 @@
   <%= cl_image_tag @circle.photo.key, class: "circle-avatar-circle", :style => "border-color: #{@circle.border_color}", alt: "circle-avatar" %>
   <div class="circle-show-details">
     <h1><%= @circle.name.upcase %></h1>
-    <p><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
+    <p class="mb-2"><%= @circle.created_at.strftime("STARTED %b %Y") %></p>
     <div class="circle-show-details-private">
       <p><i class="fa-solid fa-user-group"></i><%= @circle.users.count %> MEMBERS</p>
       <% if @circle.private == true %>
@@ -23,7 +23,7 @@
       <% end %>
     </div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button type="button" class="btn global-button-circle-show" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       <i class="fa-solid fa-plus"></i>
       <i class="fa-solid fa-user-group"></i>
     </button>
@@ -59,7 +59,7 @@
         </div>
       </div>
     </div>
-    <div class="btn btn-primary">
+    <div class="btn global-button-circle-show">
       <%= link_to "Create Event", new_event_path  %>
     </div>
   </div>
