@@ -394,6 +394,7 @@
 }
 
 .dashboard-show-spotify-playlists {
+  height: 53vh;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -409,6 +410,13 @@
 }
 
 .dashboard-invitations {
+  margin-top: 25px;
+  border-radius: 5px;
+  background-color: #202124;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 36vh;
+
   h4 {
     margin-top: 13px;
   }
@@ -437,9 +445,9 @@
 }
 
 .dashboard-invitations-section {
-  height: 17vh;
+  border-top: 1px solid white;
+  height: 27vh;
   overflow: scroll;
-  border-radius: 5px;
 }
 
 .dashboard-invitations-section::-webkit-scrollbar {
