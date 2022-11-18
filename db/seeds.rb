@@ -18,8 +18,8 @@ User.destroy_all
 
 puts "> Creating the main character..."
 
-main_user = User.create(email: 'benten@gmail.com', password: 'password', username: 'benten', first_name: 'Ben', last_name: 'Lee')
-user_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668172413/development/julian-wan-WNoLnJo7tS8-unsplash_svo56p.jpg"
+main_user = User.create(email: 'benten@gmail.com', password: 'password', username: 'benten', first_name: 'Liam', last_name: 'Strickland')
+user_url = "https://res.cloudinary.com/dhyxfzmqi/image/upload/v1668763249/development/waverock2_dglnlh.jpg"
 user_file = URI.open(user_url)
 main_user.photo.attach(io: user_file, filename: 'circle_img.png', content_type: 'image/png')
 
