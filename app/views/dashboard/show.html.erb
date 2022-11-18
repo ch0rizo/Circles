@@ -61,8 +61,7 @@
           <div class="dashboard-invitations-info">
             <p><%= User.all.sample.first_name %> invited you to <strong><%= link_to "#{Event.all.sample.title}", event_path(Event.all.last)  %></strong></p>
             <div class="dashboard-invitations-info-buttons d-flex">
-              <p>Accept|</p>
-              <p>Decline</p>
+              <p>Accept</p>
             </div>
           </div>
         <% end %>
