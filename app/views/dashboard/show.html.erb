@@ -2,7 +2,7 @@
   <%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, root_path %>
   <div class="dashboard-text"></div>
 </div>
-<div class="container dashboard-main-container">
+<div class="dashboard-main-container">
   <div class="dashboard-left-side">
     <div class="dashboard-profile">
       <%= cl_image_tag @user.photo.key %>
@@ -18,7 +18,7 @@
     </div>
     <div class="dashboard-orbits">
       <div class="dashboard-orbit-header">
-        <h4>Notifications</h4>
+        <h4>NOTIFICATIONS</h4>
         <i class="fa-solid fa-circle"></i>
         <h5>3</h5>
       </div>
@@ -37,34 +37,9 @@
       </div>
     </div>
   </div>
-  <div class="dashboard-middle">
-    <div class="dashboard-achivements">
-      <h4 style="margin: 0px">Achivements (2)</h4>
-      <div class="dashboard-achivements-body">
-        <div class="achivements-info-card">
-          <p><i class="fa-solid fa-beer-mug-empty"></i></p>
-          <div class="achivements-info-text">
-            <h6>Keg Meister!</h6>
-            <p>Downed 15 beers!</p>
-          </div>
-        </div>
-        <div class="achivements-info-card">
-          <p><i class="fa-solid fa-crown"></i></p>
-          <div class="achivements-info-text">
-            <h6>Party KING!</h6>
-            <p>4 all-nighters!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="dashboard-splitty">
-      <h4>Splitty</h4>
-      <p>Menno we waiting for the splitty...</p>
-    </div>
-  </div>
-  <div class="dashboard-right-side">
+    <div class="dashboard-right-side">
     <div class="dashboard-discover-events">
-      <h4>Discover</h4>
+      <h5>DISCOVER</h5>
       <div class="dashboard-discover-carousel">
         <section class="splide splide-content" aria-label="Splide Basic HTML Example" data-controller="slider">
           <div class="splide__track">
@@ -78,8 +53,26 @@
       </div>
     </div>
     <div class="dashboard-right-top">
+    </div>
+    <div class="dashboard-invitations">
+      <h5>INVITES</h5>
+      <div class="dashboard-invitations-section">
+        <% 4.times do %>
+          <div class="dashboard-invitations-info">
+            <p><%= User.all.sample.first_name %> invited you to <strong><%= link_to "#{Event.all.sample.title}", event_path(Event.all.last)  %></strong></p>
+            <div class="dashboard-invitations-info-buttons d-flex">
+              <p>Accept|</p>
+              <p>Decline</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-middle">
+    <div class="dashboard-middle-top">
       <div class="dashboard-next-event">
-        <h4>Next Event</h4>
+        <h5>NEXT EVENTS</h5>
         <% if @next_event != nil %>
           <%= link_to event_path(@next_event) do %>
             <div class="dashboard-next-event-info">
@@ -94,23 +87,57 @@
         <% end %>
       </div>
       <div class="dashboard-circles">
-        <h4><i class="fa-solid fa-map-pin"></i> Pinned</h4>
-        <%= link_to circle_path(@circle) do %>
-          <div class="dashboard-circles-info">
-            <p><%= cl_image_tag @circles.first.photo.key %></p>
-            <p><%= @circles.first.name %></p>
-          </div>
-        <% end %>
+        <h5>YOUR CIRCLES</h5>
+        <div class="dash-circle-grid">
+          <% @circles.each do |circle|%>
+            <%= link_to circle_path(circle) do %>
+              <% if circle.photo.key? %>
+                <%= cl_image_tag circle.photo.key, class: "circle-avatar", :style => "border-color: #{circle.border_color}", alt: "Circle Avatar" %>
+              <% else %>
+                <%= cl_image_tag "hk6soz418q50zk89hkppwut8mp97", class: "circle-avatar", alt: "circle-avatar" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="dashboard-invitations">
-      <h4>Invitation</h4>
-      <div class="dashboard-invitations-section">
-        <% 4.times do %>
-          <div class="dashboard-invitations-info">
-            <p><%= User.all.sample.first_name %> invited you to <strong><%= link_to "#{Event.all.sample.title}", event_path(Event.all.last)  %></strong></p>
+    <div class="dashboard-middle-bottom">
+            <div class="dashboard-show-spotify-playlists">
+        <div class="spotify-playlists-header">
+          <h5>YOUR PLAYLISTS</h5>
+          <!-- Playlist Button trigger modal -->
+          <button type="button" class="global-button" id="playlist-button", data-bs-toggle="modal" data-bs-target="#addPlaylist">
+            <h5>+</h5>
+          </button>
+        </div>
+        <div class="playlists-grid">
+          <% @circle.circle_playlists.each do |playlist| %>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%=playlist.embed_url%>?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <% end %>
+        </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="addPlaylist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddPlaylistLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content modal-content-circle-show">
+                <div class="modal-header">
+                  <i class="fa-brands fa-spotify"></i>
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Playlist</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body-content">
+                  <%= simple_form_for [@circle, @circle_playlist] do |f| %>
+                    <%= f.input :url, label: 'Enter the link to your playlist' %>
+                    <%= f.submit "Add" %>
+                  <% end %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

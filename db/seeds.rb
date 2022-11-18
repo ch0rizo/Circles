@@ -320,6 +320,11 @@ EventPlaylist.create(
   event: surf_trip
 )
 
+EventPlaylist.create(
+  url: "https://open.spotify.com/playlist/6FXSKFnt0PBo4W4itkLiSs?si=cd3c4e350990405a",
+  event: surf_trip
+)
+
 nico_party = Event.create(
   title: "Nico's Sweet 20th",
   private: true,
