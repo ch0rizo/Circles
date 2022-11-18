@@ -66,7 +66,7 @@ export default class extends Controller {
     // ——————————————————————————————————————————————————
 
     const phrases = [
-      'Good Day, Ben Ten',
+      'Good Day, Liam Strickland',
       'What are you up to this weekend',
       'Party?',
       'Surf?',
