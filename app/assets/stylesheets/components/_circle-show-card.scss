@@ -26,11 +26,12 @@
 .circle-show-title {
   // border: 1px solid rgb(137, 174, 141);
   position: absolute;
-  top: 35vh;
-  left: 10vw;
+  top: 32vh;
+  left: 8.5vw;
   display: flex;
-  h2 {
+  h1 {
     margin-bottom: 5px;
+    font-size: 34pt;
   }
 }
 
@@ -63,6 +64,7 @@
   margin-left: 10px;
   padding: 4px;
   object-fit: cover;
+  scale: 1.1
 }
 
 .circle-show-main-container {
@@ -116,6 +118,7 @@
   background-color: #202124;
   border-radius: 5px;
   padding-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   h4 {
     // padding-bottom: 10px;
@@ -182,6 +185,7 @@
   border-radius: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .circle-show-upcoming-events-header {
@@ -224,6 +228,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .circle-show-chatroom-header {
@@ -238,6 +243,7 @@
   display: flex;
   flex-direction: column;
   border-top: 1px solid white;
+  // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   .messages {
     height: 675px;
   }
@@ -253,6 +259,7 @@
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .circle-show-memories-header {
@@ -308,6 +315,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .spotify-playlists-header {

@@ -119,7 +119,7 @@
           <h5>SPLITTY - EVENT COSTS</h5>
           <div class="splitty-body">
             <div class="splitty-people">
-              <% @event.user_events.each do |user_event| %>
+              <% @event.user_events.sort_by {|user| user.balance * user.balance }.reverse.each do |user_event| %>
                 <p><%= user_event.user.first_name %>: R <%= user_event.balance %></p>
               <% end %>
             </div>

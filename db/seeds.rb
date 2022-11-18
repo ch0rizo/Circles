@@ -1,5 +1,7 @@
 puts "> Clearing the DB.."
 
+Splittee.destroy_all
+Payment.destroy_all
 EventPlaylist.destroy_all
 CirclePlaylist.destroy_all
 CircleEvent.destroy_all
