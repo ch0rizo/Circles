@@ -6,5 +6,7 @@ class DashboardController < ApplicationController
     @event = @events[0]
     @circles = @user.circles
     @circle = @circles[0]
+    @user_event = UserEvent.last
+    @next_event = Event.find(@user_event.event_id)
   end
 end

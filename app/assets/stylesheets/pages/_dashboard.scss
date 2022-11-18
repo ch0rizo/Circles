@@ -375,6 +375,13 @@
   }
 }
 
+.dashboard-next-event-info {
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
 .dashboard-invitations-info {
   border-radius: 5px;
   background-color: #202124;
@@ -443,3 +450,17 @@
 .dud {
   color: #fafafa;
 }
+
+// .dashboard-invitations-info-buttons {
+//   display: flex;
+//   padding: 5px;
+//   border: 1px solid white;
+//   border-radius: 5px;
+//   height: 50px;
+//   gap: 20px;
+//   text-align: center;
+
+//   .dashboard-accept {
+//     background-color: transparent;
+//   }
+// }

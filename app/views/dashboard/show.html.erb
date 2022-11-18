@@ -80,11 +80,11 @@
     <div class="dashboard-right-top">
       <div class="dashboard-next-event">
         <h4>Next Event</h4>
-        <% if @events.count > 0 %>
-          <%= link_to event_path(@event) do %>
+        <% if @next_event != nil %>
+          <%= link_to event_path(@next_event) do %>
             <div class="dashboard-next-event-info">
-              <h6><%= @events.last.title %></h6>
-              <p><%= @event.start_date.strftime("%a, %b %d") %></p>
+              <p style="margin-top: 5px"><strong><%= @next_event.title %></strong></p>
+              <p><%= @next_event.start_date.strftime("%a, %b %d") %></p>
             </div>
           <% end %>
         <% else %>
