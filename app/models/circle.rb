@@ -9,4 +9,7 @@ class Circle < ApplicationRecord
   has_many :circle_playlists
 
   validates :name, presence: true
+  validates :photo, presence: true
+  validates :banner, presence: true
+  validates :border_color, presence: true
 end

@@ -2,7 +2,6 @@
   <h2>CREATE A NEW CIRCLE</h2>
   <%= simple_form_for @circle do |f| %>
     <%= f.input :name %>
-    <%= f.input :description %>
     <%= f.input :photo, as: :file %>
     <%= f.input :private, as: :radio_buttons, collection: [['Yes',true], ['No',false]], required: true %>
     <%= f.input :banner, as: :file %>

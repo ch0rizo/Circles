@@ -42,6 +42,6 @@ class CirclesController < ApplicationController
   private
 
   def circle_params
-    params.require(:circle).permit(:name, :description, :photo, :private, :border_color, :banner, user_ids: [])
+    params.require(:circle).permit(:name, :photo, :private, :border_color, :banner, user_ids: [])
   end
 end

@@ -19,4 +19,10 @@ class Event < ApplicationRecord
   has_many_attached :images
   has_many :event_playlists
   has_many :payments, through: :user_events
+
+  validates :title, presence: true
+  validates :location, presence: true
+  validates :photos, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 end
