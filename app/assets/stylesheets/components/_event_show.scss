@@ -478,8 +478,26 @@
   border: 1px solid white;
   background-color: transparent;
   transition: 0.3s ease;
-  
+
   .loool:hover {
     background-color: #202124;
+  }
+}
+
+.container-form {
+  [type='submit'] {
+    background-color: transparent;
+    border: 2px solid #ff9d00;
+    color: white;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+  }
+
+  [type='submit']:hover {
+    background-color: #ff9d00;
   }
 }
