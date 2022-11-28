@@ -4,6 +4,11 @@
       <%= image_tag "Logo/Circles_Logo.svg", width: "190", class:"white-color" %>
     </div>
     <div class="orbit-container">
+      <div class="login-button">
+        <% unless user_signed_in? %>
+          <%= link_to "Login", new_user_session_path, class: "hover-underline-animation login-button" %>
+        <% end %>
+      </div>
       <% if user_signed_in? %>
         <div class="profile-container">
           <%= link_to dashboard_path(current_user) do %>
@@ -14,24 +19,23 @@
             <% end %>
           <% end %>
         </div>
-      <% end %>
-      <div id="circle-orbit-container">
-        <!-- Circles closest to the central point -->
-        <div id="inner-orbit">
-          <div class="inner-orbit-cirlces"></div>
+        <div id="circle-orbit-container">
+          <!-- Circles closest to the central point -->
+          <div id="inner-orbit">
+            <div class="inner-orbit-cirlces"></div>
+          </div>
+          <!-- Circles second closest to the central point -->
+          <div id="middle-orbit">
+            <div class="middle-orbit-cirlces"></div>
+          </div>
         </div>
-        <!-- Circles second closest to the central point -->
-        <div id="middle-orbit">
-          <div class="middle-orbit-cirlces"></div>
-        </div>
+        <div class="links-container">
       </div>
-      <div class="links-container">
-        <% unless user_signed_in? %>
-          <%= link_to "Login", new_user_session_path, class: "hover-underline-animation" %>
-        <% end %>
+      <% end %>
+      <% if user_signed_in? %>
         <%= link_to "New Circle", new_circle_path, class: "hover-underline-animation" %>
         <%= link_to "New Event", new_event_path, class: "hover-underline-animation" %>
-      </div>
+      <% end %>
     </div>
     <div class="circles-container">
       <p>YOUR CIRCLES</p>
